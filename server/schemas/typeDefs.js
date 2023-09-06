@@ -18,6 +18,7 @@ const typeDefs = gql`
         location: String!
         salary: Float
         description: String!
+        categories: [Category]
     }
 
     type Category {
@@ -27,6 +28,7 @@ const typeDefs = gql`
     type Query {
         users: User
         jobs: Job
+        catergories: [Category]
     }
 
 `;

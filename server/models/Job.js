@@ -21,7 +21,8 @@ const jobSchema = new Schema(
         },
         categories: [{
             type: Schema.Types.ObjectId,
-            ref: 'Category'
+            ref: 'Category',
+            required: true
         }]
     }
 );
