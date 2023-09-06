@@ -16,13 +16,53 @@ const CategoryMenu = () => {
 
     const { loading, data: categoryData } = useQuery(QUERY_CATEGORIES)
 
+    console.log(state)
+
+    useEffect(() => {
+        if (categoryData) {
+          dispatch({
+            type: UPDATE_CATEGORIES,
+            categories: categoryData.categories,
+          });
+          categoryData.categories.forEach((category) => {
+            idbPromise('categories', 'put', category);
+          });
+        } else if (!loading) {
+          idbPromise('categories', 'get').then((categories) => {
+            dispatch({
+              type: UPDATE_CATEGORIES,
+              categories: categories,
+            });
+          });
+        }
+      }, [categoryData, loading, dispatch]);
+
     console.log(categoryData)
 
+    const handleClick = (id) => {
+        dispatch({
+          type: UPDATE_CURRENT_CATEGORY,
+          currentCategory: id,
+        });
+      };
 
     return (
         <div>
             <h2>Filter Jobs.</h2>
+            {categories.map((item) => (
+                <button
+                    key={item._id}
+                    onClick={() => {
+                        handleClick(item._id)
+                    }}
+                >
+                    {item.name}
+                </button>
+            )
+            )}
             
         </div>
     )
 }
+
+export default CategoryMenu;

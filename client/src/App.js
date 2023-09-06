@@ -6,6 +6,10 @@ import { setContext } from '@apollo/client/link/context';
 
 import { JobProvider } from './utils/GlobalState';
 
+// Components and Page imports
+
+import CategoryMenu from './component/CategoryMenu/index'
+
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -32,6 +36,7 @@ function App() {
       <Router>
         <div>
           <JobProvider>
+            <CategoryMenu />
             <div className="App">
               <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo" />
