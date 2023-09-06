@@ -28,7 +28,7 @@ const typeDefs = gql`
     type Query {
         users: User
         jobs: Job
-        catergories: [Category]
+        categories: [Category]
     }
 
 `;

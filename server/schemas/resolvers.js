@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express')
-const { User, Job } = require('../models')
+const { User, Job, Category } = require('../models')
 const { signToken } = require('../utils/auth')
 
 const resolvers = {
@@ -9,6 +9,9 @@ const resolvers = {
         },
         jobs: async () => {
             return await Job.find({});
+        },
+        categories: async () => {
+            return await Category.find({})
         }
     }
 }
