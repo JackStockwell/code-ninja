@@ -8,15 +8,25 @@ const typeDefs = gql`
         password: String!
         firstName: String!
         lastName: String!
-        jobSaves: [Jobs]
-        jobApp: [Jobs]
+        jobSaves: [Job]
+        jobApp: [Job]
     }
 
-    type Jobs {
+    type Job {
         _id: ID!
         title: String!
         location: String!
         salary: Float
+        description: String!
+    }
+
+    type Category {
+        name: String!
+    }
+
+    type Query {
+        users: User
+        jobs: Job
     }
 
 `;
