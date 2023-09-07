@@ -68,9 +68,7 @@ const getRandomCompany = () => `${getRandomArrItem(companies)}`;
 
 const getRandomCategory = () => `${getRandomArrItem(categories)}`;
 
-
-
- 
+console.log(getRandomCategory())
 
 module.exports = {
     getRandomTitle,
