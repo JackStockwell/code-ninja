@@ -23,7 +23,7 @@ const userSchema = new mongoose.Schema(
   { collation: { locale: "en" } }
 );
 
-// Password hashing using async/await
+// Password 
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) {
     return next();
@@ -38,7 +38,7 @@ userSchema.pre("save", async function (next) {
   }
 });
 
-// Password verification upon login using async/await
+// Password verification upon login 
 userSchema.methods.login = async function (password) {
   try {
     const result = await bcrypt.compare(password, this.password);
