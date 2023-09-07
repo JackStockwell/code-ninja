@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 require("mongoose-type-email");
 
 const userSchema = new mongoose.Schema(
+    // email validation 
   {
     email: {
       type: mongoose.SchemaTypes.Email,
@@ -23,7 +24,7 @@ const userSchema = new mongoose.Schema(
   { collation: { locale: "en" } }
 );
 
-// Password 
+// A function that checks if the password has been modifies 
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) {
     return next();
