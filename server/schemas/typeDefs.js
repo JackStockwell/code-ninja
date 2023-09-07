@@ -19,7 +19,7 @@ const typeDefs = gql`
         location: String
         salary: Int
         description: String!
-        category: [Category]
+        category: [Category]!
     }
 
     type Auth {
