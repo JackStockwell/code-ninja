@@ -15,10 +15,11 @@ const typeDefs = gql`
     type Job {
         _id: ID!
         title: String!
-        location: String!
-        salary: Float
+        company: String!
+        location: String
+        salary: Int
         description: String!
-        categories: [Category]
+        category: [Category]!
     }
 
     type Auth {
