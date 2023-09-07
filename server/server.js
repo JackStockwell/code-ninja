@@ -11,13 +11,11 @@ const app = express();
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  context: authMiddleware,
+  // context: authMiddleware,
 });
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-
-process.env.NODE_ENV = 'production';
 
 // if we're in production, serve client/build as static assets
 if (process.env.NODE_ENV === 'production') {

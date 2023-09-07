@@ -1,8 +1,8 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
 
-const jobsSchema = require('./Jobs')
 
+// User Schema
 const userSchema = new Schema(
     {
         email: {
@@ -10,21 +10,31 @@ const userSchema = new Schema(
             required: true,
             unique: true,
             match: [/.+@.+\..+/, "Must use a valid email address"],
+            trim: true
         },
         password: {
             type: String,
             required: true,
+            trim: true
         },
         firstName: {
             type: String,
-            required: true
+            required: true,
+            trim: true
         },
         lastName: {
             type: String,
             required: true,
+            trim: true
         },
-        jobSaves: [jobsSchema],
-        jobApp: [jobsSchema]
+        jobSaves: [{
+            type: Schema.Types.ObjectId,
+            ref: 'Job'
+        }],
+        jobApp: [{
+            type: Schema.Types.ObjectId,
+            ref: 'Job'
+        }],
     },
     // set this to use virtual below
     {
