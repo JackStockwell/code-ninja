@@ -2,6 +2,7 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route, Data } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import { createUploadLink } from "apollo-upload-client";
 
 import { JobProvider } from './utils/GlobalState';
 
@@ -11,7 +12,7 @@ import CategoryMenu from './components/CategoryMenu/index'
 import Dev from './pages/dev';
 
 
-const httpLink = createHttpLink({
+const httpLink = createUploadLink({
   uri: '/graphql',
 });
 

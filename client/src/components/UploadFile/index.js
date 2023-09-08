@@ -1,6 +1,8 @@
+import { gql, useMutation } from '@apollo/client';
 import React, { useEffect, useState } from 'react';
-import { useFetcher } from 'react-router-dom';
+
 import { v4 as uuidv4 } from 'uuid'
+// import { SINGLE_UPLOAD } from '../../utils/mutations';
 
 
 const UploadFile = () => {   
@@ -8,82 +10,83 @@ const UploadFile = () => {
     let fileState = {
         selectedFile: null,
         fileUploadSuccessful: false,
-        test: false
     }
 
     const [fileData, setFileData] = useState(fileState)
 
+    // const [singleUpload, { error }] = useMutation(SINGLE_UPLOAD)
     
-
-    console.log(fileData)
-
-    const onFileChange = (e) => {
-        e.preventDefault();
+    // const onFileChange = (e) => {
+    //     const { target } = e
+    //     console.log(target.files)
+    //     e.preventDefault();
         
-        console.log(e.target.files)
+    //     setFileData({ ...fileData,
+    //         selectedFile: [e.target.files[0]],
+    //     })
 
-        setFileData({ ...fileData,
-            selectedFile: [e.target.files[0]],
-            test: true
-        })
+    //     console.log(target.validity.valid)
 
-    }
+    // }
 
-    
+    // const onFileUpload = async () => {
 
-    const onFileUpload = async () => {
+    //     const file = fileData.selectedFile[0]
 
-        console.log(fileData)
-    
-        let filename = uuidv4()    
-    
-        const formData = new FormData();
-        formData.append(
-            "Dev Test",
-            fileData.selectedFile[0],
+    //     console.log("Test")
+        
+    //     try {
+            
+    //         const { data } = await singleUpload({ 
+    //             variables: {file: fileData.selectedFile[0]}
+    //         })
+
+    //         console.log(data)
+    //     } catch (err) {
+    //         console.error(err)
+    //     }
+
+    // }
+    const SINGLE_UPLOAD = gql`
+    mutation Mutation($file: Upload!) {
+        singleUpload(file: $file) {
+            encoding
             filename
-        )
-
-        console.log(Object.fromEntries(formData))
-        
-        try {
-            const data = await fetch(`${process.env.REACT_APP_AWS_API_URL}${filename}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/pdf'
-                },
-                body: formData
-            })
-
-            console.log(data)
-        } catch (err) {
-            console.error(err)
-        }
-
-    }
-
-    const fileRes = () => {
-        if (fileData.selectedFile) {
-            <div>
-                <h3>File Details:</h3>
-                <p>Name: {fileData.selectedFile.name}</p>
-            </div>
-        } else if (fileData.fileUploadSuccessful) {
-            return (
-                <div>
-                    <p>Successfully uploaded!</p>
-                </div>
-            )
+            mimetype
+            url
         }
     }
+    `;
+    const [mutate, { loading, error }] = useMutation(SINGLE_UPLOAD);
+
+    const onChange = async ({ target }) => {
+        const {
+          validity,
+          files: [file],
+        } = target;
+    
+        if (validity.valid) {
+
+            console.log(file)
+
+          try {
+            const { data } = await mutate(
+                { variables: { file }}
+            );
+            console.log(data);
+          } catch (error) {
+            console.error(error);
+          }
+        }
+    };
 
     return (
         <div>
             <h3>File Upload</h3>
             <p>Upload your resume here</p>
             <div>
-                <input type='file' onChange={onFileChange} />
-                <button onClick={onFileUpload}>Submit</button>
+                <input required type='file' onChange={onChange} />
+                {/* <button onClick={onFileUpload}>Submit</button> */}
             </div>
         </div>
     )
