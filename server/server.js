@@ -1,6 +1,9 @@
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
+const {
+  graphqlUploadExpress,
+} = require('graphql-upload');
 
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
@@ -11,11 +14,14 @@ const app = express();
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  // context: authMiddleware,
+  context: authMiddleware,
+  csrfPrevention: true,
+  cache: 'bounded'
 });
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(graphqlUploadExpress());
 
 // if we're in production, serve client/build as static assets
 if (process.env.NODE_ENV === 'production') {
@@ -41,4 +47,4 @@ const startApolloServer = async () => {
 };
   
 // Call the async function to start the server
-  startApolloServer();
+startApolloServer();

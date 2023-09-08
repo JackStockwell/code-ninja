@@ -16,8 +16,6 @@ const CategoryMenu = () => {
 
     const { loading, data: categoryData } = useQuery(QUERY_CATEGORIES)
 
-    console.log(state)
-
     useEffect(() => {
         if (categoryData) {
           dispatch({
@@ -36,8 +34,6 @@ const CategoryMenu = () => {
           });
         }
       }, [categoryData, loading, dispatch]);
-
-    console.log(categoryData)
 
     const handleClick = (id) => {
         dispatch({
