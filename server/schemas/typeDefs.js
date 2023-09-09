@@ -1,4 +1,5 @@
 const { gql } = require('apollo-server-express');
+const { GraphQLUpload } = require('graphql-upload');
 
 const typeDefs = gql`
 
@@ -39,6 +40,15 @@ const typeDefs = gql`
         lastName: String!
     }
 
+    type File {
+        filename: String!
+        mimetype: String!
+        encoding: String!
+        url: String!
+    }
+
+    scalar Upload
+
     type Query {
         users: User
         jobs: Job
@@ -47,6 +57,7 @@ const typeDefs = gql`
 
     type Mutation {
         createUser(userData: userInput!): Auth
+        singleUpload(file: Upload!): File
     }
 
 `;
