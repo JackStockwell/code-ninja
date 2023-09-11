@@ -48,7 +48,7 @@ connection.once('open', async () => {
             company: getRandomCompany(),
             salary: Math.floor(Math.random() * (60 - 24 + 1)) + 24,
             description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis non reprehenderit blanditiis assumenda officiis numquam sapiente nemo id, soluta facilis molestiae iure tempore, magni quo, repudiandae pariatur cum.",
-            categories: getRandomArrItem(categories)._id,
+            category: getRandomArrItem(categories)._id,
             tags: [getRandomArrItem(tags)._id, getRandomArrItem(tags)._id],
         }
 
