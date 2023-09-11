@@ -26,7 +26,12 @@ const jobSchema = new Schema(
             type: Schema.Types.ObjectId,
             ref: 'Category',
             required: true
-        }]
+        }],
+        tags: [{
+            type: Schema.Types.ObjectId,
+            ref: 'Tag',
+            required: true
+        }],
     }
 );
 

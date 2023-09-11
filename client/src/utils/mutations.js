@@ -1,12 +1,12 @@
 import { gql } from '@apollo/client';
 
 export const SINGLE_UPLOAD = gql`
-    mutation SingleUpload($file: Upload!) {
+    mutation Mutation($file: Upload!) {
         singleUpload(file: $file) {
+            encoding
             filename
             mimetype
-            encoding
             url
         }
     }
-`; 
+`;

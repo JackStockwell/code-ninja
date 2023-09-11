@@ -1,6 +1,6 @@
 const { AuthenticationError } = require('apollo-server-express')
 const { GraphQLUpload } = require('graphql-upload');
-const { User, Job, Category } = require('../models')
+const { User, Job, Category, Tag } = require('../models')
 const { signToken } = require('../utils/auth')
 const AWSS3Uploader = require('../utils/s3config')
 
@@ -20,6 +20,9 @@ const resolvers = {
         },
         categories: async () => {
             return await Category.find({})
+        },
+        tags: async () => {
+            return await Tag.find({})
         }
     },
     Mutation: {
@@ -49,7 +52,10 @@ const resolvers = {
               console.log(error);
               throw new AuthenticationError(error);
             }
-        }   
+        },
+        createTag: async (parent, args) => {
+            return await Tag.create(args)
+        }
     }
 }
 
