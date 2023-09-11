@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
-import { useJobContext } from '../../utils/GlobalState';
+import { useJobContext } from '../utils/GlobalState';
 
 // Queries
 import { useQuery } from '@apollo/client';
-import { QUERY_CATEGORIES } from '../../utils/queries';
-import { UPDATE_CATEGORIES, UPDATE_CURRENT_CATEGORY } from '../../utils/actions';
+import { QUERY_CATEGORIES } from '../utils/queries';
+import { UPDATE_CATEGORIES, UPDATE_CURRENT_CATEGORY } from '../utils/actions';
 
 // Utils
-import { idbPromise } from '../../utils/helpers';
+import { idbPromise } from '../utils/helpers';
 
 const CategoryMenu = () => {
     const [state, dispatch] = useJobContext();

@@ -6,9 +6,15 @@ import { setContext } from '@apollo/client/link/context';
 
 import { JobProvider } from './utils/GlobalState';
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faHouse, faHeart, faCircleUser, faBars, faFile, faEnvelope, faX } from '@fortawesome/free-solid-svg-icons'
+import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
+
 // Components and Page imports
 
-import CategoryMenu from './component/CategoryMenu/index'
+import CategoryMenu from './components/index'
+
+
 
 
 const httpLink = createHttpLink({
