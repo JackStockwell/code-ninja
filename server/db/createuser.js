@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-const UserAuth = require('./userAuthModel'); // Assuming you have the schema in a separate file
+const UserAuth = require('./index.js'); 
 
 // Connect to your MongoDB database
 mongoose.connect("http://localhost:3001/", {
