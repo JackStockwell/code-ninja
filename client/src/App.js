@@ -13,9 +13,7 @@ import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 // Components and Page imports
 
 
-
-=======
-import CategoryMenu from './components/CategoryMenu/index'
+import CategoryMenu from './components/CategoryMenu/dev.index'
 import Dev from './pages/dev';
 
 
