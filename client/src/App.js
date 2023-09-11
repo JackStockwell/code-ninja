@@ -1,8 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Data } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import { createUploadLink } from "apollo-upload-client";
 
 import { JobProvider } from './utils/GlobalState';
 
@@ -12,12 +12,15 @@ import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
 // Components and Page imports
 
-import CategoryMenu from './components/index'
+
+
+=======
+import CategoryMenu from './components/CategoryMenu/index'
+import Dev from './pages/dev';
 
 
 
-
-const httpLink = createHttpLink({
+const httpLink = createUploadLink({
   uri: '/graphql',
 });
 
@@ -40,27 +43,14 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div>
+        <>
           <JobProvider>
             <CategoryMenu />
-            <div className="App">
-              <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                  Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <a
-                  className="App-link"
-                  href="https://reactjs.org"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Learn React
-                </a>
-              </header>
-            </div>
+              <Routes>
+                <Route path="/dev" element={<Dev />}/>
+              </Routes>
           </JobProvider>
-        </div>
+        </>
       </Router>
     </ApolloProvider>
   );

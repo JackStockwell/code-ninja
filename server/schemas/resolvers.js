@@ -1,8 +1,15 @@
 const { AuthenticationError } = require('apollo-server-express')
-const { User, Job, Category } = require('../models')
+const { GraphQLUpload } = require('graphql-upload');
+const { User, Job, Category, Tag } = require('../models')
 const { signToken } = require('../utils/auth')
+const AWSS3Uploader = require('../utils/s3config')
+
+const s3Uploader = new AWSS3Uploader()
 
 const resolvers = {
+
+    Upload: GraphQLUpload,
+
     Query: {
         // Dev query, queries all users.
         users: async () => {
@@ -13,6 +20,9 @@ const resolvers = {
         },
         categories: async () => {
             return await Category.find({})
+        },
+        tags: async () => {
+            return await Tag.find({})
         }
     },
     Mutation: {
@@ -31,7 +41,21 @@ const resolvers = {
             // Returns the token and
             return { token, newUser }
         },
-        
+        // Uploads a file sent from the front end to the S3 webserver.
+        singleUpload: async (parent, args) => {
+            const upload = s3Uploader.singleFileUploadResovler.bind(s3Uploader);
+
+            try {
+              const newUpload = await upload(parent, args);
+              return newUpload;
+            } catch (error) {
+              console.log(error);
+              throw new AuthenticationError(error);
+            }
+        },
+        createTag: async (parent, args) => {
+            return await Tag.create(args)
+        }
     }
 }
 

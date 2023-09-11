@@ -20,6 +20,7 @@ const typeDefs = gql`
         salary: Int
         description: String!
         category: [Category]!
+        tags: [Tag]
     }
 
     type Auth {
@@ -32,6 +33,11 @@ const typeDefs = gql`
         name: String!
     }
 
+    type Tag {
+        _id: ID!
+        name: String!
+    }
+
     input userInput {
         email: String!
         password: String!
@@ -39,14 +45,26 @@ const typeDefs = gql`
         lastName: String!
     }
 
+    type File {
+        filename: String!
+        mimetype: String!
+        encoding: String!
+        url: String!
+    }
+
+    scalar Upload
+
     type Query {
         users: User
         jobs: Job
         categories: [Category]
+        tags: [Tag]
     }
 
     type Mutation {
         createUser(userData: userInput!): Auth
+        singleUpload(file: Upload!): File
+        createTag(name: String!): Tag
     }
 
 `;
