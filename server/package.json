@@ -12,14 +12,15 @@
   "license": "ISC",
   "dependencies": {
     "apollo-server-express": "^3.12.1",
-    "aws-sdk": "^2.1453.0",
+    "aws-sdk": "^2.1454.0",
     "bcrypt": "^4.0.1",
     "dotenv": "^16.3.1",
     "express": "^4.17.1",
     "graphql": "^16.8.0",
     "graphql-upload": "^13.0.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^7.0.2"
+    "mongoose": "^7.0.2",
+    "stream": "^0.0.2"
   },
   "devDependencies": {
     "@babel/helper-compilation-targets": "^7.22.15",

@@ -17,70 +17,68 @@ const UploadFile = () => {
 
     const [singleUpload, { error }] = useMutation(SINGLE_UPLOAD)
     
-    const onFileChange = (e) => {
+    // const onFileChange = (e) => {
 
-        e.preventDefault();
+    //     e.preventDefault();
         
-        const file = e.target.files[0]
+    //     const file = e.target.files[0]
 
-        console.log(file)
+    //     console.log(file)
         
-        setFileData({
-            ...fileData,
-            selectedFile: file,
-        })
+    //     setFileData({
+    //         ...fileData,
+    //         selectedFile: file,
+    //     })
 
-    };
-
-    const onFileUpload = async () => {
-
-        console.log(fileData)
-
-        const file = fileData.selectedFile
-
-        console.log(file)
-        
-        try {
-            
-            const { data } = await singleUpload({ 
-                variables: { file }
-            })
-
-            console.log(data)
-        } catch (err) {
-            console.error(err)
-        }
-
-    }
-
-    // const onChange = async ({ target }) => {
-    //     const {
-    //       validity,
-    //       files: [file],
-    //     } = target;
-    
-    //     if (validity.valid) {
-
-    //         console.log(file)
-
-    //       try {
-    //         const { data } = await mutate(
-    //             { variables: { file }}
-    //         );
-    //         console.log(data);
-    //       } catch (error) {
-    //         console.error(error);
-    //       }
-    //     }
     // };
+
+    // const onFileUpload = async () => {
+    //     // Takes the saved state file to be uploaded.
+    //     const file = fileData.selectedFile
+
+    //     console.log(file)
+        
+    //     try {
+            
+    //         const { data } = await singleUpload(
+    //             { variables: { file } }
+    //         )
+
+    //         console.log(data)
+    //     } catch (err) {
+    //         console.error(err)
+    //     }
+
+    // }
+
+    const onChange = async ({ target }) => {
+        const {
+          validity,
+          files: [file],
+        } = target;
+    
+        if (validity.valid) {
+
+            console.log(file)
+
+          try {
+            const { data } = await singleUpload(
+                { variables: { file }}
+            );
+            console.log(data);
+          } catch (error) {
+            console.error(error);
+          }
+        }
+    };
 
     return (
         <div>
             <h3>File Upload</h3>
             <p>Upload your resume here</p>
             <div>
-                <input required type='file' onChange={onFileChange} />
-                <button onClick={onFileUpload}>Submit</button>
+                <input required type='file' onChange={onChange} />
+                {/* <button onClick={onFileUpload}>Submit</button> */}
             </div>
         </div>
     )

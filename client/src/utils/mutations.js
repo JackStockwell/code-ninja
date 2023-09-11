@@ -9,4 +9,4 @@ export const SINGLE_UPLOAD = gql`
             url
         }
     }
-`; 
+`;
