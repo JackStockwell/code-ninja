@@ -9,6 +9,7 @@
 // }
 
 const categories = require('./category.json')
+const tags = require('./tags.json')
 
 const titles = [
     "Junior React Dev",
@@ -60,6 +61,8 @@ const companies = [
     "Umbrella Corp",
 ]
 
+
+
 const getRandomArrItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
 const getRandomTitle = () => `${getRandomArrItem(titles)}`;
@@ -68,9 +71,12 @@ const getRandomCompany = () => `${getRandomArrItem(companies)}`;
 
 const getRandomCategory = () => getRandomArrItem(categories);
 
+const getRandomTag = () => getRandomArrItem(tags)
+
 module.exports = {
     getRandomTitle,
     getRandomCompany,
     getRandomCategory,
-    getRandomArrItem
+    getRandomArrItem,
+    getRandomTag
 };

@@ -21,9 +21,7 @@ const newTags = () => {
         i++;
     } while (i < randomInt );
 
-    
-
     return tagArr;
 }
 
-module.exports = newTags;
+module.exports = { newTags };

@@ -19,7 +19,7 @@ const typeDefs = gql`
         location: String
         salary: Int
         description: String!
-        category: [Category]!
+        categories: [Category]
         tags: [Tag]
     }
 
@@ -55,8 +55,8 @@ const typeDefs = gql`
     scalar Upload
 
     type Query {
-        users: User
-        jobs: Job
+        users: [User]
+        jobs: [Job]
         categories: [Category]
         tags: [Tag]
     }

@@ -5,12 +5,12 @@ const {
     getRandomCompany,
     getRandomCategory
 } = require('./data/jobs')
-const newTags = require('./data/tags.js')
+const { newTags }= require('./data/tags.js')
 
 // Data
 const categorySeeds = require('./data/category.json')
 const tagSeeds = require('./data/tags.json');
-const tags = require('./data/tags');
+const tags = require('./data/tags.js');
 
 connection.once('open', async () => {
     
@@ -32,33 +32,29 @@ connection.once('open', async () => {
         await Tag.deleteMany({})
     }
 
-    console.log(tagSeeds)
-
     // await Tag.insertMany(tagSeeds)
 
     await Category.create(categorySeeds)
 
     let jobsArr = []
 
-    let tagArr = newTags()
-
-    console.log(tagArr)
 
     for (let i = 0;i < 3; i++) {
+
+        let tagData = await newTags()
 
         let newJob = {
             title: getRandomTitle(),
             company: getRandomCompany(),
             salary: Math.floor(Math.random() * (60 - 24 + 1)) + 24,
             description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis non reprehenderit blanditiis assumenda officiis numquam sapiente nemo id, soluta facilis molestiae iure tempore, magni quo, repudiandae pariatur cum.",
-            category: getRandomCategory(),
-            tags: tagArr
+
         }
 
         jobsArr.push(newJob)
     }
 
-    await Job.create(jobsArr)
+    await Job.insertMany(jobsArr)
 
     console.log(jobsArr)
     
