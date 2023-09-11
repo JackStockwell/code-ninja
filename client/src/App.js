@@ -6,10 +6,18 @@ import { createUploadLink } from "apollo-upload-client";
 
 import { JobProvider } from './utils/GlobalState';
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faHouse, faHeart, faCircleUser, faBars, faFile, faEnvelope, faX } from '@fortawesome/free-solid-svg-icons'
+import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
+
 // Components and Page imports
 
+
+
+=======
 import CategoryMenu from './components/CategoryMenu/index'
 import Dev from './pages/dev';
+
 
 
 const httpLink = createUploadLink({
