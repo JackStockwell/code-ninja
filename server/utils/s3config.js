@@ -6,7 +6,7 @@ const { AuthenticationError } = require("apollo-server-express");
 
 class AWSS3Uploader {
   config = {
-    destinationBucketName: "git-jobs-bucket",
+    destinationBucketName: "git-jobs-bucket/resume",
     region: "eu-west-2",
   };
 
@@ -34,7 +34,7 @@ class AWSS3Uploader {
       writeStream: pass,
       promise: this.s3
         .upload({
-          Bucket: "git-jobs-bucket", // this.config.destinationBucketName,
+          Bucket: "git-jobs-bucket/resume", // this.config.destinationBucketName,
           Key: key,
           Body: pass,
           ContentDisposition: "inline",
