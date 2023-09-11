@@ -16,7 +16,18 @@ const resolvers = {
             return await User.find({});
         },
         jobs: async () => {
-            return await Job.find({});
+            return await Job
+                .find({})
+                .populate([
+                    {
+                        path: 'categories',
+                        model: 'Category'
+                    },
+                    {
+                        path: 'tags',
+                        model: 'Tag'
+                    }
+                ]);
         },
         categories: async () => {
             return await Category.find({})

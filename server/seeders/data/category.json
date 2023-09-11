@@ -1,38 +1,14 @@
 [
-    {
-        "name": "Backend Developer"
-    },
-    {
-        "name": "DevOps & Infrastructure"
-    },
-    {
-        "name": "Embed Engineer"
-    },
-    {
-        "name": "Management"
-    },
-    {
-        "name": "Frontend Developer"
-    },
-    {
-        "name": "Full-stack Developer"
-    },
-    {
-        "name": "Game Developer"
-    },
-    {
-        "name": "Mobile Developer"
-    },
-    {
-        "name": "QA & Testing"
-    },
-    {
-        "name": "Sales"
-    },
-    {
-        "name": "Security Engineer"
-    },
-    {
-        "name": "Software Architect"
-    }
+    "Backend Developer", 
+    "DevOps & Infrastructure",
+    "Embed Engineer",
+    "Management",
+    "Frontend Developer",
+    "Full-stack Developer",
+    "Game Developer",
+    "Mobile Developer",
+    "QA & Testing",
+    "Sales",
+    "Security Engineer",
+    "Software Architect"
 ]

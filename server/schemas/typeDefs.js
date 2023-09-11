@@ -30,12 +30,12 @@ const typeDefs = gql`
 
     type Category {
         _id: ID!
-        name: String!
+        name: String
     }
 
     type Tag {
         _id: ID!
-        name: String!
+        name: String
     }
 
     input userInput {
