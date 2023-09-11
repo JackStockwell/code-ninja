@@ -71,5 +71,6 @@ const getRandomCategory = () => getRandomArrItem(categories);
 module.exports = {
     getRandomTitle,
     getRandomCompany,
-    getRandomCategory
+    getRandomCategory,
+    getRandomArrItem
 };
