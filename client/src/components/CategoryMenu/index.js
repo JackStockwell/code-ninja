@@ -1,22 +1,22 @@
-import React, {useEffect} from "react";
-import {useJobContext} from "../../utils/GlobalState";
+import React, { useEffect } from "react";
+import { useJobContext } from "../../utils/GlobalState";
 
 // Queries
-import {useQuery} from "@apollo/client";
-import {QUERY_CATEGORIES} from "../../utils/queries";
-import {UPDATE_CATEGORIES, UPDATE_CURRENT_CATEGORY} from "../../utils/actions";
+import { useQuery } from "@apollo/client";
+import { QUERY_CATEGORIES } from "../../utils/queries";
+import { UPDATE_CATEGORIES, UPDATE_CURRENT_CATEGORY } from "../../utils/actions";
 
 // Utils
-import {idbPromise} from "../../utils/helpers";
+import { idbPromise } from "../../utils/helpers";
 
 import "../css/category.css";
 
 const CategoryMenu = () => {
   const [state, dispatch] = useJobContext();
 
-  const {categories, currentCategory} = state;
+  const { categories, currentCategory } = state;
 
-  const {loading, data: categoryData} = useQuery(QUERY_CATEGORIES);
+  const { loading, data: categoryData } = useQuery(QUERY_CATEGORIES);
 
   useEffect(() => {
     if (categoryData) {
