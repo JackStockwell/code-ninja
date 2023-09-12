@@ -11,23 +11,9 @@ import { createUploadLink } from "apollo-upload-client";
 
 import { JobProvider } from "./utils/GlobalState";
 
-import { library } from "@fortawesome/fontawesome-svg-core";
-import {
-  faHouse,
-  faHeart,
-  faCircleUser,
-  faBars,
-  faFile,
-  faEnvelope,
-  faX,
-} from "@fortawesome/free-solid-svg-icons";
-import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
 import Homepage from './pages/Homepage'; 
 import LoginPage from './pages/Loginpage'; 
-
-
-
 import CategoryMenu from "./components/CategoryMenu";
 import Dev from "./pages/dev";
 
@@ -54,16 +40,14 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <>
-          <JobProvider>
-            <CategoryMenu />
-            <Routes>
-              <Route path="/" element={<Homepage />} />
-              <Route path="/dev" element={<Dev />} />
-              <Route path="/login" element={<LoginPage />} />
-            </Routes>
-          </JobProvider>
-        </>
+        <JobProvider>
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/dev" element={<Dev />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/category" element={<CategoryMenu />} /> {/* Add this line */}
+          </Routes>
+        </JobProvider>
       </Router>
     </ApolloProvider>
   );
