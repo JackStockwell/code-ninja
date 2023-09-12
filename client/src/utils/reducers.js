@@ -16,6 +16,8 @@ export const reducer = (state, action) => {
                 ...state,
                 currentCategory: action.currentCategory
             }
+        
+
         default:
             return state;
     }

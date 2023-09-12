@@ -16,14 +16,8 @@ const resolvers = {
             return await User
                 .find({})
                 .populate([
-                    {
-                        path: 'jobSaves',
-                        model: 'Job'
-                    },
-                    {
-                        path: 'jobApp',
-                        model: 'Job'
-                    }
+                    { path: 'jobSaves', model: 'Job' },
+                    { path: 'jobApp', model: 'Job' }
                 ]);
         },
         jobs: async (parent, { category }) => {
@@ -37,14 +31,8 @@ const resolvers = {
             return await Job
                 .find(params)
                 .populate([
-                    {
-                        path: 'category',
-                        model: 'Category'
-                    },
-                    {
-                        path: 'tags',
-                        model: 'Tag'
-                    }
+                    { path: 'category', model: 'Category' },
+                    { path: 'tags', model: 'Tag' }
                 ]);
         },
         categories: async () => {
