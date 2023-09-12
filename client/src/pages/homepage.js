@@ -1,26 +1,30 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTwitter, faLinkedin } from '../fortawesome';
-import Header from '../components/Header/Header';
-import Logo from '../components/Logo/Logo';
-import './Homepage.css';
+import React from "react";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faTwitter, faLinkedin} from "../fortawesome";
+import Header from "../components/Header/Header";
+import Logo from "../components/Logo/Logo";
+import "./homepage.css";
 
 const jobBlogPosts = [
   {
     title: "How to Ace Your Job Interview",
-    description: "Discover essential tips and strategies to help you excel in your next job interview, from preparation to follow-up.",
+    description:
+      "Discover essential tips and strategies to help you excel in your next job interview, from preparation to follow-up.",
   },
   {
     title: "Remote Work: Pros and Cons",
-    description: "Explore the advantages and disadvantages of remote work, and learn how to make the most of your remote job opportunities.",
+    description:
+      "Explore the advantages and disadvantages of remote work, and learn how to make the most of your remote job opportunities.",
   },
   {
     title: "Resume Writing Tips for Job Seekers",
-    description: "Learn how to create a compelling resume that grabs the attention of employers and helps you stand out in the job market.",
+    description:
+      "Learn how to create a compelling resume that grabs the attention of employers and helps you stand out in the job market.",
   },
   {
     title: "Navigating the Job Market in 2023",
-    description: "Stay up-to-date with the latest trends in the job market and gain insights into job search strategies for the current year.",
+    description:
+      "Stay up-to-date with the latest trends in the job market and gain insights into job search strategies for the current year.",
   },
 ];
 
