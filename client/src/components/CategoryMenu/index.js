@@ -1,3 +1,4 @@
+
 import React, {useEffect} from "react";
 import {useJobContext} from "../../utils/GlobalState";
 import {
@@ -9,14 +10,15 @@ import {useQuery} from "@apollo/client";
 import {QUERY_CATEGORIES, QUERY_JOBS_BY_CATEGORY} from "../../utils/queries";
 import {idbPromise} from "../../utils/helpers";
 
+
 import "../css/category.css";
 
 const CategoryMenu = () => {
   const [state, dispatch] = useJobContext();
 
-  const {categories, currentCategory} = state;
+  const { categories, currentCategory } = state;
 
-  const {loading, data: categoryData} = useQuery(QUERY_CATEGORIES);
+  const { loading, data: categoryData } = useQuery(QUERY_CATEGORIES);
 
   useEffect(() => {
     if (categoryData) {
