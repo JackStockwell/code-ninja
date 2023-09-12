@@ -1,4 +1,4 @@
-/* Header Styles */
+
 .header {
     background-color: #333;
     color: #fff;
@@ -9,15 +9,25 @@
   }
   
   .header a {
-    color: #fff;
+    color: #1C768F;
+    background-color: #fcfcfc;
     text-decoration: none;
     margin: 0 1rem;
     font-weight: bold;
-  }
-  
-  .header a:hover {
-    text-decoration: underline;
-  }
+    padding: 5px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    transition: background-color 0.3s ease; 
+
+}
+
+.header a:hover {
+    background-color: #0074e4; 
+    color: #fff; 
+}
+
   
   .header nav ul {
     list-style: none;
@@ -27,19 +37,19 @@
   .header nav li {
     margin: 0;
     padding: 0;
+  
   }
   
   .header nav ul li:last-child {
     margin-right: 0;
   }
   
-  /* Logo Styles */
+
   .logo {
-    width: 60px; /* Adjust the size as needed */
+    width: 60px;
     height: auto;
   }
   
-  /* Media query for responsive design */
   @media (max-width: 768px) {
     .header {
       flex-direction: column;
