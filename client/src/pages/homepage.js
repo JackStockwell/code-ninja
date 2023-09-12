@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaTwitter, FaLinkedin } from 'react-icons/fa'; 
-import Header from './Header';
-import Logo from './Logo';
+import Header from '../components/Header/Header';
+import Logo from '../components/Logo/Logo';
 import './Homepage.css';
 
 const jobBlogPosts = [
