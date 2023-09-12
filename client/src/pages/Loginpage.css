@@ -1,6 +1,6 @@
-/* Loginpage.css */
 
-/* Styles for the login container */
+
+
 .login-container {
   display: flex;
   flex-direction: column;
@@ -10,7 +10,7 @@
   background-color: #f0f0f0;
 }
 
-/* Styles for the navigation bar */
+
 nav ul {
   list-style-type: none;
   padding: 0;
@@ -30,7 +30,7 @@ nav ul li a {
   font-weight: bold;
 }
 
-/* Styles for the login form */
+
 .login {
   background-color: #fff;
   padding: 20px;
@@ -88,7 +88,7 @@ button[type="submit"]:hover {
   background-color: #0056b3;
 }
 
-/* Styles for the footer */
+
 .footer {
   margin-top: 20px;
   text-align: center;
@@ -115,7 +115,7 @@ button[type="submit"]:hover {
   color: #0056b3;
 }
 
-  /* Media query for responsive design */
+ 
   @media (max-width: 768px) {
     .login {
       max-width: 100%;

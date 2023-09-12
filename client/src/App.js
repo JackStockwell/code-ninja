@@ -60,7 +60,7 @@ function App() {
             <Route path="/" element={<Homepage />} />
             <Route path="/dev" element={<Dev />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/category" element={<CategoryMenu />} /> {/* Add this line */}
+            <Route path="/category" element={<CategoryMenu />} /> 
           </Routes>
         </JobProvider>
       </Router>
