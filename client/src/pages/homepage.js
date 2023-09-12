@@ -38,7 +38,7 @@ function Home() {
           <h2>Recent job blog Posts</h2>
           <ul>
      
-            {blogPosts.map((post, index) => (
+            {jobBlogPosts.map((post, index) => (
               <li key={index}>
                 <a href={`/blog/post-${index + 1}`}>{post.title}</a>
                 <p>{post.description}</p>
