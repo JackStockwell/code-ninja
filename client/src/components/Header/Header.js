@@ -1,6 +1,6 @@
 // src/components/Header.js
 import React from 'react';
-import Logo from './Logo'; 
+import Logo from '../Logo/Logo'; 
 import './Header.css';
 
 
@@ -19,3 +19,6 @@ function Header() {
     </header>
   );
 }
+
+
+export default Header; 
