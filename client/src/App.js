@@ -23,8 +23,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import {faGithub, faLinkedin} from "@fortawesome/free-brands-svg-icons";
 
-import Homepage from './pages/Home'; 
-import LoginPage from './pages/Login'; 
+import Homepage from './pages/Homepage'; 
+import LoginPage from './pages/Loginpage'; 
 
 // Components and Page imports
 
