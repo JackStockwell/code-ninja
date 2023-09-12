@@ -28,7 +28,7 @@ import LoginPage from './pages/Login';
 
 // Components and Page imports
 
-import CategoryMenu from "./components/CategoryMenu/dev.index";
+import CategoryMenu from "./components/CategoryMenu";
 import Dev from "./pages/dev";
 
 
