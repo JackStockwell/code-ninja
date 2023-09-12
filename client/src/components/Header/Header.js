@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // Import the Link component
+import { Link } from 'react-router-dom'; 
 import Logo from '../Logo/Logo'; 
 import './Header.css';
 
@@ -9,9 +9,9 @@ function Header() {
       <Logo xlinkHref="/images/logo.svg" /> 
       <nav>
         <ul>
-          <li><Link to="/">Home</Link></li> {/* Use Link component */}
-          <li><Link to="/about">About us</Link></li> {/* Use Link component */}
-          <li><Link to="/login">Login</Link></li> {/* Use Link component */}
+          <li><Link to="/">Home</Link></li> 
+          <li><Link to="/about">About us</Link></li> 
+          <li><Link to="/login">Login</Link></li> 
         </ul>
       </nav>
     </header>
