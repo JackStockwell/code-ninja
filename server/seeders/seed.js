@@ -3,14 +3,16 @@ const { User, Job, Category, Tag } = require('../models')
 const {
     getRandomTitle,
     getRandomCompany,
-    getRandomCategory
+    getRandomCategory,
+    getRandomTag,
+    getRandomArrItem
 } = require('./data/jobs')
-const { newTags }= require('./data/tags.js')
+const newTag = require('./data/tags')
 
 // Data
-const categorySeeds = require('./data/category.json')
-const tagSeeds = require('./data/tags.json');
-const tags = require('./data/tags.js');
+const categorySeeds = require('./data/categoryOld.json')
+const tagSeeds = require('./data/tagsOld.json')
+
 
 connection.once('open', async () => {
     
@@ -32,23 +34,22 @@ connection.once('open', async () => {
         await Tag.deleteMany({})
     }
 
-    // await Tag.insertMany(tagSeeds)
+    const categories = await Category.create(categorySeeds)
+    const tags = await Tag.create(tagSeeds)
 
-    await Category.create(categorySeeds)
+    console.log(categories)
 
     let jobsArr = []
 
-
-    for (let i = 0;i < 3; i++) {
-
-        let tagData = await newTags()
+    for (let i = 0;i < 12; i++) {
 
         let newJob = {
-            title: getRandomTitle(),
+            title: getRandomTitle(i),
             company: getRandomCompany(),
             salary: Math.floor(Math.random() * (60 - 24 + 1)) + 24,
             description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis non reprehenderit blanditiis assumenda officiis numquam sapiente nemo id, soluta facilis molestiae iure tempore, magni quo, repudiandae pariatur cum.",
-
+            category: getRandomArrItem(categories)._id,
+            tags: [getRandomArrItem(tags)._id, getRandomArrItem(tags)._id],
         }
 
         jobsArr.push(newJob)
@@ -56,7 +57,34 @@ connection.once('open', async () => {
 
     await Job.insertMany(jobsArr)
 
-    console.log(jobsArr)
+    // for (let i = 0; i < 12; i++) {
+    //     const jobTitle = getRandomTitle(i)
+
+    //     const newCategory = await Category.create({ 
+    //         name: getRandomCategory(),
+    //     })
+
+    //     let tagArray = []
+
+    //     for (let i = 0; i < 3; i++) {
+
+    //         const newTag = await Tag.create({
+    //             name: getRandomTag(),
+    //         })
+
+    //         tagArray.push(newTag)
+    //     }
+        
+    //     await Job.findOneAndUpdate(
+    //         { title: jobTitle },
+    //         { $addToSet: { tags: tagArray } },
+    //         { new: true }
+    //     )
+    // }
+
+    const jobData = await Job.find({})
+
+    console.log(jobData[1])
     
     console.log('Seeding Complete 🌱')
     process.exit(0)

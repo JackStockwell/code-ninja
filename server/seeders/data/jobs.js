@@ -65,13 +65,14 @@ const companies = [
 
 const getRandomArrItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
-const getRandomTitle = () => `${getRandomArrItem(titles)}`;
+const getRandomTitle = (i) => `${titles[i]}`;
 
 const getRandomCompany = () => `${getRandomArrItem(companies)}`;
 
-const getRandomCategory = () => getRandomArrItem(categories);
+const getRandomCategory = () => `${getRandomArrItem(categories)}`;
 
-const getRandomTag = () => getRandomArrItem(tags)
+const getRandomTag = () => `${getRandomArrItem(tags)}`
+
 
 module.exports = {
     getRandomTitle,
