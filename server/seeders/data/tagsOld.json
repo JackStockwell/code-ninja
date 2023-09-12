@@ -1,0 +1,83 @@
+[
+    {
+        "name": "JavaScript"
+    },
+    {
+        "name": "TypeScript"
+    },
+    {
+        "name": "React"
+    },
+    {
+        "name": "Angular"
+    },
+    {
+        "name": "Svelte"
+    },
+    {
+        "name": "D3.js"
+    },
+    {
+        "name": "Svelte"
+    },
+    {
+        "name": "JQuery"
+    },
+    {
+        "name": "Vue"
+    },
+    {
+        "name": "Bootstrap"
+    },
+    {
+        "name": "Tailwind"
+    },
+    {
+        "name": "PHP"
+    },
+    {
+        "name": ".NET"
+    },
+    {
+        "name": "Jest"
+    },
+    {
+        "name": "MochaJS"
+    },
+    {
+        "name": "Express"
+    },
+    {
+        "name": "MVC"
+    },
+    {
+        "name": "MERN"
+    },
+    {
+        "name": "Next.js"
+    },
+    {
+        "name": "Google Web Stack"
+    },
+    {
+        "name": "AWS"
+    },
+    {
+        "name": "Azure"
+    },
+    {
+        "name": "MongoDB"
+    },
+    {
+        "name": "SQL"
+    },
+    {
+        "name": "PostgreSQL"
+    },
+    {
+        "name": "GraphQL"
+    },
+    {
+        "name": "MySQL"
+    }
+]

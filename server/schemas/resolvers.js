@@ -13,10 +13,27 @@ const resolvers = {
     Query: {
         // Dev query, queries all users.
         users: async () => {
-            return await User.find({});
+            return await User
+                .find({})
+                .populate([
+                    { path: 'jobSaves', model: 'Job' },
+                    { path: 'jobApp', model: 'Job' }
+                ]);
         },
-        jobs: async () => {
-            return await Job.find({});
+        jobs: async (parent, { category }) => {
+
+            const params = {};
+
+            if (category) {
+                params.category = category
+            }
+
+            return await Job
+                .find(params)
+                .populate([
+                    { path: 'category', model: 'Category' },
+                    { path: 'tags', model: 'Tag' }
+                ]);
         },
         categories: async () => {
             return await Category.find({})

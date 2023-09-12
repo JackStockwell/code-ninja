@@ -19,7 +19,7 @@ const typeDefs = gql`
         location: String
         salary: Int
         description: String!
-        categories: [Category]
+        category: [Category]
         tags: [Tag]
     }
 
@@ -30,12 +30,12 @@ const typeDefs = gql`
 
     type Category {
         _id: ID!
-        name: String!
+        name: String
     }
 
     type Tag {
         _id: ID!
-        name: String!
+        name: String
     }
 
     input userInput {
@@ -56,7 +56,7 @@ const typeDefs = gql`
 
     type Query {
         users: [User]
-        jobs: [Job]
+        jobs(category: String): [Job]
         categories: [Category]
         tags: [Tag]
     }
