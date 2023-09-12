@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaTwitter, FaLinkedin } from 'react-icons/fa'; 
-import Header from './Header';
+import Header from '../components/Header';
 import Logo from './Logo';
 import './Homepage.css';
 

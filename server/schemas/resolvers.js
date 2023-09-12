@@ -58,6 +58,24 @@ const resolvers = {
             // Returns the token and
             return { token, newUser }
         },
+        loginUser: async (parent, { email, password }) => {
+            const user = await User.findOne({email});
+
+            if (!user) {
+                throw new AuthenticationError('Incorrect credentials')
+            }
+
+            const correctPw = await User.isCorrectPassword(password);
+
+            if (!correctPw) {
+                throw new AuthenticationError('Incorrect credentials')
+            }
+
+            const token = signToken(user)
+
+            return { token, user }
+        },
+
         // Uploads a file sent from the front end to the S3 webserver.
         singleUpload: async (parent, args) => {
             const upload = s3Uploader.singleFileUploadResovler.bind(s3Uploader);

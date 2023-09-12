@@ -57,35 +57,6 @@ connection.once('open', async () => {
 
     await Job.insertMany(jobsArr)
 
-    // for (let i = 0; i < 12; i++) {
-    //     const jobTitle = getRandomTitle(i)
-
-    //     const newCategory = await Category.create({ 
-    //         name: getRandomCategory(),
-    //     })
-
-    //     let tagArray = []
-
-    //     for (let i = 0; i < 3; i++) {
-
-    //         const newTag = await Tag.create({
-    //             name: getRandomTag(),
-    //         })
-
-    //         tagArray.push(newTag)
-    //     }
-        
-    //     await Job.findOneAndUpdate(
-    //         { title: jobTitle },
-    //         { $addToSet: { tags: tagArray } },
-    //         { new: true }
-    //     )
-    // }
-
-    const jobData = await Job.find({})
-
-    console.log(jobData[1])
-    
     console.log('Seeding Complete 🌱')
     process.exit(0)
 })

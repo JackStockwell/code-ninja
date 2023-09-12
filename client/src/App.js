@@ -23,13 +23,14 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import {faGithub, faLinkedin} from "@fortawesome/free-brands-svg-icons";
 
+library.add(faHouse, faHeart, faCircleUser, faBars, faFile, faEnvelope, faX, faGithub, faLinkedin)
+
+// Components and Page imports
+import CategoryMenu from "./components/CategoryMenu";
+import Dev from "./pages/dev";
 import Homepage from './pages/Home'; 
 import LoginPage from './pages/Login'; 
 
-// Components and Page imports
-
-import CategoryMenu from "./components/CategoryMenu";
-import Dev from "./pages/dev";
 
 
 const httpLink = createUploadLink({
@@ -58,11 +59,9 @@ function App() {
         <>
           <JobProvider>
             <CategoryMenu />
-          
-            <Route exact path="/" component={Homepage} />
-            <Route path="/dev" element={<Dev />} />
-            <Route path="/login" component={LoginPage} />
-           
+              <Route exact path="/" component={Homepage} />
+              <Route path="/dev" element={<Dev />} />
+              <Route path="/login" component={LoginPage} />          
           </JobProvider>
         </>
       </Router>
