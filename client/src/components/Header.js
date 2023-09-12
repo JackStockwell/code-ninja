@@ -1,6 +1,7 @@
 // src/components/Header.js
 import React from 'react';
 import Logo from './Logo'; 
+import './Header.css';
 
 
 function Header() {
