@@ -23,10 +23,14 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import {faGithub, faLinkedin} from "@fortawesome/free-brands-svg-icons";
 
+import Homepage from './pages/Home'; 
+import LoginPage from './pages/Login'; 
+
 // Components and Page imports
 
-import CategoryMenu from "./components/CategoryMenu/dev.index";
+import CategoryMenu from "./components/CategoryMenu";
 import Dev from "./pages/dev";
+
 
 const httpLink = createUploadLink({
   uri: "/graphql",
@@ -54,9 +58,11 @@ function App() {
         <>
           <JobProvider>
             <CategoryMenu />
-            <Routes>
-              <Route path="/dev" element={<Dev />} />
-            </Routes>
+          
+            <Route exact path="/" component={Homepage} />
+            <Route path="/dev" element={<Dev />} />
+            <Route path="/login" component={LoginPage} />
+           
           </JobProvider>
         </>
       </Router>
