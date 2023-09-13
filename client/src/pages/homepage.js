@@ -2,7 +2,7 @@ import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTwitter, faLinkedin} from "../fortawesome";
 import Header from "../components/Header/Header";
-import Logo from "../components/Logo/Logo";
+
 import "./homepage.css";
 
 const jobBlogPosts = [
@@ -35,7 +35,6 @@ function Home() {
     <div className="home">
       <Header />
       <main>
-        <Logo />
         <section className="container">
           <h2>Git-Jobs</h2>
           <p>Our job website.</p>
