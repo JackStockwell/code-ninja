@@ -58,9 +58,9 @@ const JobList = () => {
             <h2>Jobs:</h2>
             {state.jobs?.length ? (
                 <div>
-                    {filterJobs().map((job) => 
-                      <JobItem {...job} key={job._id} />
-                    )}
+                    {filterJobs().map((job) => {
+                      return <JobItem {...job} key={job._id} />
+                    })}
                 </div>
             ) : (
                 <div><p>No Jobs</p></div>
