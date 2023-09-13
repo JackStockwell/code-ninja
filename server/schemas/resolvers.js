@@ -11,6 +11,17 @@ const resolvers = {
     Upload: GraphQLUpload,
 
     Query: {
+        // Used to get the logged in user.
+        me: async (parent, args, context) => {
+
+            if (context.user) {
+                const userData = await User.findOne({
+                    _id: context.user._id
+                })
+
+                return userData
+            }
+        },
         // Dev query, queries all users.
         users: async () => {
             return await User
