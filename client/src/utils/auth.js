@@ -35,16 +35,16 @@ class AuthService {
   }
 
   logout() {
-    // Clear user token and profile data from localStorage
+
     localStorage.removeItem('id_token');
-    // this will reload the page and reset the state of the application
+   on
     window.location.assign('/');
   }
 
-  // Add a new method for user registration
+
   async register(userData) {
     try {
-      // Make an API request to register the user and get the token
+   
       const response = await fetch('/api/register', {
         method: 'POST',
         headers: {
@@ -60,7 +60,7 @@ class AuthService {
       const data = await response.json();
 
       if (data.token) {
-        // Registration was successful, save the token
+     
         this.login(data.token);
       } else {
         throw new Error('Registration failed.');
@@ -72,6 +72,6 @@ class AuthService {
   }
 }
 
-const authService = new AuthService(); // Create an instance of AuthService
+const authService = new AuthService(); 
 
-export default authService; // Export the instance as the default export
+export default authService; 
