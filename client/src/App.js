@@ -38,7 +38,6 @@ library.add(
   faLinkedin
 );
 
-
 const httpLink = createUploadLink({
   uri: "/graphql",
 });
@@ -67,10 +66,9 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/dev" element={<Dev />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/category" element={<CategoryMenu />} /> 
+            <Route path="/category" element={<CategoryMenu />} />
           </Routes>
-          <Footer />           
-
+          <Footer />
         </JobProvider>
       </Router>
     </ApolloProvider>
