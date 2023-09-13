@@ -24,7 +24,10 @@ function Header() {
               <Link onClick={Auth.logout}>Logout</Link>
             </>
           ) : (
-            <Link to="/login">Login</Link>
+            <>
+              <Link to="/login">Login</Link>
+              <Link to="/create">Signup</Link>
+            </>
           )}
         </ul>
       </nav>
