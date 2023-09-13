@@ -1,7 +1,9 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons"; // Import the icon you want to use
 import Header from "../components/Header/Header";
 import "./styles/home.css";
+
 
 const jobBlogPosts = [
   {
@@ -26,29 +28,32 @@ const jobBlogPosts = [
   },
 ];
 
-function Home() {
-  return (
-    <div className="home">
-      <Header />
-      <main>
-        <section className="container">
-          <h2>Git-Jobs</h2>
-          <p>Our job website.</p>
-        </section>
-        <section className="container">
-          <h2>Recent job blog Posts</h2>
-          <ul>
-            {jobBlogPosts.map((post, index) => (
-              <li key={index}>
-                <a href={`/blog/post-${index + 1}`}>{post.title}</a>
-                <p>{post.description}</p>
-              </li>
-            ))}
-          </ul>
-        </section>
-      </main>
-    </div>
-  );
-}
 
-export default Home;
+  function Home() {
+    return (
+      <div className="home">
+        <Header />
+        <main>
+          <section className="container">
+            <h2>Git-Jobs</h2>
+            <p>Our job website.</p>
+          </section>
+          <section className="container">
+            <h2>Recent job blog Posts</h2>
+            <ul>
+              {jobBlogPosts.map((post, index) => (
+                <li key={index}>
+                  <a href={`/blog/post-${index + 1}`}>{post.title}</a>
+                  <p>{post.description}</p>
+                  <FontAwesomeIcon icon={faStar} /> 
+                </li>
+              ))}
+            </ul>
+          </section>
+        </main>
+      </div>
+    );
+  }
+  
+  export default Home;
+  

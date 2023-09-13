@@ -35,11 +35,43 @@ class AuthService {
   }
 
   logout() {
-    // Clear user token and profile data from localStorage
+
     localStorage.removeItem('id_token');
-    // this will reload the page and reset the state of the application
+   on
     window.location.assign('/');
+  }
+
+
+  async register(userData) {
+    try {
+   
+      const response = await fetch('/api/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Registration failed.');
+      }
+
+      const data = await response.json();
+
+      if (data.token) {
+     
+        this.login(data.token);
+      } else {
+        throw new Error('Registration failed.');
+      }
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
   }
 }
 
-export default new AuthService();
+const authService = new AuthService(); 
+
+export default authService; 
