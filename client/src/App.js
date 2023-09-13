@@ -7,12 +7,11 @@ import {createUploadLink} from "apollo-upload-client";
 import {JobProvider} from "./utils/GlobalState";
 
 // Components and Page imports
-import Home from './pages/Homepage'; 
-import LoginPage from './pages/Loginpage'; 
+import Home from "./pages/homepage";
+import LoginPage from "./pages/Loginpage";
 import CategoryMenu from "./components/CategoryMenu";
 import Dev from "./pages/dev";
-import Footer from "./components/Footer";
-
+import Footer from "./components/Footer/index";
 
 import {library} from "@fortawesome/fontawesome-svg-core";
 import {
@@ -37,7 +36,6 @@ library.add(
   faGithub,
   faLinkedin
 );
-
 
 const httpLink = createUploadLink({
   uri: "/graphql",
@@ -67,10 +65,9 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/dev" element={<Dev />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/category" element={<CategoryMenu />} /> 
+            <Route path="/category" element={<CategoryMenu />} />
           </Routes>
-          <Footer />           
-
+          <Footer />
         </JobProvider>
       </Router>
     </ApolloProvider>
