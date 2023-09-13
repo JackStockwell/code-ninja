@@ -1,20 +1,22 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import Logo from "../Logo/Logo";
 import "./Header.css";
 import Auth from "../../utils/auth";
+import logo from "../../images/logo.png";
 
 function Header() {
   return (
     <header className="header">
-      <Logo xlinkHref="/images/logo.svg" />
+      <div className="logo">
+        <img src={logo} alt="Logo" />
+      </div>
       <nav>
         <ul>
           <li>
-            <a href="/">Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <a href="/about">About us</a>
+            <Link to="/about">About us</Link>
           </li>
           {Auth.loggedIn() ? (
             <>
