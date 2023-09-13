@@ -11,6 +11,7 @@ const resolvers = {
     Upload: GraphQLUpload,
 
     Query: {
+
         // Used to get the logged in user.
         me: async (parent, args, context) => {
 
