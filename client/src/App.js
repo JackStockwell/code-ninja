@@ -4,7 +4,6 @@ import {
   ApolloClient,
   ApolloProvider,
   InMemoryCache,
-  createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import { createUploadLink } from "apollo-upload-client";
@@ -23,15 +22,16 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
-import Homepage from './pages/Homepage'; 
+// Components and Page imports
+
+import Home from './pages/Homepage'; 
 import LoginPage from './pages/Loginpage'; 
+import CategoryMenu from "./components/CategoryMenu";
+import Dev from "./pages/dev";
+
 
 library.add(faHouse, faHeart, faCircleUser, faBars, faFile, faEnvelope, faX, faGithub, faLinkedin)
 
-// Components and Page imports
-
-import CategoryMenu from "./components/CategoryMenu";
-import Dev from "./pages/dev";
 
 
 const httpLink = createUploadLink({
@@ -60,11 +60,11 @@ function App() {
         <>
           <JobProvider>
             <CategoryMenu />
-          
-            <Route exact path="/" component={Homepage} />
-            <Route path="/dev" element={<Dev />} />
-            <Route path="/login" component={LoginPage} />
-           
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/dev" element={<Dev />} />
+              <Route path="/login" element={<LoginPage />} />
+            </Routes>           
           </JobProvider>
         </>
       </Router>
