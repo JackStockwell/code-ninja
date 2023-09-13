@@ -44,9 +44,9 @@ const resolvers = {
     },
     Mutation: {
         // Creates a new user entry to the database.
-        createUser: async (parent, args) => {
+        createUser: async (parent, { userData }) => {
             // Create the user data from the args.
-            const newUser = await User.create(args)
+            const newUser = await User.create(userData)
             // Error handler
             if (!newUser) {
                 throw new AuthenticationError('Oops! Something went wrong')
@@ -58,6 +58,24 @@ const resolvers = {
             // Returns the token and
             return { token, newUser }
         },
+        loginUser: async (parent, {email, password}) => {
+            const user = await User.findOne({email});
+
+            if (!user) {
+                throw new AuthenticationError('Incorrect Email')
+            }
+
+            const correctPw = await user.isCorrectPassword(password);
+
+            if (!correctPw) {
+                throw new AuthenticationError('Incorrect PW')
+            }
+
+            const token = signToken(user)
+
+            return { token, user }
+        },
+
         // Uploads a file sent from the front end to the S3 webserver.
         singleUpload: async (parent, args) => {
             const upload = s3Uploader.singleFileUploadResovler.bind(s3Uploader);

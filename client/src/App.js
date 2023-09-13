@@ -4,7 +4,6 @@ import {
   ApolloClient,
   ApolloProvider,
   InMemoryCache,
-  createHttpLink,
 } from "@apollo/client";
 import {setContext} from "@apollo/client/link/context";
 import {createUploadLink} from "apollo-upload-client";
@@ -25,12 +24,22 @@ import {
 import {faGithub, faLinkedin} from "@fortawesome/free-brands-svg-icons";
 
 
-
-import Homepage from './pages/Homepage'; 
+import Home from './pages/Homepage'; 
 import LoginPage from './pages/Loginpage'; 
 
+library.add(faHouse, faHeart, faCircleUser, faBars, faFile, faEnvelope, faX, faGithub, faLinkedin)
+
+// Components and Page imports
+
+import Home from './pages/Homepage'; 
+import LoginPage from './pages/Loginpage'; 
 import CategoryMenu from "./components/CategoryMenu";
 import Dev from "./pages/dev";
+
+
+library.add(faHouse, faHeart, faCircleUser, faBars, faFile, faEnvelope, faX, faGithub, faLinkedin)
+
+
 
 const httpLink = createUploadLink({
   uri: "/graphql",
@@ -57,11 +66,11 @@ function App() {
       <Router>
         <JobProvider>
           <Routes>
-            <Route path="/" element={<Homepage />} />
+            <Route path="/" element={<Home />} />
             <Route path="/dev" element={<Dev />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/category" element={<CategoryMenu />} /> 
-          </Routes>
+          </Routes>           
         </JobProvider>
       </Router>
     </ApolloProvider>

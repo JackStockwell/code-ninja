@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom'; 
 import Logo from '../Logo/Logo'; 
 import './Header.css';
+import Auth from '../../utils/auth';
+import { Link } from 'react-router-dom';
 
 function Header() {
   return (
@@ -9,10 +11,18 @@ function Header() {
       <Logo xlinkHref="/images/logo.svg" /> 
       <nav>
         <ul>
-          <li><Link to="/">Home</Link></li> 
-          <li><Link to="/category">Find Jobs</Link></li>
-
-          <li><Link to="/login">Login</Link></li> 
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About us</a></li>
+          {Auth.loggedIn() ? (
+            <>
+              <Link to='/profile'>Profile</Link>
+              <Link onClick={Auth.logout}>Logout</Link>
+            </>
+          ) : (
+            <Link to='/login'>Login</Link>
+          )}
+          
+          
         </ul>
       </nav>
     </header>

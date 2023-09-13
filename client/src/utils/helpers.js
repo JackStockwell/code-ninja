@@ -46,3 +46,32 @@ export function idbPromise(storeName, method, object) {
     });
   }
   
+
+export function trimObjectValues(obj) {
+  if (typeof obj !== 'object' || obj === null) {
+    // If obj is not an object or is null, return it as is
+    return obj;
+  }
+
+  if (Array.isArray(obj)) {
+    // If obj is an array, iterate through its elements and trim them
+    return obj.map((item) => trimObjectValues(item));
+  }
+
+  // If obj is an object, iterate through its properties
+  const trimmedObj = {};
+  for (const key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      const value = obj[key];
+      if (typeof value === 'string') {
+        // If the value is a string, trim it
+        trimmedObj[key] = value.trim();
+      } else {
+        // If the value is not a string, recursively call trimObjectValues
+        trimmedObj[key] = trimObjectValues(value);
+      }
+    }
+  }
+
+  return trimmedObj;
+}

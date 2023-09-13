@@ -19,8 +19,8 @@ const typeDefs = gql`
         location: String
         salary: Int
         description: String!
-        category: [Category]
-        tags: [Tag]
+        category: [Category]!
+        tags: [Tag]!
     }
 
     type Auth {
@@ -63,6 +63,7 @@ const typeDefs = gql`
 
     type Mutation {
         createUser(userData: userInput!): Auth
+        loginUser(email: String! password: String!): Auth
         singleUpload(file: Upload!): File
         createTag(name: String!): Tag
     }
