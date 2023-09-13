@@ -20,7 +20,7 @@ const resolvers = {
                     { path: 'jobApp', model: 'Job' }
                 ]);
         },
-        jobs: async (parent, { category }) => {
+        jobs: async (parent, { limit, offset, category }) => {
 
             const params = {};
 
@@ -28,12 +28,18 @@ const resolvers = {
                 params.category = category
             }
 
-            return await Job
+            const data = await Job
                 .find(params)
                 .populate([
                     { path: 'category', model: 'Category' },
                     { path: 'tags', model: 'Tag' }
                 ]);
+            
+            if (offset, limit) {
+                return data.slice(offset, limit + offset)
+            }
+
+
         },
         categories: async () => {
             return await Category.find({})

@@ -56,7 +56,7 @@ const typeDefs = gql`
 
     type Query {
         users: [User]
-        jobs(category: String): [Job]
+        jobs(limit: Int, offset: Int, category: String): [Job]
         categories: [Category]
         tags: [Tag]
     }
