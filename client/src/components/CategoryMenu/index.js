@@ -44,29 +44,28 @@ const CategoryMenu = () => {
       type: UPDATE_CURRENT_CATEGORY,
       currentCategory: id,
     });
-
     // Fetch jobs for the selected category
-    fetchJobsByCategory(id);
+    // fetchJobsByCategory(id);
   };
 
   // Fetch jobs for the selected category
-  const fetchJobsByCategory = async (categoryId) => {
-    try {
-      const response = await fetch(`/api/jobs/category/${categoryId}`);
-      if (!response.ok) {
-        throw new Error("Job data could not be fetched.");
-      }
+  // const fetchJobsByCategory = async (categoryId) => {
+  //   try {
+  //     const response = await fetch(`/api/jobs/category/${categoryId}`);
+  //     if (!response.ok) {
+  //       throw new Error("Job data could not be fetched.");
+  //     }
 
-      const data = await response.json();
+  //     const data = await response.json();
 
-      dispatch({
-        type: UPDATE_JOBS,
-        jobs: data,
-      });
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  //     dispatch({
+  //       type: UPDATE_JOBS,
+  //       jobs: data,
+  //     });
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
   return (
     <div className="category-menu">

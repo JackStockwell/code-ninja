@@ -56,7 +56,7 @@ const typeDefs = gql`
 
     type Query {
         users: [User]
-        jobs(category: String): [Job]
+        jobs(limit: Int, offset: Int, category: String): [Job]
         categories: [Category]
         tags: [Tag]
     }
@@ -66,6 +66,7 @@ const typeDefs = gql`
         loginUser(email: String! password: String!): Auth
         singleUpload(file: Upload!): File
         createTag(name: String!): Tag
+        saveJob(_id: ID!): User
     }
 
 `;

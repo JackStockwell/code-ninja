@@ -6,6 +6,7 @@ const { Provider } = JobContext;
 
 const JobProvider = ({ value = [], ...props }) => {
     const [state, dispatch] = useJobReducer({
+      jobs: null,
       categories: [],
       currentCategory: '',
     });
