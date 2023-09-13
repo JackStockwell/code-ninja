@@ -66,6 +66,7 @@ const typeDefs = gql`
         loginUser(email: String! password: String!): Auth
         singleUpload(file: Upload!): File
         createTag(name: String!): Tag
+        saveJob(_id: ID!): User
     }
 
 `;

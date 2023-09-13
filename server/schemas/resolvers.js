@@ -26,7 +26,7 @@ const resolvers = {
 
             if (category) {
                 params.category = category
-            }
+             }
 
             const data = await Job
                 .find(params)
@@ -96,7 +96,19 @@ const resolvers = {
         },
         createTag: async (parent, args) => {
             return await Tag.create(args)
-        }
+        },
+        saveJob: async (parent, args, context) => {
+
+            if (!context.user) {
+                throw new AuthenticationError('You must be logged in to perform this action!')
+            }
+
+            const userData = await User.findOne(
+                { _id: context.user._id },
+                { $addToSet: { jobSaves: args } },
+                { new: true, runValidators: true }
+            )
+        },
     }
 }
 
