@@ -1,10 +1,9 @@
-// src/components/Header.js
 import React from 'react';
+import { Link } from 'react-router-dom'; 
 import Logo from '../Logo/Logo'; 
 import './Header.css';
 import Auth from '../../utils/auth';
 import { Link } from 'react-router-dom';
-
 
 function Header() {
   return (
@@ -30,5 +29,4 @@ function Header() {
   );
 }
 
-
-export default Header; 
+export default Header;

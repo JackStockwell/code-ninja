@@ -1,22 +1,24 @@
+
 import React, {useEffect} from "react";
 import {useJobContext} from "../../utils/GlobalState";
-
-// Queries
+import {
+  UPDATE_CATEGORIES,
+  UPDATE_CURRENT_CATEGORY,
+  UPDATE_JOBS,
+} from "../../utils/actions";
 import {useQuery} from "@apollo/client";
-import {QUERY_CATEGORIES} from "../../utils/queries";
-import {UPDATE_CATEGORIES, UPDATE_CURRENT_CATEGORY} from "../../utils/actions";
-
-// Utils
+import {QUERY_CATEGORIES, QUERY_JOBS_BY_CATEGORY} from "../../utils/queries";
 import {idbPromise} from "../../utils/helpers";
+
 
 import "../css/category.css";
 
 const CategoryMenu = () => {
   const [state, dispatch] = useJobContext();
 
-  const {categories, currentCategory} = state;
+  const { categories, currentCategory } = state;
 
-  const {loading, data: categoryData} = useQuery(QUERY_CATEGORIES);
+  const { loading, data: categoryData } = useQuery(QUERY_CATEGORIES);
 
   useEffect(() => {
     if (categoryData) {
@@ -42,6 +44,28 @@ const CategoryMenu = () => {
       type: UPDATE_CURRENT_CATEGORY,
       currentCategory: id,
     });
+
+    // Fetch jobs for the selected category
+    fetchJobsByCategory(id);
+  };
+
+  // Fetch jobs for the selected category
+  const fetchJobsByCategory = async (categoryId) => {
+    try {
+      const response = await fetch(`/api/jobs/category/${categoryId}`);
+      if (!response.ok) {
+        throw new Error("Job data could not be fetched.");
+      }
+
+      const data = await response.json();
+
+      dispatch({
+        type: UPDATE_JOBS,
+        jobs: data,
+      });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
