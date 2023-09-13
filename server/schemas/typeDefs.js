@@ -8,6 +8,7 @@ const typeDefs = gql`
         password: String!
         firstName: String!
         lastName: String!
+        resume: String
         jobSaves: [Job]
         jobApp: [Job]
     }
@@ -67,7 +68,7 @@ const typeDefs = gql`
         loginUser(email: String! password: String!): Auth
         singleUpload(file: Upload!): File
         createTag(name: String!): Tag
-        saveJob(_id: ID!): User
+        saveJob(id: ID!): User
     }
 
 `;

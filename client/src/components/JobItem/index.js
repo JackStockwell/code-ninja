@@ -9,32 +9,13 @@ import {
 
 function JobItem({ _id, title, company, description, location, salary, tags, category }) {
 
-    // Checks to see if the user is logged in.
-    const { data, loading, error } = useQuery(GET_ME)
-
-    console.log(title)
-
     // Handles the onClick of the button, performs a different action depending on what was clicked.
-    const handleOnClick = (e) => {
-        e.preventDefault()
-        // Get's the action.
-        let action = e.target.dataset.action
+    const handleOnSave = () => {
+        
+    }
 
-        switch (action) {
-            // Adds the job to the logged user's saved jobs array.
-            case "save":
-                // CALL API
-                // RETURN UPDATED USER
-                console.log("save")
-                break;
-            // Adds the job to the logged user's applied jobs array.
-            case "apply":
-                console.log("Apply")
-                break;
-            default:
-                break;
-        }
-
+    const handleOnApply = () => {
+        
     }
 
     return (
@@ -53,8 +34,8 @@ function JobItem({ _id, title, company, description, location, salary, tags, cat
             </div>
             {Auth.loggedIn() ? (
                 <>
-                    <button data-id={_id} data-action="save" onClick={handleOnClick}><FontAwesomeIcon icon="fa-solid fa-heart" /></button>
-                    <button data-id={_id} data-action="apply" onClick={handleOnClick}>Apply</button>
+                    <button data-id={_id} data-action="save" onClick={handleOnSave}><FontAwesomeIcon icon="fa-solid fa-heart" /></button>
+                    <button data-id={_id} data-action="apply" onClick={handleOnApply}>Apply</button>
                 </>
             ) : (
                 <>

@@ -21,7 +21,7 @@ export const reducer = (state, action) => {
 
             return {
                 ...state,
-                jobs: [state.jobs, ...action.jobs]
+                jobs: [...action.jobs]
             }
         default:
             return state;
