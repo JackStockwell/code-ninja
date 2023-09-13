@@ -1,15 +1,10 @@
 import "./App.css";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
-import {
-  ApolloClient,
-  ApolloProvider,
-  InMemoryCache,
-} from "@apollo/client";
+import {ApolloClient, ApolloProvider, InMemoryCache} from "@apollo/client";
 import {setContext} from "@apollo/client/link/context";
 import {createUploadLink} from "apollo-upload-client";
 
 import {JobProvider} from "./utils/GlobalState";
-
 
 import {library} from "@fortawesome/fontawesome-svg-core";
 import {
@@ -23,23 +18,36 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import {faGithub, faLinkedin} from "@fortawesome/free-brands-svg-icons";
 
-
-import Home from './pages/Homepage'; 
-import LoginPage from './pages/Loginpage'; 
-
-library.add(faHouse, faHeart, faCircleUser, faBars, faFile, faEnvelope, faX, faGithub, faLinkedin)
-
-// Components and Page imports
-
-import Home from './pages/Homepage'; 
-import LoginPage from './pages/Loginpage'; 
+import Home from "./pages/homepage";
+import LoginPage from "./pages/Loginpage";
 import CategoryMenu from "./components/CategoryMenu";
 import Dev from "./pages/dev";
 
+library.add(
+  faHouse,
+  faHeart,
+  faCircleUser,
+  faBars,
+  faFile,
+  faEnvelope,
+  faX,
+  faGithub,
+  faLinkedin
+);
 
-library.add(faHouse, faHeart, faCircleUser, faBars, faFile, faEnvelope, faX, faGithub, faLinkedin)
+// Components and Page imports
 
-
+library.add(
+  faHouse,
+  faHeart,
+  faCircleUser,
+  faBars,
+  faFile,
+  faEnvelope,
+  faX,
+  faGithub,
+  faLinkedin
+);
 
 const httpLink = createUploadLink({
   uri: "/graphql",
@@ -69,8 +77,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/dev" element={<Dev />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/category" element={<CategoryMenu />} /> 
-          </Routes>           
+            <Route path="/category" element={<CategoryMenu />} />
+          </Routes>
         </JobProvider>
       </Router>
     </ApolloProvider>
