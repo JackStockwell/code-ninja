@@ -27,8 +27,6 @@ const jobBlogPosts = [
 ];
 
 function Home() {
-  const currentYear = new Date().getFullYear();
-
   return (
     <div className="home">
       <Header />
