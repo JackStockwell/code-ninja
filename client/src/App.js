@@ -1,10 +1,6 @@
 import "./App.css";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
-import {
-  ApolloClient,
-  ApolloProvider,
-  InMemoryCache,
-} from "@apollo/client";
+import {ApolloClient, ApolloProvider, InMemoryCache} from "@apollo/client";
 import {setContext} from "@apollo/client/link/context";
 import {createUploadLink} from "apollo-upload-client";
 
@@ -16,6 +12,7 @@ import LoginPage from './pages/Loginpage';
 import CategoryMenu from "./components/CategoryMenu";
 import Dev from "./pages/dev";
 import Footer from "./components/Footer";
+
 
 import {library} from "@fortawesome/fontawesome-svg-core";
 import {
@@ -29,7 +26,17 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import {faGithub, faLinkedin} from "@fortawesome/free-brands-svg-icons";
 
-library.add(faHouse, faHeart, faCircleUser, faBars, faFile, faEnvelope, faX, faGithub, faLinkedin)
+library.add(
+  faHouse,
+  faHeart,
+  faCircleUser,
+  faBars,
+  faFile,
+  faEnvelope,
+  faX,
+  faGithub,
+  faLinkedin
+);
 
 
 const httpLink = createUploadLink({
@@ -63,6 +70,7 @@ function App() {
             <Route path="/category" element={<CategoryMenu />} /> 
           </Routes>
           <Footer />           
+
         </JobProvider>
       </Router>
     </ApolloProvider>
