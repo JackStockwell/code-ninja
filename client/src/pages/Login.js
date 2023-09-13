@@ -1,6 +1,6 @@
 
 import React from 'react';
-import './Loginpage.css';
+import './css/Loginpage.css';
 
 import LoginForm from '../components/LoginForm';
 

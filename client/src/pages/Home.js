@@ -1,7 +1,7 @@
 import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Header from "../components/Header/Header";
-import "./homepage.css";
+import "./css/homepage.css";
 
 const jobBlogPosts = [
   {

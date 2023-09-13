@@ -7,10 +7,10 @@ import {createUploadLink} from "apollo-upload-client";
 import {JobProvider} from "./utils/GlobalState";
 
 // Components and Page imports
-import Home from './pages/homepage'; 
-import LoginPage from './pages/Loginpage'; 
+import Home from './pages/Home'; 
+import LoginPage from './pages/Login'; 
 import CategoryMenu from "./components/CategoryMenu";
-import Dev from "./pages/dev";
+import Dev from "./pages/Dev";
 import Footer from "./components/Footer";
 
 
