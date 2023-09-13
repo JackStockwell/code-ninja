@@ -20,6 +20,8 @@ const CategoryMenu = () => {
 
   const { loading, data: categoryData } = useQuery(QUERY_CATEGORIES);
 
+  // If the category, loading or dispatch changes. This is called.
+  // Updates the categories. Also saves to local storage.
   useEffect(() => {
     if (categoryData) {
       dispatch({
@@ -39,33 +41,20 @@ const CategoryMenu = () => {
     }
   }, [categoryData, loading, dispatch]);
 
+  // Updates the current category save in state using reducer.
   const handleClick = (id) => {
     dispatch({
       type: UPDATE_CURRENT_CATEGORY,
       currentCategory: id,
     });
-    // Fetch jobs for the selected category
-    // fetchJobsByCategory(id);
   };
 
-  // Fetch jobs for the selected category
-  // const fetchJobsByCategory = async (categoryId) => {
-  //   try {
-  //     const response = await fetch(`/api/jobs/category/${categoryId}`);
-  //     if (!response.ok) {
-  //       throw new Error("Job data could not be fetched.");
-  //     }
-
-  //     const data = await response.json();
-
-  //     dispatch({
-  //       type: UPDATE_JOBS,
-  //       jobs: data,
-  //     });
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
+  const handClearFilter = () => {
+    dispatch({
+      type: UPDATE_CURRENT_CATEGORY,
+      currentCategory: id,
+    })
+  }
 
   return (
     <div className="category-menu">
@@ -84,6 +73,12 @@ const CategoryMenu = () => {
             {item.name}
           </button>
         ))}
+        <button
+          className={'category-button'}
+          style={{ backgroundColor: "black"}}
+          onClick={handleClick}
+          >Clear
+        </button>
       </div>
     </div>
   );

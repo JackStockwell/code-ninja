@@ -28,9 +28,7 @@ const CreateUser = () => {
     // Submits the form to the server to processed, includes error handling.
     const handleFormSubmit = async (e) => {
         e.preventDefault();
-
-        console.log(userFormData)
-
+        // TrimHelper takes all values to remove any whitespace.
         const userInput = await trimObjectValues(userFormData)
 
         // Error Handling

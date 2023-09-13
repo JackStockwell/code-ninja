@@ -9,10 +9,11 @@ import {
 
 function JobItem({ _id, title, company, description, location, salary, tags, category }) {
 
-    if (Auth.getProfile) {
-        const { data, loading, error } = useQuery(GET_ME)
-        console.log(data)
-    }
+    // Checks to see if the user is logged in.
+    const { data, loading, error } = useQuery(GET_ME)
+
+    console.log(title)
+
     // Handles the onClick of the button, performs a different action depending on what was clicked.
     const handleOnClick = (e) => {
         e.preventDefault()
@@ -36,8 +37,6 @@ function JobItem({ _id, title, company, description, location, salary, tags, cat
 
     }
 
-    console.log(Auth.getProfile())
-
     return (
         <>
             <div>
@@ -52,10 +51,16 @@ function JobItem({ _id, title, company, description, location, salary, tags, cat
                 )}
                 {category && category.map((cat) => <p key={cat._id} id={cat._id}>{cat.name}</p>)}
             </div>
-            {Auth.getProfile() && (
-                <button data-id={_id} data-action="save" onClick={handleOnClick}><FontAwesomeIcon icon="fa-solid fa-heart" /></button>      
+            {Auth.loggedIn() ? (
+                <>
+                    <button data-id={_id} data-action="save" onClick={handleOnClick}><FontAwesomeIcon icon="fa-solid fa-heart" /></button>
+                    <button data-id={_id} data-action="apply" onClick={handleOnClick}>Apply</button>
+                </>
+            ) : (
+                <>
+                    <span>You must be logged to apply!</span>
+                </>
             )}    
-            <button data-id={_id} data-action="apply" onClick={handleOnClick}>Apply</button>
         </>
     )
 }

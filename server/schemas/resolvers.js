@@ -21,6 +21,8 @@ const resolvers = {
 
                 return userData
             }
+
+            return
         },
         // Dev query, queries all users.
         users: async () => {
