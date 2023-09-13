@@ -55,6 +55,7 @@ const typeDefs = gql`
     scalar Upload
 
     type Query {
+        me: User
         users: [User]
         jobs(limit: Int, offset: Int, category: String): [Job]
         categories: [Category]

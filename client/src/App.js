@@ -9,7 +9,7 @@ import {JobProvider} from "./utils/GlobalState";
 // Components and Page imports
 import Home from './pages/Home'; 
 import LoginPage from './pages/Login'; 
-import CategoryMenu from "./components/CategoryMenu";
+import SignUp from './pages/SignUp'
 import Dev from "./pages/Dev";
 import Footer from "./components/Footer";
 import RegistrationForm from "./components/RegistrationForm"; 
@@ -67,7 +67,6 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/dev" element={<Dev />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/category" element={<CategoryMenu />} />
             <Route path="/register" component={RegistrationForm} />
           </Routes>
           <Footer />

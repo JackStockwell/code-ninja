@@ -22,21 +22,17 @@ function Header() {
           <>
             <li>
               <Link to="/profile">Profile</Link>
-            </li>
-            <li>
-              <Link onClick={Auth.logout} to="/login">Logout</Link>
-            </li>
-          </>
-        ) : (
-          <>
-            <li>
+
+              <Link onClick={Auth.logout}>Logout</Link>
+            </>
+          ) : (
+            <>
               <Link to="/login">Login</Link>
-            </li>
-          
-          </>
-        )}
-      </ul>
-    </nav>
+              <Link to="/create">Signup</Link>
+            </>
+          )}
+        </ul>
+      </nav>
     </header>
   );
 }

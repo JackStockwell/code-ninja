@@ -29,3 +29,19 @@ export const QUERY_JOBS = gql`
         }
     }
 `;
+
+export const GET_ME = gql`
+    query Me {
+        me {
+            _id
+            firstName
+            lastName
+            jobSaves {
+                _id
+            }
+            jobApp {
+                _id
+            }
+        }
+    }
+`;
