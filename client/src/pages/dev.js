@@ -1,6 +1,6 @@
 import React from 'react';
 // import UploadFile from '../components/UploadFile/index'
-import CreateUser from '../components/CreateUserForm';
+import CreateUser from '../components/SignupForm';
 
 const Dev = () => {
     return (

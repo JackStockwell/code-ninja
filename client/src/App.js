@@ -6,6 +6,14 @@ import {createUploadLink} from "apollo-upload-client";
 
 import {JobProvider} from "./utils/GlobalState";
 
+// Components and Page imports
+import Home from './pages/Homepage'; 
+import LoginPage from './pages/Loginpage'; 
+import CategoryMenu from "./components/CategoryMenu";
+import Dev from "./pages/dev";
+import Footer from "./components/Footer";
+
+
 import {library} from "@fortawesome/fontawesome-svg-core";
 import {
   faHouse,
@@ -18,11 +26,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import {faGithub, faLinkedin} from "@fortawesome/free-brands-svg-icons";
 
-import Home from "./pages/homepage";
-import LoginPage from "./pages/Loginpage";
-import CategoryMenu from "./components/CategoryMenu";
-import Dev from "./pages/dev";
-
 library.add(
   faHouse,
   faHeart,
@@ -35,19 +38,6 @@ library.add(
   faLinkedin
 );
 
-// Components and Page imports
-
-library.add(
-  faHouse,
-  faHeart,
-  faCircleUser,
-  faBars,
-  faFile,
-  faEnvelope,
-  faX,
-  faGithub,
-  faLinkedin
-);
 
 const httpLink = createUploadLink({
   uri: "/graphql",
@@ -77,8 +67,10 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/dev" element={<Dev />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/category" element={<CategoryMenu />} />
+            <Route path="/category" element={<CategoryMenu />} /> 
           </Routes>
+          <Footer />           
+
         </JobProvider>
       </Router>
     </ApolloProvider>
