@@ -1,6 +1,4 @@
 import React from "react";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faTwitter, faLinkedin} from "../fortawesome";
 import Header from "../components/Header/Header";
 
 import "./homepage.css";
@@ -29,8 +27,6 @@ const jobBlogPosts = [
 ];
 
 function Home() {
-  const currentYear = new Date().getFullYear();
-
   return (
     <div className="home">
       <Header />
