@@ -10,6 +10,12 @@ import {createUploadLink} from "apollo-upload-client";
 
 import {JobProvider} from "./utils/GlobalState";
 
+// Components and Page imports
+import Home from './pages/Homepage'; 
+import LoginPage from './pages/Loginpage'; 
+import CategoryMenu from "./components/CategoryMenu";
+import Dev from "./pages/dev";
+import Footer from "./components/Footer";
 
 import {library} from "@fortawesome/fontawesome-svg-core";
 import {
@@ -23,22 +29,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import {faGithub, faLinkedin} from "@fortawesome/free-brands-svg-icons";
 
-
-import Home from './pages/Homepage'; 
-import LoginPage from './pages/Loginpage'; 
-
 library.add(faHouse, faHeart, faCircleUser, faBars, faFile, faEnvelope, faX, faGithub, faLinkedin)
-
-// Components and Page imports
-
-import Home from './pages/Homepage'; 
-import LoginPage from './pages/Loginpage'; 
-import CategoryMenu from "./components/CategoryMenu";
-import Dev from "./pages/dev";
-
-
-library.add(faHouse, faHeart, faCircleUser, faBars, faFile, faEnvelope, faX, faGithub, faLinkedin)
-
 
 
 const httpLink = createUploadLink({
@@ -70,7 +61,8 @@ function App() {
             <Route path="/dev" element={<Dev />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/category" element={<CategoryMenu />} /> 
-          </Routes>           
+          </Routes>
+          <Footer />           
         </JobProvider>
       </Router>
     </ApolloProvider>
