@@ -11,7 +11,7 @@ const resolvers = {
     Upload: GraphQLUpload,
 
     Query: {
-        // Dev query, queries all users.
+      
         users: async () => {
             return await User
                 .find({})

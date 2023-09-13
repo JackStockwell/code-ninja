@@ -1,15 +1,13 @@
-
-import React, {useEffect} from "react";
-import {useJobContext} from "../../utils/GlobalState";
+import React, { useEffect } from "react";
+import { useJobContext } from "../../utils/GlobalState";
 import {
   UPDATE_CATEGORIES,
   UPDATE_CURRENT_CATEGORY,
   UPDATE_JOBS,
 } from "../../utils/actions";
-import {useQuery} from "@apollo/client";
-import {QUERY_CATEGORIES, QUERY_JOBS_BY_CATEGORY} from "../../utils/queries";
-import {idbPromise} from "../../utils/helpers";
-
+import { useQuery } from "@apollo/client";
+import { QUERY_CATEGORIES, QUERY_JOBS_BY_CATEGORY } from "../../utils/queries";
+import { idbPromise } from "../../utils/helpers";
 
 import "../css/category.css";
 
@@ -48,43 +46,44 @@ const CategoryMenu = () => {
     // fetchJobsByCategory(id);
   };
 
-  // Fetch jobs for the selected category
-  // const fetchJobsByCategory = async (categoryId) => {
-  //   try {
-  //     const response = await fetch(`/api/jobs/category/${categoryId}`);
-  //     if (!response.ok) {
-  //       throw new Error("Job data could not be fetched.");
-  //     }
+  const fetchJobsByCategory = async (categoryId) => {
+    try {
+      const response = await fetch(`/api/jobs/category/${categoryId}`);
+      if (!response.ok) {
+        throw new Error("Job data could not be fetched.");
+      }
 
-  //     const data = await response.json();
+      const data = await response.json();
 
-  //     dispatch({
-  //       type: UPDATE_JOBS,
-  //       jobs: data,
-  //     });
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
+      dispatch({
+        type: UPDATE_JOBS,
+        jobs: data,
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div className="category-menu">
-      <h2>Filter Jobs by Category</h2>
-      <div className="category-buttons">
-        {categories.map((item) => (
-          <button
-            key={item._id}
-            onClick={() => {
-              handleClick(item._id);
-            }}
-            className={`category-button ${
-              currentCategory === item._id ? "active" : ""
-            }`}
-          >
-            {item.name}
-          </button>
-        ))}
-      </div>
+    <h2>Filter Jobs by Category</h2>
+    <div className="category-buttons">
+      {/* Link to the "find jobs" page */}
+      <Link to="/find-jobs">Find Jobs</Link>
+      {categories.map((item) => (
+        <button
+          key={item._id}
+          onClick={() => {
+            handleClick(item._id);
+          }}
+          className={`category-button ${
+            currentCategory === item._id ? "active" : ""
+          }`}
+        >
+          {item.name}
+        </button>
+      ))}
+    </div>
     </div>
   );
 };

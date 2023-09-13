@@ -6,8 +6,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  background-color: #f0f0f0;
+margin: 20px;
+  background-color:white;
+  width:auto
 }
 
 
@@ -32,12 +33,14 @@ nav ul li a {
 
 
 .login {
-  background-color: #fff;
+  background-color: #ffffff;
+  border-style: solid;
+  border: 2px solid grey;
   padding: 20px;
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
-  width: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  max-width: 500px; /* Remove max-width to allow flexible width */
+  width: 50%; /* Set the width to 50% for side-by-side display */
 }
 
 .login h2 {
@@ -52,14 +55,16 @@ nav ul li a {
 }
 
 .form-group label {
-  display: block;
-  margin-bottom: 5px;
   font-weight: bold;
+  color: #333;
+  font-size: 16px;
+  margin-bottom: 5px;
 }
+
 
 .form-group input[type="email"],
 .form-group input[type="password"] {
-  width: 100%;
+  width: 90%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 3px;
@@ -122,4 +127,5 @@ button[type="submit"]:hover {
       padding: 10px;
     }
   }
+  
   

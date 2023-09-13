@@ -12,6 +12,7 @@ import LoginPage from './pages/Login';
 import CategoryMenu from "./components/CategoryMenu";
 import Dev from "./pages/Dev";
 import Footer from "./components/Footer";
+import RegistrationForm from "./components/RegistrationForm"; 
 
 
 import {library} from "@fortawesome/fontawesome-svg-core";
@@ -67,6 +68,7 @@ function App() {
             <Route path="/dev" element={<Dev />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/category" element={<CategoryMenu />} />
+            <Route path="/register" component={RegistrationForm} />
           </Routes>
           <Footer />
         </JobProvider>

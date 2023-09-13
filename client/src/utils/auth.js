@@ -40,6 +40,38 @@ class AuthService {
     // this will reload the page and reset the state of the application
     window.location.assign('/');
   }
+
+  // Add a new method for user registration
+  async register(userData) {
+    try {
+      // Make an API request to register the user and get the token
+      const response = await fetch('/api/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Registration failed.');
+      }
+
+      const data = await response.json();
+
+      if (data.token) {
+        // Registration was successful, save the token
+        this.login(data.token);
+      } else {
+        throw new Error('Registration failed.');
+      }
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
+  }
 }
 
-export default new AuthService();
+const authService = new AuthService(); // Create an instance of AuthService
+
+export default authService; // Export the instance as the default export

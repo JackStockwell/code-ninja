@@ -11,23 +11,32 @@ function Header() {
         <img src={logo} alt="Logo" />
       </div>
       <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About us</Link>
-          </li>
-          {Auth.loggedIn() ? (
-            <>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/find-jobs">Find Jobs</Link>
+        </li>
+        {Auth.loggedIn() ? (
+          <>
+            <li>
               <Link to="/profile">Profile</Link>
-              <Link onClick={Auth.logout}>Logout</Link>
-            </>
-          ) : (
-            <Link to="/login">Login</Link>
-          )}
-        </ul>
-      </nav>
+            </li>
+            <li>
+              <Link onClick={Auth.logout} to="/login">Logout</Link>
+            </li>
+          </>
+        ) : (
+          <>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+          
+          </>
+        )}
+      </ul>
+    </nav>
     </header>
   );
 }
