@@ -7,11 +7,8 @@ const jobSchema = new Schema({
             required: true
         },
         company: {
-            type: String,
+            type: Schema.Types.ObjectId,
             required: true
-        },
-        location: {
-            type: String,
         },
         salary: {
             type: Number,

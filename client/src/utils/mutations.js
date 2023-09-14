@@ -37,7 +37,7 @@ export const CREATE_USER = gql`
   }
 `;
 
-export const ADD_JOB = gql`
+export const SAVE_JOB = gql`
   mutation Mutation($id: ID!) {
     saveJob(id: $id) {
       _id

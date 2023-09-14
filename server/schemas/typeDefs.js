@@ -16,17 +16,40 @@ const typeDefs = gql`
     type Job {
         _id: ID!
         title: String!
-        company: String!
-        location: String
+        company: Employer!
         salary: Int
         description: String!
         category: [Category]!
         tags: [Tag]!
     }
 
+    type Location {
+        _id: ID!
+        firstLine: String!
+        secondLine: String
+        city: String!
+        county: String!
+        postCode: String!
+    }
+
+    type Employer {
+        _id: ID!
+        email: String!
+        password: String!
+        companyName: String!
+        location: Location
+        about: String
+        jobs: [Job] 
+    }
+
     type Auth {
         token: ID!
         user: User
+    }
+
+    type AuthEmp {
+        token: ID!
+        employer: Employer
     }
 
     type Category {
@@ -46,6 +69,20 @@ const typeDefs = gql`
         lastName: String!
     }
 
+    input empInput {
+        email: String!
+        password: String!
+        companyName: String!
+    }
+
+    input locationInput {
+        firstLine: String!
+        secondLine: String
+        city: String!
+        county: String!
+        postCode: String!
+    }
+
     type File {
         filename: String!
         mimetype: String!
@@ -57,6 +94,7 @@ const typeDefs = gql`
 
     type Query {
         me: User
+        getEmp: Employer
         users: [User]
         user(id: ID): User
         jobs(limit: Int, offset: Int, category: String): [Job]
@@ -67,6 +105,8 @@ const typeDefs = gql`
     type Mutation {
         createUser(userData: userInput!): Auth
         loginUser(email: String! password: String!): Auth
+        createEmployer(userData: empInput): AuthEmp
+        loginEmployer(email: String! password: String!): Auth
         singleUpload(file: Upload!): File
         createTag(name: String!): Tag
         saveJob(id: ID!): User

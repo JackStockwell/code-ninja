@@ -1,5 +1,5 @@
 const connection = require('../config/connection');
-const { User, Job, Category, Tag } = require('../models')
+const { User, Job, Category, Tag, Employer } = require('../models')
 const {
     getRandomTitle,
     getRandomCompany,
@@ -34,18 +34,43 @@ connection.once('open', async () => {
         await Tag.deleteMany({})
     }
 
+    
+    let companiesCheck = await connection.db.listCollections({name: 'employers'}).toArray();
+    if (companiesCheck.length) {
+        console.log('Employers collection detected, dropping companies...')
+        await Employer.deleteMany({})
+    }
+
     const categories = await Category.create(categorySeeds)
     const tags = await Tag.create(tagSeeds)
 
-    console.log(categories)
+    let empArr = []
+
+    // Creates a company, adds to the array above per loop.
+    for (let i = 0; i < 12; i++) {
+
+        const companyName = getRandomCompany()
+
+
+        const newEmployer = {
+            email: `${companyName}@mail.com`,
+            password: 'Password123!',
+            companyName: companyName,
+            about: 'Non-evil corpation',
+        }
+
+        empArr.push(newEmployer)
+    }
+
+    const employers = await Employer.insertMany(empArr)
 
     let jobsArr = []
 
     for (let i = 0;i < 12; i++) {
 
-        let newJob = {
+        const newJob = {
             title: getRandomTitle(i),
-            company: getRandomCompany(),
+            company: getRandomArrItem(employers)._id,
             salary: Math.floor(Math.random() * (60 - 24 + 1)) + 24,
             description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis non reprehenderit blanditiis assumenda officiis numquam sapiente nemo id, soluta facilis molestiae iure tempore, magni quo, repudiandae pariatur cum.",
             category: getRandomArrItem(categories)._id,
