@@ -2,41 +2,36 @@ import React from 'react'
 import { useMutation, useQuery } from '@apollo/client'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Auth from '../../utils/auth';
-import {
-    GET_ME
-} from '../../utils/queries'
-
+import { ADD_JOB } from '../../utils/mutations';
 
 function JobItem({ _id, title, company, description, location, salary, tags, category }) {
 
-    if (Auth.getProfile) {
-        const { data, loading, error } = useQuery(GET_ME)
-        console.log(data)
-    }
+    // Mutations
+
+    const [ saveJob , { error }] = useMutation(ADD_JOB)
+
     // Handles the onClick of the button, performs a different action depending on what was clicked.
-    const handleOnClick = (e) => {
-        e.preventDefault()
-        // Get's the action.
-        let action = e.target.dataset.action
-
-        switch (action) {
-            // Adds the job to the logged user's saved jobs array.
-            case "save":
-                // CALL API
-                // RETURN UPDATED USER
-                console.log("save")
-                break;
-            // Adds the job to the logged user's applied jobs array.
-            case "apply":
-                console.log("Apply")
-                break;
-            default:
-                break;
+    const handleOnSave = async ({target}) => {
+        // Gets the id from the target.
+        const id = target.dataset.id
+        // Checks to see if logged in, returns if not.
+        if (!Auth.loggedIn()) {
+            return
         }
-
+        // API call to save the job.
+        try {
+            const { data } = await saveJob({
+                variables: { id: id }
+            })
+            console.log(data)
+        } catch(err) {
+            console.error(err)
+        }
     }
 
-    console.log(Auth.getProfile())
+    const handleOnApply = () => {
+        
+    }
 
     return (
         <>
@@ -52,10 +47,16 @@ function JobItem({ _id, title, company, description, location, salary, tags, cat
                 )}
                 {category && category.map((cat) => <p key={cat._id} id={cat._id}>{cat.name}</p>)}
             </div>
-            {Auth.getProfile() && (
-                <button data-id={_id} data-action="save" onClick={handleOnClick}><FontAwesomeIcon icon="fa-solid fa-heart" /></button>      
+            {Auth.loggedIn() ? (
+                <>
+                    <button data-id={_id} data-action="save" onClick={handleOnSave}>Save</button>
+                    <button data-id={_id} data-action="apply" onClick={handleOnApply}>Apply</button>
+                </>
+            ) : (
+                <>
+                    <span>You must be logged to apply!</span>
+                </>
             )}    
-            <button data-id={_id} data-action="apply" onClick={handleOnClick}>Apply</button>
         </>
     )
 }

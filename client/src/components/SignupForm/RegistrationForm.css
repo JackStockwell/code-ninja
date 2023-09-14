@@ -33,14 +33,16 @@
   font-weight: bold;
 }
 
-.registration-form .form-group input[type="text"],
-.registration-form .form-group input[type="email"],
-.registration-form .form-group input[type="password"] {
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"] {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 3px;
+  box-sizing: border-box;
   font-size: 16px;
+  margin: 10px 0px
 }
 
 .registration-form .form-group input[type="text"]:focus,
@@ -64,4 +66,9 @@
 
 .registration-form button[type="submit"]:hover {
   background-color: #0056b3;
+}
+
+.link:any-link {
+  text-decoration: none;
+  color: inherit;
 }

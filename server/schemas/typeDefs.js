@@ -8,6 +8,7 @@ const typeDefs = gql`
         password: String!
         firstName: String!
         lastName: String!
+        resume: String
         jobSaves: [Job]
         jobApp: [Job]
     }
@@ -57,6 +58,7 @@ const typeDefs = gql`
     type Query {
         me: User
         users: [User]
+        user(id: ID): User
         jobs(limit: Int, offset: Int, category: String): [Job]
         categories: [Category]
         tags: [Tag]
@@ -67,7 +69,7 @@ const typeDefs = gql`
         loginUser(email: String! password: String!): Auth
         singleUpload(file: Upload!): File
         createTag(name: String!): Tag
-        saveJob(_id: ID!): User
+        saveJob(id: ID!): User
     }
 
 `;

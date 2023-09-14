@@ -24,9 +24,9 @@ export const LOGIN_USER = gql`
   }
 `;
 
-export const REGISTER_USER = gql`
-  mutation RegisterUser($userData: userInput!) {
-    registerUser(userData: $userData) {
+export const CREATE_USER = gql`
+  mutation CreateUser($userData: userInput!) {
+    createUser(userData: $userData) {
       token
       user {
         _id
@@ -37,14 +37,19 @@ export const REGISTER_USER = gql`
   }
 `;
 
-export const CREATE_USER = gql`
-  mutation CreateUser($userData: userInput!) {
-    createUser(userData: $userData) {
-      token
-      user {
+export const ADD_JOB = gql`
+  mutation Mutation($id: ID!) {
+    saveJob(id: $id) {
+      _id
+      email
+      password
+      firstName
+      lastName
+      jobSaves {
         _id
-        firstName
-        lastName
+      }
+      jobApp {
+        _id
       }
     }
   }

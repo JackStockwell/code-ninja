@@ -3,6 +3,9 @@ import { useMutation } from '@apollo/client';
 import Auth from '../../utils/auth';
 import { LOGIN_USER } from '../../utils/mutations';
 import { useNavigate, Link } from 'react-router-dom'; // Import useNavigate
+import '../SignupForm/RegistrationForm.css';
+import '../../pages/styles/login.css'
+
 
 const LoginForm = () => {
     // States for form data to be used and saved.
@@ -85,10 +88,8 @@ const LoginForm = () => {
               </div>
               <button type="submit">Login</button>
               {/* Use Link instead of anchor tag */}
-              <p>
-                Don't have an account? Register here
-              </p>
             </form>
+            <button className='button'><Link className='link' to="/register">Don't have an account? Register here.</Link></button>
           </div>
         </div>
       );

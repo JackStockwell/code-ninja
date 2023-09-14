@@ -18,9 +18,10 @@ export const reducer = (state, action) => {
                 currentCategory: action.currentCategory
             }
         case UPDATE_JOBS:
+
             return {
                 ...state,
-                jobs: action.jobs
+                jobs: [...action.jobs]
             }
         default:
             return state;

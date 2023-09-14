@@ -27,6 +27,10 @@ const userSchema = new Schema(
             required: true,
             trim: true
         },
+        resume: {
+            type: String,
+            required: true
+        },
         jobSaves: [{
             type: Schema.Types.ObjectId,
             ref: 'Job'

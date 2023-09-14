@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
-
 import { CREATE_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth'
 import { trimObjectValues } from '../../utils/helpers';
-import { redirect } from 'react-router-dom';
+import { redirect, Link } from 'react-router-dom';
+import './RegistrationForm.css';
+import '../../pages/styles/login.css';
+
 
 const CreateUser = () => {
     
@@ -28,9 +30,7 @@ const CreateUser = () => {
     // Submits the form to the server to processed, includes error handling.
     const handleFormSubmit = async (e) => {
         e.preventDefault();
-
-        console.log(userFormData)
-
+        // TrimHelper takes all values to remove any whitespace.
         const userInput = await trimObjectValues(userFormData)
 
         // Error Handling
@@ -117,30 +117,36 @@ const CreateUser = () => {
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="password">First Name:</label>
-                    <input
-                        type="text"
-                        name="firstName"
-                        value={userFormData.firstName || ''}
-                        placeholder='First Name'
-                        pattern='^\S+$'
-                        title='Name&#39;s cannot contain spaces'
-                        onChange={handleInputChange}
-                        onInvalid={() => setErrorData({error: 'Name\'s cannot contain spaces' })}
-                    />
-                    <input
-                        type="text"
-                        name="lastName"
-                        value={userFormData.lastName || ''}
-                        placeholder='Last Name'
-                        pattern='^\S+$'
-                        title='Name&#39;s cannot contain spaces'
-                        onChange={handleInputChange}
-                        onInvalid={() => setErrorData({error: 'Name\'s cannot contain spaces' })}
-                    />
+                    <div>
+                        <label htmlFor="password">First Name:</label>
+                        <input
+                            type="text"
+                            name="firstName"
+                            value={userFormData.firstName || ''}
+                            placeholder='First Name'
+                            pattern='^\S+$'
+                            title='Name&#39;s cannot contain spaces'
+                            onChange={handleInputChange}
+                            onInvalid={() => setErrorData({error: 'Name\'s cannot contain spaces' })}
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="password">Last Name:</label>
+                        <input
+                            type="text"
+                            name="lastName"
+                            value={userFormData.lastName || ''}
+                            placeholder='Last Name'
+                            pattern='^\S+$'
+                            title='Name&#39;s cannot contain spaces'
+                            onChange={handleInputChange}
+                            onInvalid={() => setErrorData({error: 'Name\'s cannot contain spaces' })}
+                        />
+                    </div>
                 </div>
-                <button type="submit">Create User</button>
+                <button type="submit">Register</button>
             </form>
+            <button className='button'><Link className='link' to="/login">Already have an account? Login here.</Link></button>
         </div>
     )
 }

@@ -16,17 +16,26 @@ const resolvers = {
         me: async (parent, args, context) => {
 
             if (context.user) {
-                const userData = await User.findOne({
-                    _id: context.user._id
-                })
-
+                const userData = await User.findOne(
+                    { _id: context.user._id }
+                )
                 return userData
             }
+
+            return
         },
         // Dev query, queries all users.
         users: async () => {
             return await User
                 .find({})
+                .populate([
+                    { path: 'jobSaves', model: 'Job' },
+                    { path: 'jobApp', model: 'Job' }
+                ]);
+        },
+        user: async (parent, {id}) => {
+            return await User
+                .findOne({_id: id})
                 .populate([
                     { path: 'jobSaves', model: 'Job' },
                     { path: 'jobApp', model: 'Job' }
@@ -109,17 +118,23 @@ const resolvers = {
         createTag: async (parent, args) => {
             return await Tag.create(args)
         },
-        saveJob: async (parent, args, context) => {
+        saveJob: async (parent, { id }, context) => {
 
             if (!context.user) {
                 throw new AuthenticationError('You must be logged in to perform this action!')
             }
 
-            const userData = await User.findOne(
+            const userData = await User.findOneAndUpdate(
                 { _id: context.user._id },
-                { $addToSet: { jobSaves: args } },
+                { $addToSet: { jobSaves: id } },
                 { new: true, runValidators: true }
             )
+            .populate([
+                { path: 'jobSaves', model: 'Job' },
+                { path: 'jobApp', model: 'Job' }
+            ]);
+
+            return userData
         },
     }
 }

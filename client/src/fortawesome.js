@@ -9,6 +9,8 @@ import {
   faBars,
   faFile,
   faEnvelope,
+  faChevronLeft,
+  faChevronRight,
   faTimes, // Change from "faX" to "faTimes"
 } from '@fortawesome/free-solid-svg-icons';
 
