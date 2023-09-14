@@ -33,11 +33,11 @@ const jobBlogPosts = [
       <div className="home">
         <main>
           <section className="container">
-            <h2>Git-Jobs</h2>
-            <p>Our job website.</p>
+            <h2>Welcome to GitJobs </h2>
+            <p>Unlock Your Future: Find Your Dream Job!.</p>
           </section>
           <section className="container">
-            <h2>Recent job blog Posts</h2>
+            <h2>Recent Job Blog Posts</h2>
             <ul>
               {jobBlogPosts.map((post, index) => (
                 <li key={index}>

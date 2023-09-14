@@ -55,30 +55,33 @@ const CategoryMenu = () => {
   }
 
   return (
-    <div className="category-menu">
-      <h2>Filter Jobs by Category</h2>
-      <div className="category-buttons">
-        {categories.map((item) => (
-          <button
-            key={item._id}
-            onClick={() => {
-              handleClick(item._id);
-            }}
-            className={`category-button ${
-              currentCategory === item._id ? "active" : ""
-            }`}
-          >
-            {item.name}
-          </button>
-        ))}
+<div className="category-container">
+  <div className="category-menu">
+    <h2>Filter Jobs by Category</h2>
+    <div className="category-buttons">
+      {categories.map((item) => (
         <button
-          className={'category-button'}
-          style={{ backgroundColor: "black"}}
-          onClick={handleClick}
-          >Clear
+          key={item._id}
+          onClick={() => {
+            handleClick(item._id);
+          }}
+          className={`category-button ${
+            currentCategory === item._id ? "active" : ""
+          }`}
+        >
+          {item.name}
         </button>
-      </div>
+      ))}
+      <button
+        className={'category-button'}
+        style={{ backgroundColor: "black" }}
+        onClick={handleClick}
+      >
+        Clear
+      </button>
     </div>
+    </div>
+  </div>
   );
 };
 

@@ -10,12 +10,13 @@
     #ff4500,
     #ff69b4
   );
-  background-size: 300% 300%; /* Increase background size */
-  animation: gradient 10s linear infinite; /* Shorten the animation duration */
-  height: 90vh;
+  background-size: 300% 300%;
+  animation: gradient 5s linear infinite;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; /* Center the content vertically */
+  min-height: 100vh;
+  overflow-y: auto; /* Add vertical scroll when content overflows */
 }
 
 @keyframes gradient {
@@ -111,4 +112,25 @@ span {
 
 .link:hover {
   border-color: #3366ff;
+}
+
+@media (max-width: 768px) {
+  .login {
+    padding: 10px; /* Adjust padding for smaller screens */
+    max-width: 100%;
+  }
+
+  .login h2 {
+    font-size: 2rem; /* Adjust font size for smaller screens */
+  }
+
+  input[type="email"],
+  input[type="password"] {
+    font-size: 0.9rem; /* Adjust font size for smaller screens */
+  }
+
+  button[type="submit"] {
+    padding: 8px 16px; /* Adjust padding for smaller screens */
+    font-size: 1rem; /* Adjust font size for smaller screens */
+  }
 }

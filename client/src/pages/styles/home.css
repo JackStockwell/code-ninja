@@ -51,7 +51,7 @@ li {
 .container h2 {
   /* Original font size */
   margin-bottom: 1rem;
-  color: #085cec;
+  color: #0f0f0f;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   text-align: center;
 }
@@ -134,5 +134,19 @@ ul li a:hover {
   }
   100% {
     transform: scale(1);
+  }
+}
+
+/* Media Query for Smaller Screens */
+@media (max-width: 768px) {
+  .main {
+    padding: 1rem;
+  }
+  .container {
+    margin: 1rem 0;
+    padding: 1rem;
+  }
+  ul li a {
+    font-size: 1rem;
   }
 }

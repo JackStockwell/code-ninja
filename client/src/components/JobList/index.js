@@ -5,6 +5,7 @@ import { useJobContext } from "../../utils/GlobalState";
 import { QUERY_JOBS } from "../../utils/queries";
 import { UPDATE_JOBS } from "../../utils/actions";
 import { useQuery } from "@apollo/client";
+import "./JobList.css";
 
 import JobItem from "../JobItem";
 
@@ -68,8 +69,24 @@ const JobList = () => {
             ) : (
                 <div><p>No Jobs</p></div>
             )}
-            <button disabled={!page} onClick={() => setPage(prev => prev - 1)}><FontAwesomeIcon icon="fa-solid fa-chevron-left" /></button>
-            <button disabled={state.jobs?.length < 5} onClick={() => setPage(prev => prev + 1)}><FontAwesomeIcon icon="fa-solid fa-chevron-right" /></button>
+<div className="button-container">
+  <button
+    disabled={!page}
+    onClick={() => setPage((prev) => prev - 1)}
+    className={`nav-button ${!page ? "disabled" : ""}`}
+  >
+    <FontAwesomeIcon icon="fa-solid fa-chevron-left" />
+  </button>
+  <button
+    disabled={state.jobs?.length < 5}
+    onClick={() => setPage((prev) => prev + 1)}
+    className={`nav-button ${state.jobs?.length < 5 ? "disabled" : ""}`}
+  >
+    <FontAwesomeIcon icon="fa-solid fa-chevron-right" />
+  </button>
+</div>
+
+
             {loading ? <span>Loading...</span> : null}
         </div>
     )
