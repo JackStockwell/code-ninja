@@ -1,3 +1,4 @@
+/* Header styles */
 .header {
   background-color: #fa991c;
   color: #fff;
@@ -7,6 +8,12 @@
   text-align: center;
   padding: 1rem 0;
   font-size: 1.2rem; /* Original font size */
+
+  /* Media Query for Smaller Screens */
+  @media (max-width: 768px) {
+    padding: 0.5rem; /* Adjust padding for smaller screens */
+    font-size: 1rem; /* Adjust font size for smaller screens */
+  }
 }
 
 /* Logo styles */
