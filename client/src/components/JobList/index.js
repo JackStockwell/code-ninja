@@ -40,9 +40,6 @@ const JobList = () => {
         return state.jobs
       }
 
-      console.log(currentCategory)
-      console.log(state.jobs)
-
       return state.jobs.filter(
         (job) => job.category[0]._id === currentCategory
       )
@@ -57,22 +54,17 @@ const JobList = () => {
             })
             console.log(data.jobs)
         }
-
-        setHasMore(true)
-
     }, [data, loading, dispatch]);
-
-    const [hasMore, setHasMore] = useState(true)
 
     return (
         <div>
             <h2>Jobs:</h2>
             {state.jobs?.length ? (
-                <div>
-                    {filterJobs().map((job, index) => {
-                    return <JobItem {...job} key={index} />
-                    })}
-                </div>
+              <div>
+                  {filterJobs().map((job, index) => {
+                  return <JobItem {...job} key={index} />
+                  })}
+              </div>
             ) : (
                 <div><p>No Jobs</p></div>
             )}

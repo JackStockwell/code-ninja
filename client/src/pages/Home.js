@@ -1,7 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons"; // Import the icon you want to use
-import Header from "../components/Header/Header";
 import "./styles/home.css";
 
 
@@ -32,7 +31,6 @@ const jobBlogPosts = [
   function Home() {
     return (
       <div className="home">
-        <Header />
         <main>
           <section className="container">
             <h2>Git-Jobs</h2>

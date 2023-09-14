@@ -6,7 +6,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-margin: 20px;
+  margin: 20px;
   background-color:white;
   width:auto
 }
@@ -50,10 +50,6 @@ nav ul li a {
   font-size: 24px;
 }
 
-.form-group {
-  margin-bottom: 20px;
-}
-
 .form-group label {
   font-weight: bold;
   color: #333;
@@ -77,10 +73,12 @@ nav ul li a {
   border-color: #007BFF;
 }
 
-button[type="submit"] {
+button[type="submit"],
+.button {
   display: block;
   width: 100%;
   padding: 10px;
+  margin: 10px 0px;
   background-color: #007BFF;
   color: #fff;
   border: none;
@@ -89,10 +87,15 @@ button[type="submit"] {
   font-size: 16px;
 }
 
-button[type="submit"]:hover {
+button[type="submit"]:hover,
+.button:hover {
   background-color: #0056b3;
 }
 
+.link:any-link {
+  text-decoration: none;
+  color: inherit;
+}
 
 .footer {
   margin-top: 20px;
@@ -120,12 +123,12 @@ button[type="submit"]:hover {
   color: #0056b3;
 }
 
- 
-  @media (max-width: 768px) {
-    .login {
-      max-width: 100%;
-      padding: 10px;
-    }
+
+@media (max-width: 768px) {
+  .login {
+    max-width: 100%;
+    padding: 10px;
   }
+}
   
   

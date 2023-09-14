@@ -12,7 +12,9 @@ import LoginPage from './pages/Login';
 import SignUp from './pages/SignUp'
 import Dev from "./pages/Dev";
 import Footer from "./components/Footer";
-import RegistrationForm from "./components/RegistrationForm"; 
+import JobSearch from './pages/JobSearch'
+import Header from "./components/Header/Header";
+
 
 
 import {library} from "@fortawesome/fontawesome-svg-core";
@@ -67,11 +69,13 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <JobProvider>
+          <Header /> 
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/dev" element={<Dev />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" component={RegistrationForm} />
+            <Route path="/register" element={<SignUp />} />
+            <Route path="/search" element={<JobSearch />} />
           </Routes>
           <Footer />
         </JobProvider>

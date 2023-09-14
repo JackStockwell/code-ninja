@@ -33,6 +33,14 @@ const resolvers = {
                     { path: 'jobApp', model: 'Job' }
                 ]);
         },
+        user: async (parent, {id}) => {
+            return await User
+                .findOne({_id: id})
+                .populate([
+                    { path: 'jobSaves', model: 'Job' },
+                    { path: 'jobApp', model: 'Job' }
+                ]);
+        },
         jobs: async (parent, { limit, offset, category }) => {
 
             const params = {};

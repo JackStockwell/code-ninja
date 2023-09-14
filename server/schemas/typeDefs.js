@@ -58,6 +58,7 @@ const typeDefs = gql`
     type Query {
         me: User
         users: [User]
+        user(id: ID): User
         jobs(limit: Int, offset: Int, category: String): [Job]
         categories: [Category]
         tags: [Tag]

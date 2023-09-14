@@ -16,21 +16,19 @@ function Header() {
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/find-jobs">Find Jobs</Link>
+          <Link to="/search">Find a Job</Link>
         </li>
         {Auth.loggedIn() ? (
           <>
-            <li>
-              <Link to="/profile">Profile</Link>
-
-              <Link onClick={Auth.logout}>Logout</Link>
-            </>
-          ) : (
+            <Link to="/profile">Profile</Link>
+            <Link onClick={Auth.logout}>Logout</Link>
+          </>
+        ) : (
             <>
               <Link to="/login">Login</Link>
-              <Link to="/create">Signup</Link>
+              <Link to="/register">Signup</Link>
             </>
-          )}
+        )}
         </ul>
       </nav>
     </header>
