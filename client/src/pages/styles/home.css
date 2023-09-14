@@ -28,24 +28,6 @@ li {
   animation: fadeIn 1s ease-in-out;
 }
 
-/* Header styles */
-.header {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.header h1 {
-  color: #ffffff;
-  text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
-}
-
-.header p {
-  color: #ffffff;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  animation: scaleIn 1s ease-in-out;
-}
-
 /* Blog post styles */
 .container {
   background-color: rgba(255, 255, 255, 0.9);
