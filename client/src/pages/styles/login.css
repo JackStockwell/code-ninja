@@ -10,12 +10,13 @@
     #ff4500,
     #ff69b4
   );
-  background-size: 300% 300%; /* Increase background size */
-  animation: gradient 5s linear infinite; /* Shorten the animation duration */
-  height: 90vh;
+  background-size: 300% 300%;
+  animation: gradient 5s linear infinite;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; /* Center the content vertically */
+  min-height: 100vh;
+  overflow-y: auto; /* Add vertical scroll when content overflows */
 }
 
 @keyframes gradient {
@@ -116,6 +117,7 @@ span {
 @media (max-width: 768px) {
   .login {
     padding: 10px; /* Adjust padding for smaller screens */
+    max-width: 100%;
   }
 
   .login h2 {
