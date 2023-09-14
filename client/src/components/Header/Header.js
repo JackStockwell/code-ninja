@@ -1,16 +1,19 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Header.css";
 import Auth from "../../utils/auth";
-import logo from "../../images/logo.png";
+import logo1 from "../../images/logo.png"; // Renamed to logo1
+import logo2 from "../../images/logo2.png"; // Renamed to logo2
 
 function Header() {
-  console.log(Auth.getProfile())
+  console.log(Auth.getProfile());
   return (
     <header className="header">
-      <div className="logo">
-        <img src={logo} alt="Logo" />
+      <div>
+      <img src={logo1} alt="Logo 1" style={{ width: "100px", height: "auto" }} />
+        <img src={logo2} alt="Logo 2" style={{ width: "100px", height: "auto" }} />
       </div>
+<nav></nav>
       <nav>
       <ul>
         <li>

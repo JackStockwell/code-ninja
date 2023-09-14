@@ -1,0 +1,32 @@
+
+.button-container {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+  }
+  
+
+  .nav-button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 30px;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+    width: auto;
+  }
+  
+ 
+  .nav-button.disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  
+  .nav-button:not(.disabled):hover {
+    background-color: #0056b3;
+  }
+  
