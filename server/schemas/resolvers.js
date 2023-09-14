@@ -27,14 +27,24 @@ const resolvers = {
         getEmp: async (parent, args, context) => {
             // Checks to see if the user is logged in.
             if (context.user) {
-                const empData = await Employer.findOne(
-                    { _id: context.user._id }
-                )
-                
-                return empData;
-            };
+                try {
+                    const empData = await Employer.findOne(
+                        { _id: context.user._id }
+                    )
+                    .populate([
+                        { path: 'location', model: 'Location' },
+                        { path: 'jobs', model: 'Job' },
+                    ]);
 
+                    return empData;
+                } catch (err) {
+                    console.error(err)
+                    return
+                }
+            }
+            
             return;
+
         },
         // Dev query, queries all users.
         users: async () => {
@@ -136,8 +146,22 @@ const resolvers = {
             // Returns the token and
             return { token, employer }
         },
-        loginEmployer: async (parent, args) => {
-            
+        loginEmployer: async (parent, {email, password}) => {
+            const employer = await Employer.findOne({email});
+
+            if (!employer) {
+                throw new AuthenticationError('Incorrect Email')
+            }
+
+            const correctPw = await employer.isCorrectPassword(password);
+
+            if (!correctPw) {
+                throw new AuthenticationError('Incorrect PW')
+            }
+
+            const token = signToken(employer)
+
+            return { token, employer }
         },
 
         // Uploads a file sent from the front end to the S3 webserver.

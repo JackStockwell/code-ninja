@@ -16,20 +16,24 @@ function Header() {
         <li>
           <Link to="/">Home</Link>
         </li>
-        <li>
-          <Link to="/search">Find a Job</Link>
-        </li>
+        {!Auth.empLogged() && (
+          <li><Link to="/search">Find a Job</Link></li>
+        )}
         {Auth.empLogged() && (
           <>
-            <Link to={`/cmp/${Auth.getProfile()?.data._id}/${Auth.getProfile()?.data.companyName}`}>Employer Profile</Link>
+            <Link to={`/cmp/myprofile`}>Employer Profile</Link>
           </>
         )}
-        {Auth.loggedIn() && !Auth.empLogged() ? (
+        {!Auth.empLogged && Auth.loggedIn() && (
           <>
-            <Link to="/myprofile">Profile</Link>
-            <Link onClick={Auth.logout}>Logout</Link>
+            <Link to="/user/myprofile">Profile</Link>
+            
           </>
-        ) : (
+        )}
+        {Auth.loggedIn() && (
+        <Link onClick={Auth.logout}>Logout</Link>
+        )}
+        {!Auth.loggedIn() && !Auth.empLogged() && (
           <>
             <Link to="/login">Login</Link>
             <Link to="/register">Signup</Link>

@@ -14,7 +14,8 @@ import Dev from "./pages/Dev";
 import Footer from "./components/Footer";
 import JobSearch from './pages/JobSearch'
 import Header from "./components/Header/Header";
-import Profile from "./components/Profile";
+import UserProfile from "./pages/UserProfile";
+import EmpProfile from "./pages/EmpProfile";
 import EmployerLanding from "./pages/EmployerLanding";
 import Lost from "./pages/404";
 
@@ -74,8 +75,8 @@ function App() {
           <Header /> 
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/myprofile" element={<Profile />} />
-            <Route path="/cmp/:id/:companyName" element={<Profile />} />
+            <Route path="/user/myprofile" element={<UserProfile />} />
+            <Route path="/cmp/myprofile" element={<EmpProfile />} />
             <Route path="/dev" element={<Dev />} />
             <Route path="/employer" element={<EmployerLanding />}/>
             <Route path="/login" element={<LoginPage />} />

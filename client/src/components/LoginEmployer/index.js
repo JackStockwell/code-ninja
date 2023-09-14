@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useMutation } from '@apollo/client';
 import Auth from '../../utils/auth';
-import { LOGIN_USER } from '../../utils/mutations';
+import { LOGIN_EMPLOYER } from '../../utils/mutations';
 import { useNavigate, Link } from 'react-router-dom'; // Import useNavigate
 import '../SignupForm/RegistrationForm.css';
 import '../../pages/styles/login.css'
 
 
-const LoginForm = () => {
+const LoginEmployer = () => {
     // States for form data to be used and saved.
     const [userFormData, setUserFormData] = useState({ email: '', password: '' });
     const [errorData, setErrorData] = useState({ error: '' });
 
     // Login in user mutation.
-    const [loginUser, { error }] = useMutation(LOGIN_USER);
+    const [loginEmployer, { error }] = useMutation(LOGIN_EMPLOYER);
 
     // Handles for change input
     const handleInputChange = (event) => {
@@ -23,6 +23,12 @@ const LoginForm = () => {
         // Set the change in form data on the change in name and value.
         setUserFormData({ ...userFormData, [name]: value });
     }
+
+    useEffect(() => {
+        if (error) {
+            setErrorData(...error)
+        }
+    })
 
     // Submits the form to the server to be processed, includes error handling.
     const handleFormSubmit = async (e) => {
@@ -40,15 +46,15 @@ const LoginForm = () => {
         // API request, awaits data.
         try {
             // Returns token and the user.
-            const { data } = await loginUser({
+            const { data } = await loginEmployer({
                 variables: { ...userFormData }
             })
 
             // Login with JWT token.
-            Auth.login(data.loginUser.token);
+            Auth.login(data.loginEmployer.token);
 
             // Redirect to the homepage using navigate
-            useNavigate('/myprofile');
+            useNavigate('/');
 
         // Error catcher, logs error.
         } catch (err) {
@@ -92,4 +98,4 @@ const LoginForm = () => {
       );
     };
 
-export default LoginForm;
+export default LoginEmployer;

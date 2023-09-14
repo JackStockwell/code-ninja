@@ -1,5 +1,6 @@
 import React from 'react';
 import CreateEmployer from '../components/CreateEmployer';
+import LoginEmployer from '../components/LoginEmployer';
 
 
 const EmployerLanding = () => {
@@ -7,6 +8,7 @@ const EmployerLanding = () => {
         <>
             <div>
                 <CreateEmployer />
+                <LoginEmployer />
             </div>
         </>
     )
