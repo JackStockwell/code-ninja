@@ -11,7 +11,7 @@
     #ff69b4
   );
   background-size: 300% 300%; /* Increase background size */
-  animation: gradient 10s linear infinite; /* Shorten the animation duration */
+  animation: gradient 5s linear infinite; /* Shorten the animation duration */
   height: 90vh;
   display: flex;
   justify-content: center;
