@@ -26,7 +26,7 @@ function Header() {
         )}
         {Auth.loggedIn() && !Auth.empLogged() ? (
           <>
-            <Link to={`/profile/${Auth.getProfile()?.data._id}`}>Profile</Link>
+            <Link to="/myprofile">Profile</Link>
             <Link onClick={Auth.logout}>Logout</Link>
           </>
         ) : (

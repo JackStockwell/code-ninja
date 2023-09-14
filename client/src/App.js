@@ -15,6 +15,7 @@ import Footer from "./components/Footer";
 import JobSearch from './pages/JobSearch'
 import Header from "./components/Header/Header";
 import Profile from "./components/Profile";
+import CreateEmployer from "./pages/CreateEmployer";
 
 
 
@@ -76,6 +77,7 @@ function App() {
             <Route path="/myprofile" element={<Profile />} />
             <Route path="/cmp/:id/:companyName" element={<Profile />} />
             <Route path="/dev" element={<Dev />} />
+            <Route path="/employer/new" element={<CreateEmployer />}/>
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<SignUp />} />
             <Route path="/search" element={<JobSearch />} />

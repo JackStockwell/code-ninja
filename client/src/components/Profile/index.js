@@ -19,6 +19,11 @@ const Profile = () => {
     return (
         <>
             {userData?.firstName}
+            {!data.me && (
+                <>
+                    <p>Please Login in to see </p>
+                </>
+            )}
         </>
     )
 }
