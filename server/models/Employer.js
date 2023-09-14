@@ -1,6 +1,7 @@
 // Imports
 const { Schema, model } = require("mongoose");
-const locationSchema = require('./Location')
+const bcrypt = require("bcrypt");
+
 
 const employerSchema = new Schema({
     email: {
@@ -15,7 +16,10 @@ const employerSchema = new Schema({
         type: String,
         required: true
     },
-    location: locationSchema,
+    location: {
+        type: Schema.Types.ObjectId,
+        ref: 'Location'
+    },
     about: {
         type: String,
     },

@@ -2,13 +2,30 @@ import decode from 'jwt-decode';
 
 class AuthService {
   getProfile() {
-    return decode(this.getToken());
+    try {
+      if (this.loggedIn) {
+        return decode(this.getToken());
+      }
+    } catch (err) {
+      console.log(err)
+    }
+
   }
 
   loggedIn() {
     // Checks if there is a saved token and it's still valid
     const token = this.getToken();
     return !!token && !this.isTokenExpired(token);
+  }
+
+  empLogged() {
+    if (this.loggedIn()) {
+      const state = this.getProfile().data
+      if (!state.firstName) {
+        return true
+      }
+    }
+    return false
   }
 
   isTokenExpired(token) {
@@ -39,36 +56,6 @@ class AuthService {
     localStorage.removeItem('id_token');
 
     window.location.assign('/');
-  }
-
-
-  async register(userData) {
-    try {
-   
-      const response = await fetch('/api/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(userData),
-      });
-
-      if (!response.ok) {
-        throw new Error('Registration failed.');
-      }
-
-      const data = await response.json();
-
-      if (data.token) {
-     
-        this.login(data.token);
-      } else {
-        throw new Error('Registration failed.');
-      }
-    } catch (err) {
-      console.error(err);
-      throw err;
-    }
   }
 }
 

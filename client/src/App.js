@@ -14,6 +14,7 @@ import Dev from "./pages/Dev";
 import Footer from "./components/Footer";
 import JobSearch from './pages/JobSearch'
 import Header from "./components/Header/Header";
+import Profile from "./components/Profile";
 
 
 
@@ -72,6 +73,8 @@ function App() {
           <Header /> 
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/myprofile" element={<Profile />} />
+            <Route path="/cmp/:id/:companyName" element={<Profile />} />
             <Route path="/dev" element={<Dev />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<SignUp />} />

@@ -5,10 +5,6 @@ const { Schema, model } = require("mongoose");
 // Location Schema.
 const locationSchema = (
     {
-        locationID: {
-            type: Schema.Types.ObjectId,
-            default: () => new Types.ObjectId(),
-        },
         firstLine: {
             type: String,
             required: true
@@ -31,4 +27,6 @@ const locationSchema = (
     }
 )
 
-module.exports = locationSchema
+const Location = model('Location', locationSchema)
+
+module.exports = Location

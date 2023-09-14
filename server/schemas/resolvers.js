@@ -1,6 +1,6 @@
 const { AuthenticationError } = require('apollo-server-express')
 const { GraphQLUpload } = require('graphql-upload');
-const { User, Job, Category, Tag } = require('../models')
+const { User, Job, Category, Tag, Employer } = require('../models')
 const { signToken } = require('../utils/auth')
 const AWSS3Uploader = require('../utils/s3config')
 
@@ -19,10 +19,22 @@ const resolvers = {
                 const userData = await User.findOne(
                     { _id: context.user._id }
                 )
-                return userData
-            }
+                return userData;
+            };
 
             return
+        },
+        getEmp: async (parent, args, context) => {
+            // Checks to see if the user is logged in.
+            if (context.user) {
+                const empData = await Employer.findOne(
+                    { _id: context.user._id }
+                )
+                
+                return empData;
+            };
+
+            return;
         },
         // Dev query, queries all users.
         users: async () => {
@@ -33,7 +45,7 @@ const resolvers = {
                     { path: 'jobApp', model: 'Job' }
                 ]);
         },
-        user: async (parent, {id}) => {
+        user: async (parent, { id }) => {
             return await User
                 .findOne({_id: id})
                 .populate([
@@ -74,17 +86,17 @@ const resolvers = {
         // Creates a new user entry to the database.
         createUser: async (parent, { userData }) => {
             // Create the user data from the args.
-            const newUser = await User.create(userData)
+            const user = await User.create(userData)
             // Error handler
-            if (!newUser) {
+            if (!user) {
                 throw new AuthenticationError('Oops! Something went wrong')
             }
             // Creates a sign in token, allowing the user to navigate and give auth to the rest
             // of the API.
-            const token = signToken(newUser)
+            const token = signToken(user)
             
             // Returns the token and
-            return { token, newUser }
+            return { token, user }
         },
         loginUser: async (parent, {email, password}) => {
             const user = await User.findOne({email});
@@ -102,6 +114,30 @@ const resolvers = {
             const token = signToken(user)
 
             return { token, user }
+        },
+        createEmployer: async (parent, { userData }) => {
+            // Create the user data from the args.
+            const employer = await Employer.create(userData)
+
+            // Error handler
+            if (!employer) {
+                throw new AuthenticationError('Oops! Something went wrong, perhaps you already exist?')
+            }
+
+            // const empData = await Employer.findOneAndUpdate(
+            //     { _id: emp._id },
+            //     { $addToSet: { location: locationData } }
+            // )
+
+            // Creates a sign in token, allowing the user to navigate and give auth to the rest
+            // of the API.
+            const token = signToken(employer)
+            
+            // Returns the token and
+            return { token, employer }
+        },
+        loginEmployer: async (parent, args) => {
+            
         },
 
         // Uploads a file sent from the front end to the S3 webserver.
