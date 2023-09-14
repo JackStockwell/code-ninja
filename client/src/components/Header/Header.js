@@ -33,6 +33,7 @@ function Header() {
           <>
             <Link to="/login">Login</Link>
             <Link to="/register">Signup</Link>
+            <Link to="/register">Employer</Link>
           </>
         )}
         </ul>

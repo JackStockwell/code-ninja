@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { redirect, Link } from 'react-router-dom';
 
 // GraphQL imports
-import { useQuery, useMutation } from '@apollo/client';
-import { CREATE_EMPLOYER } from '../utils/mutations'
+import { useMutation } from '@apollo/client';
+import { CREATE_EMPLOYER } from '../../utils/mutations';
 
 // Helpers & Utils
-import { trimObjectValues } from '../utils/helpers';
-import Auth from '../utils/auth'
+import { trimObjectValues } from '../../utils/helpers';
+import Auth from '../../utils/auth'
 
 const CreateEmployer = () => {
 
