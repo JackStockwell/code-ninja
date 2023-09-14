@@ -2,13 +2,14 @@ import React from 'react'
 import { useMutation, useQuery } from '@apollo/client'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Auth from '../../utils/auth';
-import { ADD_JOB } from '../../utils/mutations';
+import { SAVE_JOB } from '../../utils/mutations';
 
 function JobItem({ _id, title, company, description, location, salary, tags, category }) {
 
+    console.log(company)
+    
     // Mutations
-
-    const [ saveJob , { error }] = useMutation(ADD_JOB)
+    const [ saveJob , { error }] = useMutation(SAVE_JOB)
 
     // Handles the onClick of the button, performs a different action depending on what was clicked.
     const handleOnSave = async ({target}) => {
@@ -37,8 +38,16 @@ function JobItem({ _id, title, company, description, location, salary, tags, cat
         <>
             <div>
                 <h3>{title}</h3>
-                <p>{company}</p>
-                <p>{description}</p>
+                {/* Company div, deconstructs the prop */}
+                <div style={{display: 'flex', alignItems: 'center', gap: '2rem'}}>
+                    <h4>{company.companyName}</h4>
+                    <p>{company.about}</p>
+                    {company.location ? (
+                        <p>{company.location}</p>
+                    ) : (
+                        <p>St Luke's, London</p>
+                    )}
+                </div>
                 <p>{location}</p>
                 <p>{salary}</p>
                 {tags && tags.map((tag) => {
@@ -46,6 +55,7 @@ function JobItem({ _id, title, company, description, location, salary, tags, cat
                 }
                 )}
                 {category && category.map((cat) => <p key={cat._id} id={cat._id}>{cat.name}</p>)}
+                <p>{description}</p>
             </div>
             {Auth.loggedIn() ? (
                 <>

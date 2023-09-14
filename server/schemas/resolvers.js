@@ -53,7 +53,8 @@ const resolvers = {
                 .find(params)
                 .populate([
                     { path: 'category', model: 'Category' },
-                    { path: 'tags', model: 'Tag' }
+                    { path: 'tags', model: 'Tag' },
+                    { path: 'company', model: 'Employer' },
                 ]);
             
             if (offset, limit) {
@@ -136,6 +137,13 @@ const resolvers = {
 
             return userData
         },
+        // createJob: async (parent, args, context) => {
+        //     // EMPLOYER LOGGED IN
+        //     // CREATE NEW JOB WITH DATA PARSED AS ARGS
+        //     // ID OF COMPANY PARSED INTO THIS DATA.
+        //     // ADD TO EMPLOYER'S JOB ARRAY
+        //     // RETURN
+        // }
     }
 }
 

@@ -57,7 +57,7 @@ const companies = [
     "DataCore Innovations",
     "MoneyBox Technologies",
     "Semantic",
-    "LifeTech Solutions",
+    "LifeTech Solutions", 
     "Umbrella Corp",
 ]
 

@@ -10,12 +10,15 @@ export const QUERY_CATEGORIES = gql`
 `;
 
 export const QUERY_JOBS = gql`
-    query Jobs($limit: Int, $offset: Int, $category: String) {
-        jobs(limit: $limit, offset: $offset, category: $category) {
+    query Jobs($limit: Int, $offset: Int) {
+        jobs(limit: $limit, offset: $offset) {
             _id
             title
-            company
-            location
+            company {
+                _id
+                companyName
+                about
+            }
             salary
             description
             category {
