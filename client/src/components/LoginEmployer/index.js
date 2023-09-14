@@ -24,12 +24,6 @@ const LoginEmployer = () => {
         setUserFormData({ ...userFormData, [name]: value });
     }
 
-    useEffect(() => {
-        if (error) {
-            setErrorData(...error)
-        }
-    })
-
     // Submits the form to the server to be processed, includes error handling.
     const handleFormSubmit = async (e) => {
         e.preventDefault();

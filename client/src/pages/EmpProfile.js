@@ -5,6 +5,7 @@ import { useQuery } from '@apollo/client';
 import Auth from '../utils/auth'
 import Modal from 'react-modal'
 import ReactModal from 'react-modal';
+import TextEditor from '../components/TextEditor/index'
 
 
 
@@ -37,19 +38,21 @@ const EmpProfile = () => {
 
     return (
         <>  
-            {loggedUser && <p>LOGGED IN!</p>}
-            {userData.companyName}
-            <p>Test</p>
-            <button onClick={handleModalState}>Test</button>
-            <ReactModal
-                isOpen={jobModal}
-                contentLabel='New Job modal'
-                onRequestClose={handleModalState}            
-            >
-                <h3>Modal Open!</h3>
-                <button onClick={handleModalState}>Test</button>
-            </ReactModal>
-            {jobModal && (<p>Open</p>)}
+            <div>
+                {loggedUser && <p>LOGGED IN!</p>}
+                {userData.companyName}
+                <p>Test</p>
+                <button onClick={handleModalState}>Open</button>
+                    <ReactModal
+                        isOpen={jobModal}
+                        contentLabel='New Job modal'
+                        onRequestClose={handleModalState}            
+                    >
+                        <h3>Modal Open!</h3>
+                        <TextEditor />
+                        <button onClick={handleModalState}>Close</button>
+                    </ReactModal>
+            </div>
         </>
     )
 }
