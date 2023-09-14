@@ -11,58 +11,128 @@ li {
 /* Define basic styles for the page */
 .home {
   font-family: Arial, sans-serif;
-  background-color: #fa991c;
+  background: linear-gradient(135deg, #fa991c, #ff5722);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
 }
 
 .main {
   max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem 0;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 1s ease-in-out;
 }
 
+/* Blog post styles */
 .container {
-  background-color: #ffffff;
-  padding: 1rem;
-  margin-bottom: 1rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 1.5rem;
+  margin: 1.5rem;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 800px;
+  position: relative;
+  overflow: hidden;
+  transform: translateY(0);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .container h2 {
-  font-size: 1.5rem;
+  /* Original font size */
   margin-bottom: 1rem;
+  color: #085cec;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  text-align: center;
 }
 
 .container p {
-  font-size: 1rem;
-  color: #085cec;
+  /* Original font size */
+  color: #8f521c;
+  line-height: 1.4;
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
+/* Blog post link styles */
 ul {
   list-style: none;
+  padding: 0;
 }
 
 ul li {
   margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  animation: slideIn 1s ease-in-out;
 }
 
 ul li a {
   color: #8f521c;
   text-decoration: none;
   font-weight: bold;
+  font-size: 1.2rem; /* Original font size */
+  transition: color 0.3s ease-in-out;
+  text-align: center;
 }
 
 ul li a:hover {
-  text-decoration: underline;
+  color: #ff5722;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-/* Media query for responsive design */
-@media (max-width: 768px) {
-  .main {
-    padding: 1rem;
-  }
+/* Add a creative background shape */
+.background-shape {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #ff5722, #fa991c);
+  clip-path: polygon(0% 0%, 100% 20%, 100% 100%, 0% 80%);
+  z-index: -1;
+}
 
-  .container {
-    padding: 0.5rem;
+/* Keyframe animations */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
   }
 }
