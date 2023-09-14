@@ -15,7 +15,8 @@ import Footer from "./components/Footer";
 import JobSearch from './pages/JobSearch'
 import Header from "./components/Header/Header";
 import Profile from "./components/Profile";
-
+import EmployerLanding from "./pages/EmployerLanding";
+import Lost from "./pages/404";
 
 
 import {library} from "@fortawesome/fontawesome-svg-core";
@@ -76,9 +77,11 @@ function App() {
             <Route path="/myprofile" element={<Profile />} />
             <Route path="/cmp/:id/:companyName" element={<Profile />} />
             <Route path="/dev" element={<Dev />} />
+            <Route path="/employer" element={<EmployerLanding />}/>
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<SignUp />} />
             <Route path="/search" element={<JobSearch />} />
+            <Route path="*" element={<Lost />} />
           </Routes>
           <Footer />
         </JobProvider>
