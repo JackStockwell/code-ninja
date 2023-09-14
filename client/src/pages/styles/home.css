@@ -51,7 +51,7 @@ li {
 .container h2 {
   /* Original font size */
   margin-bottom: 1rem;
-  color: #085cec;
+  color: #0f0f0f;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   text-align: center;
 }
