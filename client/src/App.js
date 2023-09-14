@@ -1,26 +1,62 @@
-import logo from './logo.svg';
-import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
+import "./App.css";
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import {ApolloClient, ApolloProvider, InMemoryCache} from "@apollo/client";
+import {setContext} from "@apollo/client/link/context";
+import {createUploadLink} from "apollo-upload-client";
 
-import { JobProvider } from './utils/GlobalState';
+import {JobProvider} from "./utils/GlobalState";
 
 // Components and Page imports
+import Home from './pages/Home'; 
+import LoginPage from './pages/Login'; 
+import SignUp from './pages/SignUp'
+import Dev from "./pages/Dev";
+import Footer from "./components/Footer";
+import JobSearch from './pages/JobSearch'
+import Header from "./components/Header/Header";
+import Profile from "./components/Profile";
+import EmployerLanding from "./pages/EmployerLanding";
+import Lost from "./pages/404";
 
-import CategoryMenu from './component/CategoryMenu/index'
 
+import {library} from "@fortawesome/fontawesome-svg-core";
+import {
+  faHouse,
+  faHeart,
+  faCircleUser,
+  faBars,
+  faFile,
+  faEnvelope,
+  faX,
+  faChevronLeft,
+  faChevronRight
+} from "@fortawesome/free-solid-svg-icons";
+import {faGithub, faLinkedin} from "@fortawesome/free-brands-svg-icons";
 
-const httpLink = createHttpLink({
-  uri: '/graphql',
+library.add(
+  faHouse,
+  faHeart,
+  faCircleUser,
+  faBars,
+  faFile,
+  faEnvelope,
+  faX,
+  faGithub,
+  faLinkedin,
+  faChevronLeft,
+  faChevronRight
+);
+
+const httpLink = createUploadLink({
+  uri: "/graphql",
 });
 
-const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem('id_token');
+const authLink = setContext((_, {headers}) => {
+  const token = localStorage.getItem("id_token");
   return {
     headers: {
       ...headers,
-      authorization: token ? `Bearer ${token}` : '',
+      authorization: token ? `Bearer ${token}` : "",
     },
   };
 });
@@ -34,27 +70,21 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div>
-          <JobProvider>
-            <CategoryMenu />
-            <div className="App">
-              <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                  Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <a
-                  className="App-link"
-                  href="https://reactjs.org"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Learn React
-                </a>
-              </header>
-            </div>
-          </JobProvider>
-        </div>
+        <JobProvider>
+          <Header /> 
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/myprofile" element={<Profile />} />
+            <Route path="/cmp/:id/:companyName" element={<Profile />} />
+            <Route path="/dev" element={<Dev />} />
+            <Route path="/employer" element={<EmployerLanding />}/>
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<SignUp />} />
+            <Route path="/search" element={<JobSearch />} />
+            <Route path="*" element={<Lost />} />
+          </Routes>
+          <Footer />
+        </JobProvider>
       </Router>
     </ApolloProvider>
   );

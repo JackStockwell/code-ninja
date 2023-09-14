@@ -2,6 +2,7 @@ import { useReducer } from "react";
 import {
     UPDATE_CATEGORIES,
     UPDATE_CURRENT_CATEGORY,
+    UPDATE_JOBS
 } from './actions'
 
 export const reducer = (state, action) => {
@@ -15,6 +16,12 @@ export const reducer = (state, action) => {
             return {
                 ...state,
                 currentCategory: action.currentCategory
+            }
+        case UPDATE_JOBS:
+
+            return {
+                ...state,
+                jobs: [...action.jobs]
             }
         default:
             return state;

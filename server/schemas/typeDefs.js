@@ -8,6 +8,7 @@ const typeDefs = gql`
         password: String!
         firstName: String!
         lastName: String!
+        resume: String
         jobSaves: [Job]
         jobApp: [Job]
     }
@@ -15,10 +16,30 @@ const typeDefs = gql`
     type Job {
         _id: ID!
         title: String!
-        location: String!
-        salary: Float
+        company: Employer!
+        salary: Int
         description: String!
-        categories: [Category]
+        category: [Category]!
+        tags: [Tag]!
+    }
+
+    type Location {
+        _id: ID!
+        firstLine: String!
+        secondLine: String
+        city: String!
+        county: String!
+        postCode: String!
+    }
+
+    type Employer {
+        _id: ID!
+        email: String!
+        password: String!
+        companyName: String!
+        location: Location
+        about: String
+        jobs: [Job] 
     }
 
     type Auth {
@@ -26,9 +47,19 @@ const typeDefs = gql`
         user: User
     }
 
+    type AuthEmp {
+        token: ID!
+        employer: Employer
+    }
+
     type Category {
         _id: ID!
-        name: String!
+        name: String
+    }
+
+    type Tag {
+        _id: ID!
+        name: String
     }
 
     input userInput {
@@ -38,14 +69,47 @@ const typeDefs = gql`
         lastName: String!
     }
 
+    input empInput {
+        email: String!
+        password: String!
+        companyName: String!
+    }
+
+    input locationInput {
+        firstLine: String!
+        secondLine: String
+        city: String!
+        county: String!
+        postCode: String!
+    }
+
+    type File {
+        filename: String!
+        mimetype: String!
+        encoding: String!
+        url: String!
+    }
+
+    scalar Upload
+
     type Query {
-        users: User
-        jobs: Job
+        me: User
+        getEmp: Employer
+        users: [User]
+        user(id: ID): User
+        jobs(limit: Int, offset: Int, category: String): [Job]
         categories: [Category]
+        tags: [Tag]
     }
 
     type Mutation {
         createUser(userData: userInput!): Auth
+        loginUser(email: String! password: String!): Auth
+        createEmployer(userData: empInput): AuthEmp
+        loginEmployer(email: String! password: String!): Auth
+        singleUpload(file: Upload!): File
+        createTag(name: String!): Tag
+        saveJob(id: ID!): User
     }
 
 `;

@@ -1,16 +1,14 @@
 // Imports
 const { Schema, model } = require("mongoose");
 
-const jobSchema = new Schema(
-
-    {
+const jobSchema = new Schema({
         title: {
             type: String,
-            required: true,
+            required: true
         },
-        location: {
-            type: String,
-            required: true,
+        company: {
+            type: Schema.Types.ObjectId,
+            required: true
         },
         salary: {
             type: Number,
@@ -19,11 +17,16 @@ const jobSchema = new Schema(
             type: String,
             required: true
         },
-        categories: [{
+        category: [{
             type: Schema.Types.ObjectId,
             ref: 'Category',
             required: true
-        }]
+        }],
+        tags: [{
+            type: Schema.Types.ObjectId,
+            ref: 'Tag',
+            required: true
+        }],
     }
 );
 

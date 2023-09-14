@@ -1,0 +1,45 @@
+.category-menu {
+background: rgba(255, 255, 255, 0.8);
+  /* border-radius: 10px; */
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.3); 
+  text-align: center;
+}
+
+.category-menu h2 {
+  font-size: 1.8rem; /* Slightly larger font size */
+  margin-bottom: 15px; /* More spacing at the bottom */
+  color: #181616; /* Darker text color */
+}
+
+.category-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.category-button {
+  background-color:#0a74ee;
+  color: #fffafa;
+  border: none;
+  border-radius: 5px;
+  padding: 12px 24px; 
+  margin: 8px; 
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-weight: bold; 
+}
+
+.category-button:hover {
+  background-color:  #2ecc71
+}
+
+.category-button.active {
+  background-color: #2ecc71;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+  .category-button {
+    width: 100%;
+  }
+}

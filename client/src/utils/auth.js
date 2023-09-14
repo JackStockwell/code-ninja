@@ -2,13 +2,30 @@ import decode from 'jwt-decode';
 
 class AuthService {
   getProfile() {
-    return decode(this.getToken());
+    try {
+      if (this.loggedIn) {
+        return decode(this.getToken());
+      }
+    } catch (err) {
+      console.log(err)
+    }
+
   }
 
   loggedIn() {
     // Checks if there is a saved token and it's still valid
     const token = this.getToken();
     return !!token && !this.isTokenExpired(token);
+  }
+
+  empLogged() {
+    if (this.loggedIn()) {
+      const state = this.getProfile().data
+      if (!state.firstName) {
+        return true
+      }
+    }
+    return false
   }
 
   isTokenExpired(token) {
@@ -35,11 +52,13 @@ class AuthService {
   }
 
   logout() {
-    // Clear user token and profile data from localStorage
+
     localStorage.removeItem('id_token');
-    // this will reload the page and reset the state of the application
+
     window.location.assign('/');
   }
 }
 
-export default new AuthService();
+const authService = new AuthService(); 
+
+export default authService; 
