@@ -1,16 +1,14 @@
-import React from 'react'
-import SignupForm from '../components/SignupForm';
-import Header from '../components/Header/Header';
+import React from "react";
+import SignupForm from "../components/SignupForm";
 
 function SignUp() {
   return (
     <>
-      <div className='login-container'>
+      <div className="login-container">
         <SignupForm />
       </div>
     </>
-
-  )
+  );
 }
 
-export default SignUp
+export default SignUp;
