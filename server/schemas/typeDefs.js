@@ -19,7 +19,7 @@ const typeDefs = gql`
         company: Employer!
         salary: Int
         description: String!
-        category: [Category]!
+        category: Category!
         tags: [Tag]!
     }
 

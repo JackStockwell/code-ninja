@@ -16,7 +16,7 @@ const DraftEditor = () => {
         blocks: [
           {
             key: "3eesq",
-            text: "Description of your job here.",
+            text: "",
             type: "unstyled",
             depth: 0,
             entityRanges: [],
@@ -108,7 +108,7 @@ const DraftEditor = () => {
             <div className="editor-container">
                 <Editor
                 ref={editor}
-                placeholder="Write Here"
+                placeholder="Job Description"
                 handleKeyCommand={handleKeyCommand}
                 editorState={editorState}
                 customStyleMap={styleMap}

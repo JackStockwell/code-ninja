@@ -26,6 +26,7 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "draft-js": "^0.11.7",
     "react-router-dom": "^6.16.0",
+    "react-select": "^5.7.4",
     "react-widgets": "^5.8.4",
     "scss": "^0.2.4"
   }

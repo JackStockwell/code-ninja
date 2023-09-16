@@ -14,14 +14,14 @@ const jobSchema = new Schema({
             type: Number,
         },
         description: {
-            type: String,
-            required: true
+                type: String,
+                required: true
         },
-        category: [{
+        category: {
             type: Schema.Types.ObjectId,
             ref: 'Category',
             required: true
-        }],
+        },
         tags: [{
             type: Schema.Types.ObjectId,
             ref: 'Tag',

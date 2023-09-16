@@ -18,6 +18,6 @@
 
 @media (min-width: 60em) {
     .job-group {
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
     }
 }

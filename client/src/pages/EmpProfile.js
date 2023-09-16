@@ -5,8 +5,6 @@ import Auth from '../utils/auth'
 import Modal from 'react-modal'
 import ReactModal from 'react-modal';
 import JobCreate from '../components/JobCreate';
-import './styles/modal.css'
-
 
 
 
@@ -43,16 +41,7 @@ const EmpProfile = () => {
                 {loggedUser && <p>LOGGED IN!</p>}
                 {userData.companyName}
                 <p>Test</p>
-                <button onClick={handleModalState}>Open</button>
-                    <ReactModal
-                        isOpen={jobModal}
-                        contentLabel='New Job modal'
-                        onRequestClose={handleModalState}
-                        className='modal' 
-                    >
-                        <JobCreate />
-                        <button onClick={handleModalState}>Post a New Job</button>
-                    </ReactModal>
+                    <JobCreate />
             </div>
         </>
     )
