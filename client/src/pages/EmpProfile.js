@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { GET_ME_EMP } from '../utils/queries';
-import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import Auth from '../utils/auth'
 import Modal from 'react-modal'
 import ReactModal from 'react-modal';
-import TextEditor from '../components/TextEditor/index'
+import JobCreate from '../components/JobCreate';
+import './styles/modal.css'
+
 
 
 
 const EmpProfile = () => {
-
+        
     const userID = Auth.getProfile()?.data._id || null;
 
     const [loggedUser, setLoggedMatch] = useState(false)
@@ -46,11 +47,11 @@ const EmpProfile = () => {
                     <ReactModal
                         isOpen={jobModal}
                         contentLabel='New Job modal'
-                        onRequestClose={handleModalState}            
+                        onRequestClose={handleModalState}
+                        className='modal' 
                     >
-                        <h3>Modal Open!</h3>
-                        <TextEditor />
-                        <button onClick={handleModalState}>Close</button>
+                        <JobCreate />
+                        <button onClick={handleModalState}>Post a New Job</button>
                     </ReactModal>
             </div>
         </>

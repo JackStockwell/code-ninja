@@ -15,7 +15,8 @@
   "license": "ISC",
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "concurrently": "^5.1.0"
+    "concurrently": "^5.1.0",
+    "webpack": "^5.88.2"
   },
   "dependencies": {
     "@apollo/client": "^3.8.3",
@@ -24,6 +25,8 @@
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "draft-js": "^0.11.7",
-    "react-router-dom": "^6.16.0"
+    "react-router-dom": "^6.16.0",
+    "react-widgets": "^5.8.4",
+    "scss": "^0.2.4"
   }
 }

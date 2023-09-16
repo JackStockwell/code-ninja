@@ -1,5 +1,10 @@
 import React, { useState } from 'react'
 import { useQuery, useMutation } from '@apollo/client';
+import TextEdior from '../TextEditor/index'
+
+// React Widgets
+import './jobcreate.css'
+
 
 
 const JobCreate = () => {
@@ -10,7 +15,7 @@ const JobCreate = () => {
         description: null,
     }
 
-    const [userFormData, setUserFormData] = useState({});
+    const [userFormData, setUserFormData] = useState(formData);
     const [errorData, setErrorData] = useState({ error: '' });
 
     const handleInputChange = (event) => {
@@ -21,9 +26,45 @@ const JobCreate = () => {
         setUserFormData({ ...userFormData, [name]: value });
     }
 
+    const handleFormSubmit = () => {
+
+    }
+
     return (
         <>
-            
+            <h4>New Job</h4>
+            <form onSubmit={handleFormSubmit}>
+              <span>&nbsp;{errorData.error}&nbsp;</span>
+              <div className="job-group">
+                <div>
+                    <label htmlFor="password">Password:</label>
+                    <input
+                        className='model-input'
+                        type="text"
+                        name="title"
+                        value={userFormData.email || ''}
+                        placeholder="Email"
+                        onChange={handleInputChange}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="salary">Salary</label>
+                    <input
+                        className='model-input'
+                        type="text"
+                        name="salary"
+                        value={userFormData.password || ''}
+                        placeholder="30000"
+                        onChange={handleInputChange}
+                    />
+                </div>
+                <div>
+
+                </div>
+              </div>
+              {/* Use Link instead of anchor tag */}
+            </form>
+            <TextEdior />
         </>
     )
 }
