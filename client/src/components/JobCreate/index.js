@@ -39,29 +39,32 @@ const JobCreate = () => {
     const categoryData = data?.categories || [];
 
     const handleInputChange = (event) => {
-
-        console.log(event.target)
         // Deconstruct the target with what has changed as name and the value as well value.
         const { name, value } = event.target;
+
+        console.log(name, value)
 
         // Set the change in form data on the change in name and value.
         setUserFormData({ ...userFormData, [name]: value });
     }
 
+    // Handles form submission.
     const handleFormSubmit = (event) => {
         event.preventDefault()
 
-        const contentState = editorState.getCurrentContent()
+        setErrorData({error: null})
 
+        // Gets the current content from the editor state.
+        const contentState = editorState.getCurrentContent()
+        // Checks to see if there is sufficient text length
         if (contentState.getPlainText().length < 1) {
             setErrorData({error: "To keep your Job Description professional, it must be at least 200 characters in length"})
         }
-
+        // Stringifies the data, sets the user data description to theee string format.
         const data = JSON.stringify(convertToRaw(contentState))
-
         setUserFormData({...userFormData, description: data })
 
-        console.log(userFormData)
+
 
     }
 
@@ -162,19 +165,31 @@ const JobCreate = () => {
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
-                        <Row className="g-2">
+                        <Row className="g-2 mb-3">
                             <Form.Group as={Col} controlId='formTitle'>
                                 <FloatingLabel controlId="formTitle" label="Job Title">
                                     <Form.Control 
                                         name="title" 
-                                        type="text" 
-                                        placeholder="Full stack Web Developer" 
+                                        type="text"  
                                         onChange={handleInputChange} 
                                         value={userFormData.title || ''} 
                                         required 
                                     />
                                 </FloatingLabel>
                             </Form.Group>
+                            <Form.Group as={Col} controlId='formSalar'>
+                                <FloatingLabel controlId="formSalar" label="Salary">
+                                    <Form.Control 
+                                        name="salary" 
+                                        type="number" 
+                                        onChange={handleInputChange} 
+                                        value={userFormData.salary || ''} 
+                                        required 
+                                    />
+                                </FloatingLabel>
+                            </Form.Group>
+                        </Row>
+                        <Row className="g-2">
                             <Form.Group className="mb-3" as={Col}>
                                 <FloatingLabel
                                     controlId="floatingSelectGrid"
