@@ -77,3 +77,17 @@ export const LOGIN_EMPLOYER = gql`
     }
   }
 `;
+
+export const CREATE_JOB = gql`
+  mutation Mutation($input: jobInput!) {
+    createJob(input: $input) {
+      _id
+      description
+      salary
+      tags {
+        name
+        _id
+      }
+    }
+  }
+`

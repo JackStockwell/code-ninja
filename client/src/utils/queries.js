@@ -9,6 +9,15 @@ export const QUERY_CATEGORIES = gql`
     }
 `;
 
+export const QUERY_TAGS = gql`
+    query Tags {
+        tags {
+            _id
+            name
+        }
+    }
+`;
+
 export const QUERY_JOBS = gql`
     query Jobs($limit: Int, $offset: Int) {
         jobs(limit: $limit, offset: $offset) {
