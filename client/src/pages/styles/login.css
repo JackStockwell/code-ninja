@@ -87,7 +87,7 @@ button[type="submit"]:hover {
 }
 
 /* Style the error message */
-span {
+.login span {
   color: #ff0000;
   font-size: 1.2rem;
   display: block;

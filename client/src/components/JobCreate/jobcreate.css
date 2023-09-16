@@ -1,0 +1,23 @@
+
+
+.model-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+    font-size: 16px;
+    margin: 10px 0px
+}
+
+.job-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+@media (min-width: 60em) {
+    .job-group {
+        grid-template-columns: 1fr 1fr;
+    }
+}

@@ -50,7 +50,7 @@ function JobItem({ _id, title, company, description, location, salary, tags, cat
                     )}
                 </div>
                 <p>{location}</p>
-                <p>{salary}</p>
+                <p>{salary},000k</p>
                 {tags &&
                     tags.map((tag) => {
                         return <p key={tag._id} id={tag._id}>{tag.name}</p>;

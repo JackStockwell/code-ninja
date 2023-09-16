@@ -65,3 +65,15 @@ export const CREATE_EMPLOYER = gql`
     }
   }
 `;
+
+export const LOGIN_EMPLOYER = gql`
+  mutation LoginEmployer($email: String!, $password: String!) {
+    loginEmployer(email: $email, password: $password) {
+      token
+      employer {
+        _id
+        companyName
+      }
+    }
+  }
+`;

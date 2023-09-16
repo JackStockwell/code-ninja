@@ -1,15 +1,12 @@
 import React from 'react';
 // import UploadFile from '../components/UploadFile/index'
-import JobList from '../components/JobList';
-import CategoryMenu from '../components/CategoryMenu';
+import TextEditor from '../components/TextEditor/index'
 
 const Dev = () => {
     return (
         <>
             <div>
-                <CategoryMenu />
-                <JobList />
-                {/* <UploadFile /> */}
+                <TextEditor />
             </div>
         </>
     )

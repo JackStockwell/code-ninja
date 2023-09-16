@@ -19,7 +19,7 @@ const typeDefs = gql`
         company: Employer!
         salary: Int
         description: String!
-        category: [Category]!
+        category: Category!
         tags: [Tag]!
     }
 
@@ -106,7 +106,7 @@ const typeDefs = gql`
         createUser(userData: userInput!): Auth
         loginUser(email: String! password: String!): Auth
         createEmployer(userData: empInput): AuthEmp
-        loginEmployer(email: String! password: String!): Auth
+        loginEmployer(email: String! password: String!): AuthEmp
         singleUpload(file: Upload!): File
         createTag(name: String!): Tag
         saveJob(id: ID!): User

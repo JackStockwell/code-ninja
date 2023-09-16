@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 export const QUERY_CATEGORIES = gql`
-    {
+    query Categories {
         categories {
             _id
             name
@@ -44,6 +44,30 @@ export const GET_ME = gql`
             }
             jobApp {
                 _id
+            }
+        }
+    }
+`;
+
+export const GET_ME_EMP = gql`
+    query Query {
+        getEmp {
+            _id
+            email
+            companyName
+            location {
+                _id
+                firstLine
+                secondLine
+                city
+                county
+                postCode
+            }
+            about
+            jobs {
+                _id
+                title
+                description
             }
         }
     }
