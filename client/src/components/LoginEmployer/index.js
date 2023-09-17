@@ -80,7 +80,7 @@ const LoginEmployer = () => {
             onChange={handleInputChange}
           />
         </div>
-        <button type="submit">Login</button>
+        <button className='w-100' type="submit">Login</button>
         {/* Use Link instead of anchor tag */}
       </form>
       <button className="button">

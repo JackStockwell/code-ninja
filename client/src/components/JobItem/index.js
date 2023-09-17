@@ -1,12 +1,22 @@
-import React from 'react';
-import { useMutation } from '@apollo/client';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Auth from '../../utils/auth';
-import { SAVE_JOB } from '../../utils/mutations';
+import React from "react";
+import {useMutation} from "@apollo/client";
+import Auth from "../../utils/auth";
+import {SAVE_JOB} from "../../utils/mutations";
 import "./JobItem.css";
 import { Link } from 'react-router-dom';
 import { Editor, EditorState, convertFromRaw } from 'draft-js';
-function JobItem({ _id, title, company, description, location, salary, tags, category }) {
+
+function JobItem({
+  _id,
+  title,
+  company,
+  description,
+  location,
+  salary,
+  tags,
+  category,
+}) {
+
 
     // Mutations
     const [saveJob, { error }] = useMutation(SAVE_JOB)
@@ -43,7 +53,7 @@ function JobItem({ _id, title, company, description, location, salary, tags, cat
         <main>
         <div className="job-item-container"> {/* Container for each job item */}
             <div className="job-card">
-                <h3>{title}</h3>
+                <h3 className="job-title">{title}</h3>
                 {/* Company div, deconstructs the prop */}
                 <div className="company-info">
                     <h4>{company.companyName}</h4>
@@ -53,9 +63,7 @@ function JobItem({ _id, title, company, description, location, salary, tags, cat
                     ) : (
                         <p>St Luke's, London</p>
                     )}
-                    <button>
-                        <Link to={`/cmp/${company.companyName}/${company._id}`}>Go to Company Profile</Link>
-                    </button>
+                    <Link className="category-button" to={`/cmp/${company.companyName}/${company._id}`} >Profile</Link>
                 </div>
                 <p>{salary}</p>
                 {tags &&
@@ -63,10 +71,7 @@ function JobItem({ _id, title, company, description, location, salary, tags, cat
                         return <p key={tag._id} id={tag._id}>{tag.name}</p>;
                     })}
                 <p>{category.name}</p>
-                <div>
-                    <Editor editorState={editorState} readOnly={true} />
-                </div>
-                
+                <Editor editorState={editorState} readOnly={true} />
                 {Auth.loggedIn() ? (
                     <>
                         <button data-id={_id} data-action="save" onClick={handleOnSave}>Save</button>
@@ -74,7 +79,7 @@ function JobItem({ _id, title, company, description, location, salary, tags, cat
                     </>
                 ) : (
                     <>
-                        <span>You must be logged in to apply!</span>
+                        <Link to='/login' className="button">You must be logged in to Apply!</Link>
                     </>
                 )}
             </div>

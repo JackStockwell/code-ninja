@@ -143,8 +143,6 @@ const CreateEmployer = () => {
               name="companyName"
               value={userFormData.companyName || ""}
               placeholder="Company Name"
-              pattern="^\S+$"
-              title="Name&#39;s cannot contain spaces"
               onChange={handleInputChange}
               onInvalid={() =>
                 setErrorData({error: "Name's cannot contain spaces"})
@@ -152,7 +150,7 @@ const CreateEmployer = () => {
             />
           </div>
         </div>
-        <button type="submit">Register</button>
+        <button className='w-100' type="submit">Register</button>
       </form>
       <button className="button">
         <Link className="link" to="/login">

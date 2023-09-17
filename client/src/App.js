@@ -15,6 +15,7 @@ import Footer from "./components/Footer";
 import JobSearch from "./pages/JobSearch";
 import Header from "./components/Header/Header";
 import UserProfile from "./components/LoggedProfiles/User";
+import EmployerProfile from "./components/LoggedProfiles/Employer"
 import CompanyProfile from "./pages/CompanyProfile";
 import EmployerLanding from "./pages/EmployerLanding";
 import Lost from "./pages/404";
@@ -81,7 +82,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/user/myprofile" element={<UserProfile />} />
-            <Route path="/cmp/myprofile" element={<CompanyProfile />} />
+            <Route path="/cmp/myprofile" element={<EmployerProfile />} />
             <Route path="/cmp/:company/:id" element={<CompanyProfile />} />
             <Route path="/dev" element={<Dev />} />
             <Route path="/employer" element={<EmployerLanding />} />

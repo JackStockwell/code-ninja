@@ -148,7 +148,7 @@ const CreateUser = () => {
                         />
                     </div>
                 </div>
-                <button type="submit">Register</button>
+                <button className='w-100' type="submit">Register</button>
             </form>
             <button className='button'><Link className='link' to="/login">Already have an account? Login here.</Link></button>
         </div>

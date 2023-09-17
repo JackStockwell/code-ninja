@@ -29,6 +29,10 @@
   touch-action: manipulation;
 }
 
+.w-100 {
+  width: 100%;
+}
+
 .button:focus {
   color: #171e29;
 }
@@ -48,6 +52,8 @@
   color: var(--color);
   fill: var(--color);
 }
+
+
 
 @media (min-width: 768px) {
   .button-59 {

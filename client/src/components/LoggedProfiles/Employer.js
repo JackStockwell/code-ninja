@@ -38,9 +38,10 @@ const EmpProfile = () => {
             <div>
                 {loggedUser ? (
                     <>
-                        <h3>Hi {userData?.companyName}, welcome back.</h3>
-                        <JobCreate />
-                    
+                        <div>
+                            <h3>Hi {userData?.companyName}, welcome back.</h3>
+                            <JobCreate />
+                        </div>
                     </>
                 ) : (
                     <>

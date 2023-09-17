@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import EmpProfile from '../components/LoggedProfiles/Employer'
 import { useParams } from 'react-router-dom'
 
-// Database Imports
+// Utils and Comps
+import Auth from '../utils/auth'
+import Employer from '../components/LoggedProfiles/Employer'
 
+// Database Imports
 import { COMPANY_QUERY } from '../utils/queries'
 import { useQuery } from '@apollo/client'
 
@@ -32,7 +35,7 @@ const CompanyProfile = () => {
                         <p>{empData.email}</p>
                         <p>{empData.location || "location"}</p>
                     </div>
-
+                        
                     <div>
                         
                     </div>

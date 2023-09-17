@@ -3,13 +3,12 @@ import { useJobContext } from "../../utils/GlobalState";
 import {
   UPDATE_CATEGORIES,
   UPDATE_CURRENT_CATEGORY,
-  UPDATE_JOBS,
 } from "../../utils/actions";
 import { useQuery } from "@apollo/client";
 import { QUERY_CATEGORIES, QUERY_JOBS_BY_CATEGORY } from "../../utils/queries";
 import { idbPromise } from "../../utils/helpers";
 
-import "../css/category.css";
+import "./category.css";
 
 const CategoryMenu = () => {
   const [state, dispatch] = useJobContext();
