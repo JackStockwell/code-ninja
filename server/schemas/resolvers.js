@@ -33,7 +33,11 @@ const resolvers = {
                     )
                     .populate([
                         { path: 'location', model: 'Location' },
-                        { path: 'jobs', model: 'Job' },
+                        { path: 'jobs', model: 'Job', populate: [
+                            { path: 'category', model: 'Category' },
+                            { path: 'tags', model: 'Tag' },
+                            { path: 'company', model: 'Employer' }, 
+                        ]},
                     ]);
 
                     return empData;
@@ -219,6 +223,32 @@ const resolvers = {
             ]);
 
             return userData
+        },
+        applyJob: async (parent, { id }, context) => {
+
+            if (!context.user) {
+                throw new AuthenticationError('You must be logged in to perform this action!')
+            }
+
+            try {
+                await Job.findOneAndUpdate(
+                    { _id: id },
+                    { $addToSet: { applicants: id } },
+                    { new: true, runValidators: true }
+                )
+    
+                const userData = await User.findOneAndUpdate(
+                    { _id: context.user._id },
+                    { $addToSet: { jobApply: id } },
+                    { new: true, runValidators: true }
+                )
+
+                return userData
+            } catch(err) {
+                throw new AuthenticationError(err)
+            }
+
+            
         },
         createJob: async (parent, { input }, context) => {
             

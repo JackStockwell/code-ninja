@@ -5,7 +5,10 @@ import Auth from '../../utils/auth'
 import JobCreate from '../JobCreate';
 import { Spinner } from 'react-bootstrap';
 import { Navigate } from 'react-router-dom';
-import './Employer.css';
+
+import './Employer.css'
+import JobListProfile from '../JobListProfile';
+
 
 
 const EmpProfile = () => {
@@ -31,29 +34,27 @@ const EmpProfile = () => {
         return <h4 style={{textAlign: 'center'}}><Spinner /></h4>
     }
 
-    const handleModalState = () => setJobModal((prev) => prev = !prev)
-
     return (
         <>  
-    <div className="container">
-  {loggedUser ? (
-    <>
-      <div>
-        <h3 className="greeting">Hi {userData?.companyName}, welcome back.</h3>
-        <JobCreate />
-      </div>
-    </>
-  ) : (
-    <>
-      {!loading && !data && (
-        <p className="navigate-link"><Navigate to="/employer">Go to Employer Page</Navigate></p>
-      )}
-    </>
-  )}
-
-  <p className="test-paragraph">Test</p>
-</div>
-
+            <div className=''>
+                {loggedUser ? (
+                    <div>
+                        <div className='emp-info'>
+                            <h3>Hi {userData.companyName}, welcome back.</h3>
+                            <p>{userData.about}</p>
+                            <p>{userData.location}</p>
+                        </div>
+                        <div>
+                            <JobCreate />
+                        </div>
+                        <JobListProfile {...userData} />
+                    </div>
+                ) : (
+                    <>
+                        {!loading && !userData.companyName && <Navigate to='/employer'/>}
+                    </>
+                )}
+            </div>
         </>
     )
 }

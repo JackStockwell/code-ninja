@@ -21,6 +21,7 @@ const typeDefs = gql`
         description: String!
         category: Category!
         tags: [Tag]!
+        applicants: [User]
     }
 
     type Location {
@@ -122,6 +123,7 @@ const typeDefs = gql`
         createTag(name: String!): Tag
         saveJob(id: ID!): User
         createJob(input: jobInput!): Job
+        applyJob(input: ID): Job
     }
 
 `;

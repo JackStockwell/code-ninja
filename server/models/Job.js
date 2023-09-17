@@ -27,6 +27,10 @@ const jobSchema = new Schema({
             ref: 'Tag',
             required: true
         }],
+        applicants: [{
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        }]
     }
 );
 

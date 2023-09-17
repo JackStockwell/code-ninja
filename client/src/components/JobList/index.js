@@ -16,19 +16,16 @@ const JobList = () => {
   const [state, dispatch] = useJobContext();
 
   // Get the current category from state.
-  let {currentCategory} = state;
+  const {currentCategory} = state;
 
-  // If there is no currentCat, turn the value to null. Allowing for an unfiltered response.
-  if (!currentCategory.length) {
-    currentCategory = null;
-  }
+
 
   //
   const [page, setPage] = useState(0);
 
   const {data, loading, error} = useQuery(QUERY_JOBS, {
     variables: {
-      limit: 5,
+      limit: 6,
       offset: page * PAGE_SIZE,
       category: currentCategory,
     },
@@ -38,7 +35,7 @@ const JobList = () => {
     if (!currentCategory) {
       return state.jobs;
     }
-    
+    console.log(state.jobs)
     return state.jobs.filter(
       (job) => job.category._id === currentCategory
     )
@@ -51,7 +48,6 @@ const JobList = () => {
               type: UPDATE_JOBS,
               jobs: data.jobs
             })
-            console.log(data.jobs)
         }
     }, [data, loading, dispatch]);
 
@@ -64,16 +60,16 @@ const JobList = () => {
       });
     }
     window.scrollTo({top: 100, left:100, behavior: 'instant' })
-  }, [data, loading, dispatch]);
+  }, [data, loading, dispatch, currentCategory]);
   
   return (
     <div>
       {state.jobs?.length ? (
-        <div>
+        <div className="job-wrapper">
             {state.jobs?.length ? (
-              <div>
+              <div className="job-item-container">
                   {filterJobs().map((job, index) => {
-                  return <JobItem {...job} key={index} />
+                    return <JobItem {...job} key={index} />
                   })}
               </div>
             ) : (
@@ -90,7 +86,7 @@ const JobList = () => {
               <button
                 disabled={state.jobs?.length < 5}
                 onClick={() => setPage((prev) => prev + 1)}
-                className={`nav-button ${state.jobs?.length < 5 ? "disabled" : ""}`}
+                className={`nav-button ${state.jobs?.length < 6 ? "disabled" : ""}`}
               >
                 <FontAwesomeIcon icon="fa-solid fa-chevron-right" />
               </button>
