@@ -60,6 +60,7 @@ const LoginEmployer = () => {
     <div className="login">
       <h2>Login</h2>
       <form onSubmit={handleFormSubmit}>
+        {error && <span>{error.graphQLErrors[0].message}</span>}
         <span>&nbsp;{errorData.error}&nbsp;</span>
         <div className="form-group">
           <label htmlFor="email">Email:</label>

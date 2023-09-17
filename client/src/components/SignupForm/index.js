@@ -70,13 +70,13 @@ const CreateUser = () => {
         } catch (err) {
             console.error(err)
         }
-    }
+    }    
 
     return (
         <div className="login">
             <h2>Sign up!</h2>
             <form onSubmit={handleFormSubmit}>
-                {error && <span>{error}</span>}
+                {error && <span>{error.graphQLErrors[0].message}</span>}
                 <span>&nbsp;{errorData.error || ''}&nbsp;</span>
                 <div className="form-group">
                     <label htmlFor="email">Email:</label>
@@ -88,6 +88,7 @@ const CreateUser = () => {
                         onChange={handleInputChange}
                     />
                 </div>
+                <span >Password must have at least 1 digit, 1 upper and lower case character and one of the following symbols !,@,#,$,%,^,&,*. Can be no fewer than 8 characters and no more than 40.</span>
                 <div className="form-group">
                     <label htmlFor="password">Password:</label>
                     <input

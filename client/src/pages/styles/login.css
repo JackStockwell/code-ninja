@@ -21,7 +21,7 @@
   justify-content: center;
   align-items: center; /* Center the content vertically */
   min-height: 100vh;
-  padding: 2rem 0;
+  padding: 2rem;
   overflow-y: auto; /* Add vertical scroll when content overflows */
   gap: 5rem;
 }

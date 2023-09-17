@@ -82,7 +82,7 @@ const CreateEmployer = () => {
     <div className="login">
       <h2>Register as a Company</h2>
       <form onSubmit={handleFormSubmit}>
-        {/* {error && <span>{error.clientErrors}</span>} */}
+        {error && <span>{error.graphQLErrors[0].message}</span>}
         <span>&nbsp;{errorData.error || ""}&nbsp;</span>
         <div className="form-group">
           <label htmlFor="email">Email:</label>
