@@ -54,6 +54,7 @@ const CategoryMenu = () => {
     })
   }
 
+  
   return (
 <div className="category-container">
   <div className="category-menu">

@@ -4,6 +4,8 @@ import { CREATE_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth'
 import { trimObjectValues } from '../../utils/helpers';
 import { redirect, Link } from 'react-router-dom';
+
+import HoverInfo from './HoverInfo';
 import './RegistrationForm.css';
 import '../../pages/styles/login.css';
 
@@ -88,19 +90,22 @@ const CreateUser = () => {
                         onChange={handleInputChange}
                     />
                 </div>
-                <span >Password must have at least 1 digit, 1 upper and lower case character and one of the following symbols !,@,#,$,%,^,&,*. Can be no fewer than 8 characters and no more than 40.</span>
+                
                 <div className="form-group">
                     <label htmlFor="password">Password:</label>
-                    <input
-                        type="password"
-                        name="password"
-                        value={userFormData.password || ''}
-                        placeholder='Password'
-                        onChange={handleInputChange}
-                        title="Password. Your password must follow the required pattern"
-                        pattern='^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,40}$'
-                        onInvalid={() => setErrorData({error: 'Password must have at least 1 digit, 1 upper and lower case character and one of the following symbols !,@,#,$,%,^,&,*. Can be no fewer than 8 characters and no more than 40.' })}
-                    />
+                    <div>
+                        <input
+                            type="password"
+                            name="password"
+                            value={userFormData.password || ''}
+                            placeholder='Password'
+                            onChange={handleInputChange}
+                            title="Password. Your password must follow the required pattern"
+                            pattern='^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,40}$'
+                            onInvalid={() => setErrorData({error: 'Password must have at least 1 digit, 1 upper and lower case character and one of the following symbols !,@,#,$,%,^,&,*. Can be no fewer than 8 characters and no more than 40.' })}
+                        />
+                        <HoverInfo />
+                    </div>
                 </div>
                 <div className="form-group">
                     <label htmlFor="password">Password:</label>

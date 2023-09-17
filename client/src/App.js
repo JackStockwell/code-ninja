@@ -34,6 +34,7 @@ import {
   faX,
   faChevronLeft,
   faChevronRight,
+  faCircleInfo,
 } from "@fortawesome/free-solid-svg-icons";
 import {faGithub, faLinkedin} from "@fortawesome/free-brands-svg-icons";
 
@@ -48,7 +49,8 @@ library.add(
   faGithub,
   faLinkedin,
   faChevronLeft,
-  faChevronRight
+  faChevronRight,
+  faCircleInfo
 );
 
 const httpLink = createUploadLink({

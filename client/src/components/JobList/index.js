@@ -42,7 +42,7 @@ const JobList = () => {
       }
 
       return state.jobs.filter(
-        (job) => job.category[0]._id === currentCategory
+        (job) => job.category._id === currentCategory
       )
     }
 
