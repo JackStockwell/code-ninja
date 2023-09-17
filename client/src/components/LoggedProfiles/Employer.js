@@ -5,7 +5,7 @@ import Auth from '../../utils/auth'
 import JobCreate from '../JobCreate';
 import { Spinner } from 'react-bootstrap';
 import { Navigate } from 'react-router-dom';
-
+import './Employer.css';
 
 
 const EmpProfile = () => {
@@ -35,22 +35,25 @@ const EmpProfile = () => {
 
     return (
         <>  
-            <div>
-                {loggedUser ? (
-                    <>
-                        <div>
-                            <h3>Hi {userData?.companyName}, welcome back.</h3>
-                            <JobCreate />
-                        </div>
-                    </>
-                ) : (
-                    <>
-                        {!loading && !data && <Navigate to='/employer'/>}
-                    </>
-                )}
-                
-                <p>Test</p>
-            </div>
+    <div className="container">
+  {loggedUser ? (
+    <>
+      <div>
+        <h3 className="greeting">Hi {userData?.companyName}, welcome back.</h3>
+        <JobCreate />
+      </div>
+    </>
+  ) : (
+    <>
+      {!loading && !data && (
+        <p className="navigate-link"><Navigate to="/employer">Go to Employer Page</Navigate></p>
+      )}
+    </>
+  )}
+
+  <p className="test-paragraph">Test</p>
+</div>
+
         </>
     )
 }

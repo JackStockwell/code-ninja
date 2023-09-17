@@ -1,7 +1,7 @@
 import React from 'react';
 import { GET_ME } from '../../utils/queries';
 import { useQuery } from '@apollo/client';
-import './User.css'; // Import your stylesheet
+import './User.css'; 
 
 const Profile = () => {
   const { loading, data } = useQuery(GET_ME);
