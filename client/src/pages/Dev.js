@@ -1,12 +1,16 @@
+import { Editor, EditorState, convertFromRaw } from 'draft-js';
 import React from 'react';
-// import UploadFile from '../components/UploadFile/index'
-import TextEditor from '../components/TextEditor/index'
+import descriptionData from '../utils/descriptionData.json'
 
 const Dev = () => {
+
+    const contentState = convertFromRaw(descriptionData)
+    const editorState = EditorState.createWithContent(contentState)
+
     return (
         <>
             <div>
-                <TextEditor />
+                <Editor editorState={editorState} readOnly={true} />
             </div>
         </>
     )

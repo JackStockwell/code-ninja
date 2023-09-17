@@ -42,6 +42,7 @@ const JobList = () => {
     return state.jobs.filter(
       (job) => job.category._id === currentCategory
     )
+  }
 
     //Runs when data or currentCategory is updated.
     useEffect(() => {
@@ -54,9 +55,21 @@ const JobList = () => {
         }
     }, [data, loading, dispatch]);
 
-    return (
+  //Runs when data or currentCategory is updated.
+  useEffect(() => {
+    if (data) {
+      dispatch({
+        type: UPDATE_JOBS,
+        jobs: data.jobs,
+      });
+    }
+    window.scrollTo({top: 100, left:100, behavior: 'instant' })
+  }, [data, loading, dispatch]);
+  
+  return (
+    <div>
+      {state.jobs?.length ? (
         <div>
-            <h2>Jobs:</h2>
             {state.jobs?.length ? (
               <div>
                   {filterJobs().map((job, index) => {
@@ -83,7 +96,12 @@ const JobList = () => {
               </button>
             </div>
             {loading ? <span>Loading...</span> : null}
-
+        </div>
+      ) : (
+        <div className="no-jobs-message">
+          <p>No Jobs</p>
+        </div>
+      )}
     </div>
   );
 };

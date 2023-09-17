@@ -32,6 +32,7 @@
   font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 1px;
+  text-decoration: none;
 }
 
 .category-button:hover {
@@ -40,6 +41,10 @@
 
 .category-button.active {
   background-color: #2ecc71;
+}
+
+.category-button a:any-link {
+  text-decoration: none !important;
 }
 
 /* Media query for responsiveness */
