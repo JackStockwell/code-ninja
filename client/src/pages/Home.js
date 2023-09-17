@@ -1,8 +1,7 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons"; // Import the icon you want to use
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faStar} from "@fortawesome/free-solid-svg-icons"; // Import the icon you want to use
 import "./styles/home.css";
-
 
 const jobBlogPosts = [
   {
@@ -27,31 +26,29 @@ const jobBlogPosts = [
   },
 ];
 
+function Home() {
+  return (
+    <div className="home">
+      <main>
+        <section className="container">
+          <h2>Welcome to GitJobs </h2>
+          <p>Unlock Your Future: Find Your Dream Job!.</p>
+        </section>
+        <section className="container">
+          <h2>Recent Job Blog Posts</h2>
+          <ul>
+            {jobBlogPosts.map((post, index) => (
+              <li key={index}>
+                <a href={`/blog/post-${index + 1}`}>{post.title}</a>
+                <p>{post.description}</p>
+                <FontAwesomeIcon icon={faStar} />
+              </li>
+            ))}
+          </ul>
+        </section>
+      </main>
+    </div>
+  );
+}
 
-  function Home() {
-    return (
-      <div className="home">
-        <main>
-          <section className="container">
-            <h2>Welcome to GitJobs </h2>
-            <p>Unlock Your Future: Find Your Dream Job!.</p>
-          </section>
-          <section className="container">
-            <h2>Recent Job Blog Posts</h2>
-            <ul>
-              {jobBlogPosts.map((post, index) => (
-                <li key={index}>
-                  <a href={`/blog/post-${index + 1}`}>{post.title}</a>
-                  <p>{post.description}</p>
-                  <FontAwesomeIcon icon={faStar} /> 
-                </li>
-              ))}
-            </ul>
-          </section>
-        </main>
-      </div>
-    );
-  }
-  
-  export default Home;
-  
+export default Home;

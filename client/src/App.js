@@ -7,18 +7,18 @@ import {createUploadLink} from "apollo-upload-client";
 import {JobProvider} from "./utils/GlobalState";
 
 // Components and Page imports
-import Home from './pages/Home'; 
-import LoginPage from './pages/Login'; 
-import SignUp from './pages/SignUp'
+import Home from "./pages/Home";
+import LoginPage from "./pages/Login";
+import SignUp from "./pages/SignUp";
 import Dev from "./pages/Dev";
 import Footer from "./components/Footer";
-import JobSearch from './pages/JobSearch'
+import JobSearch from "./pages/JobSearch";
 import Header from "./components/Header/Header";
 import UserProfile from "./pages/UserProfile";
 import EmpProfile from "./pages/EmpProfile";
 import EmployerLanding from "./pages/EmployerLanding";
 import Lost from "./pages/404";
-
+import BlogPost1 from "./pages/BlogPost1";
 
 import {library} from "@fortawesome/fontawesome-svg-core";
 import {
@@ -30,7 +30,7 @@ import {
   faEnvelope,
   faX,
   faChevronLeft,
-  faChevronRight
+  faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 import {faGithub, faLinkedin} from "@fortawesome/free-brands-svg-icons";
 
@@ -72,17 +72,18 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <JobProvider>
-          <Header /> 
+          <Header />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/user/myprofile" element={<UserProfile />} />
             <Route path="/cmp/myprofile" element={<EmpProfile />} />
             <Route path="/dev" element={<Dev />} />
-            <Route path="/employer" element={<EmployerLanding />}/>
+            <Route path="/employer" element={<EmployerLanding />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<SignUp />} />
             <Route path="/search" element={<JobSearch />} />
             <Route path="*" element={<Lost />} />
+            <Route path="/blog/post-1" element={<BlogPost1 />} />
           </Routes>
           <Footer />
         </JobProvider>
