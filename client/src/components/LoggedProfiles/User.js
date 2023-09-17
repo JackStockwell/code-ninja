@@ -3,6 +3,8 @@ import { GET_ME } from '../../utils/queries';
 import { useQuery } from '@apollo/client';
 import './User.css'; 
 
+import UploadFile from '../UploadFile'
+
 const Profile = () => {
   const { loading, data } = useQuery(GET_ME);
 
@@ -17,12 +19,18 @@ const Profile = () => {
       <div className="profile-container">
         <h2 className="profile-title">User Profile</h2>
         {userData.firstName ? (
-          <div className="profile-data">
-            <p><span>First Name:</span> {userData.firstName}</p>
-            <p><span>Last Name:</span> {userData.lastName}</p>
-            <p><span>Email:</span> {userData.email}</p>
-            {/* Add more user data fields as needed */}
-          </div>
+            <>
+                <div className="profile-data">
+                    <p><span>First Name:</span> {userData.firstName}</p>
+                    <p><span>Last Name:</span> {userData.lastName}</p>
+                    <p><span>Email:</span> {userData.email}</p>
+                    {/* Add more user data fields as needed */}
+                </div>
+                <div>
+                    <h3>Upload your resume here!</h3>
+                    <UploadFile />
+                </div>
+            </>
         ) : (
           <div className="error-message">
             <p>Please log in to see your profile.</p>
