@@ -5,10 +5,14 @@ import Auth from '../../utils/auth';
 import { SAVE_JOB } from '../../utils/mutations';
 import "./JobItem.css";
 import { Link } from 'react-router-dom';
+import { Editor, EditorState, convertFromRaw } from 'draft-js';
 function JobItem({ _id, title, company, description, location, salary, tags, category }) {
 
     // Mutations
     const [saveJob, { error }] = useMutation(SAVE_JOB)
+    
+    const contentState = convertFromRaw(JSON.parse(description));
+    const editorState = EditorState.createWithContent(contentState)
 
     // Handles the onClick of the button, performs a different action depending on what was clicked.
     const handleOnSave = async ({ target }) => {
@@ -59,7 +63,9 @@ function JobItem({ _id, title, company, description, location, salary, tags, cat
                         return <p key={tag._id} id={tag._id}>{tag.name}</p>;
                     })}
                 <p>{category.name}</p>
-                <p>{description}</p>
+                <div>
+                    <Editor editorState={editorState} readOnly={true} />
+                </div>
                 
                 {Auth.loggedIn() ? (
                     <>

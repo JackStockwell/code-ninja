@@ -17,21 +17,27 @@ const CompanyProfile = () => {
         { variables: { getCompanyId: id } }
     )
 
-    const empData = data?.getCompany
+    const empData = data?.getCompany || []
 
     console.log(empData)
 
     return (
-        <>
-            <div>
-                <h1>{empData.companyName}</h1>
-                <p>{empData.about}</p>
-                <p>{empData.email}</p>
-                <p>{empData.location || "location"}</p>
-            </div>
-            <div>
-                
-            </div>
+        <>  
+            {loading && (<h4>Loading...</h4>)}
+            {empData && (
+                <>
+                    <div>
+                        <h1>{empData.companyName}</h1>
+                        <p>{empData.about}</p>
+                        <p>{empData.email}</p>
+                        <p>{empData.location || "location"}</p>
+                    </div>
+
+                    <div>
+                        
+                    </div>
+                </>
+            )}
         </>
     )
 }

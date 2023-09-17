@@ -12,6 +12,7 @@ const newTag = require('./data/tags')
 // Data
 const categorySeeds = require('./data/categoryOld.json')
 const tagSeeds = require('./data/tagsOld.json')
+const descriptionData = require('./data/descriptionData.json')
 
 
 connection.once('open', async () => {
@@ -72,7 +73,7 @@ connection.once('open', async () => {
             title: getRandomTitle(i),
             company: getRandomArrItem(employers)._id,
             salary: Math.floor(Math.random() * (60 - 24 + 1)) + 24,
-            description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis non reprehenderit blanditiis assumenda officiis numquam sapiente nemo id, soluta facilis molestiae iure tempore, magni quo, repudiandae pariatur cum.",
+            description: JSON.stringify(descriptionData),
             category: getRandomArrItem(categories)._id,
             tags: [getRandomArrItem(tags)._id, getRandomArrItem(tags)._id],
         }
