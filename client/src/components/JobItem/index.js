@@ -3,8 +3,8 @@ import {useMutation} from "@apollo/client";
 import Auth from "../../utils/auth";
 import {SAVE_JOB} from "../../utils/mutations";
 import "./JobItem.css";
-import { Link } from 'react-router-dom';
-import { Editor, EditorState, convertFromRaw } from 'draft-js';
+import {Link} from "react-router-dom";
+import {Editor, EditorState, convertFromRaw} from "draft-js";
 
 function JobItem({
   _id,
@@ -17,37 +17,27 @@ function JobItem({
   category,
   currentCategory
 }) {
+  const [saveJob, {error}] = useMutation(SAVE_JOB);
 
-    // Mutations
-    const [saveJob, { error }] = useMutation(SAVE_JOB)
-    
-    const contentState = convertFromRaw(JSON.parse(description));
-    const editorState = EditorState.createWithContent(contentState)
+  const contentState = convertFromRaw(JSON.parse(description));
+  const editorState = EditorState.createWithContent(contentState);
 
-    // Handles the onClick of the button, performs a different action depending on what was clicked.
-    const handleOnSave = async ({ target }) => {
-        // Gets the id from the target.
-        const id = target.dataset.id
-        // Checks to see if logged in, returns if not.
-        if (!Auth.loggedIn()) {
-            return
-        }
-        // API call to save the job.
-        try {
-            const { data } = await saveJob({
-                variables: { id: id }
-            })
-            console.log(data)
-        } catch (err) {
-            console.error(err)
-        }
+  const handleOnSave = async ({target}) => {
+    const id = target.dataset.id;
+    if (!Auth.loggedIn()) {
+      return;
     }
-
-    const handleOnApply = () => {
-        
+    try {
+      const {data} = await saveJob({
+        variables: {id: id},
+      });
+      console.log(data);
+    } catch (err) {
+      console.error(err);
     }
+  };
 
-    console.log(company)
+  const handleOnApply = () => {};
 
     return (
         <div className="job-card">
