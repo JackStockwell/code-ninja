@@ -65,7 +65,7 @@ const JobList = () => {
   return (
     <div>
       {state.jobs?.length ? (
-        <div>
+        <div className="job-wrapper">
             {state.jobs?.length ? (
               <div className="job-item-container">
                   {filterJobs().map((job, index) => {

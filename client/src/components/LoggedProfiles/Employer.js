@@ -6,7 +6,7 @@ import JobCreate from '../JobCreate';
 import { Spinner } from 'react-bootstrap';
 import { Navigate } from 'react-router-dom';
 
-import './employer.css'
+import './Employer.css'
 import JobItem from '../JobItem';
 
 
@@ -54,13 +54,17 @@ const EmpProfile = () => {
                             <div className='emp-job-list'>
                                 {userData?.jobs.map((job) => {
                                     return (
-                                        <div key={job._id} onClick={() => setSelectedJob(job)}>
-                                            <p>{job.title}</p>
+                                        <div className='job-card' onClick={() => setSelectedJob(job)}>
+                                            <div key={job._id}>
+                                                <h4>{job.title}</h4>
+                                                <h5>{job.company.companyName}</h5>
+                                                <h5>{job.location}</h5>
+                                            </div>
                                         </div>
                                     )
                                 })}
                             </div>
-                            <div>
+                            <div className='emp-job-viewer'>
                                 {selectedJob?.title && 
                                     <JobItem {...selectedJob} />
                                 }
