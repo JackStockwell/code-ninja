@@ -91,7 +91,7 @@ const JobCreate = () => {
         // Gets the current content from the editor state.
         const contentState = editorState.getCurrentContent()
         // Checks to see if there is sufficient text length
-        if (contentState.getPlainText().length < 1) {
+        if (contentState.getPlainText().length < 10) {
             setErrorData({error: "To keep your Job Description professional, it must be at least 200 characters in length"})
         }
         // Stringifies the data, sets the user data description to theee string format.
