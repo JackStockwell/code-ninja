@@ -60,7 +60,7 @@ const JobList = () => {
       });
     }
     window.scrollTo({top: 100, left:100, behavior: 'instant' })
-  }, [data, loading, dispatch]);
+  }, [data, loading, dispatch, currentCategory]);
   
   return (
     <div>

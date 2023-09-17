@@ -7,7 +7,7 @@ import { Spinner } from 'react-bootstrap';
 import { Navigate } from 'react-router-dom';
 
 import './Employer.css'
-import JobItem from '../JobItem';
+import JobListProfile from '../JobListProfile';
 
 
 
@@ -17,7 +17,6 @@ const EmpProfile = () => {
 
     const [loggedUser, setLoggedMatch] = useState(false)
     const [jobModal, setJobModal] = useState(false)
-    const [selectedJob, setSelectedJob] = useState({})
 
     const { loading, data } = useQuery(GET_ME_EMP)
 
@@ -34,9 +33,7 @@ const EmpProfile = () => {
     if (loading) {
         return <h4 style={{textAlign: 'center'}}><Spinner /></h4>
     }
-    
-    console.log(selectedJob)
-    console.log(userData)
+
     return (
         <>  
             <div className=''>
@@ -50,26 +47,7 @@ const EmpProfile = () => {
                         <div>
                             <JobCreate />
                         </div>
-                        <div className='emp-wrapper'>
-                            <div className='emp-job-list'>
-                                {userData?.jobs.map((job) => {
-                                    return (
-                                        <div className='job-card' onClick={() => setSelectedJob(job)}>
-                                            <div key={job._id}>
-                                                <h4>{job.title}</h4>
-                                                <h5>{job.company.companyName}</h5>
-                                                <h5>{job.location}</h5>
-                                            </div>
-                                        </div>
-                                    )
-                                })}
-                            </div>
-                            <div className='emp-job-viewer'>
-                                {selectedJob?.title && 
-                                    <JobItem {...selectedJob} />
-                                }
-                            </div>
-                        </div>
+                        <JobListProfile {...userData} />
                     </div>
                 ) : (
                     <>
