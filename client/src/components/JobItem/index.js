@@ -17,7 +17,6 @@ function JobItem({
   category,
 }) {
 
-
     // Mutations
     const [saveJob, { error }] = useMutation(SAVE_JOB)
     
@@ -50,8 +49,8 @@ function JobItem({
     console.log(company)
 
     return (
-        <main>
         <div className="job-item-container"> {/* Container for each job item */}
+            {" "}
             <div className="job-card">
                 <h3 className="job-title">{title}</h3>
                 {/* Company div, deconstructs the prop */}
@@ -73,18 +72,23 @@ function JobItem({
                 <p>{category.name}</p>
                 <Editor editorState={editorState} readOnly={true} />
                 {Auth.loggedIn() ? (
-                    <>
-                        <button data-id={_id} data-action="save" onClick={handleOnSave}>Save</button>
-                        <button data-id={_id} data-action="apply" onClick={handleOnApply}>Apply</button>
-                    </>
+                  <div className="buttons">
+                  {/* Button container */}
+                    <button data-id={_id} data-action="save" onClick={handleOnSave}>
+                        Save
+                        </button>
+                    <button data-id={_id} data-action="apply" onClick={handleOnApply}>
+                    Apply
+                    </button>
+                </div>
                 ) : (
                     <>
                         <Link to='/login' className="button">You must be logged in to Apply!</Link>
                     </>
                 )}
+
             </div>
         </div>
-        </main>
     )
 }
 

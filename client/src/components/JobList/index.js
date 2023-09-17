@@ -38,9 +38,22 @@ const JobList = () => {
     if (!currentCategory) {
       return state.jobs;
     }
-
-    return state.jobs.filter((job) => job.category._id === currentCategory);
+    
+    return state.jobs.filter(
+      (job) => job.category._id === currentCategory
+    )
   }
+
+    //Runs when data or currentCategory is updated.
+    useEffect(() => {
+        if(data) {
+            dispatch({
+              type: UPDATE_JOBS,
+              jobs: data.jobs
+            })
+            console.log(data.jobs)
+        }
+    }, [data, loading, dispatch]);
 
   //Runs when data or currentCategory is updated.
   useEffect(() => {
