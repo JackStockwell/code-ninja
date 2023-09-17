@@ -38,7 +38,7 @@
   background: rgba(255, 255, 255, 0.8);
   padding: 20px;
   border-radius: 15px;
-  transform: rotate(-3deg);
+  /* transform: rotate(-3deg); */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 

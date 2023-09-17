@@ -6,9 +6,13 @@ background: rgba(255, 255, 255, 0.8);
 }
 
 .category-menu h2 {
-  font-size: 1.8rem; /* Slightly larger font size */
-  margin-bottom: 15px; /* More spacing at the bottom */
-  color: #181616; /* Darker text color */
+  font-size: 1.5em; /* Adjust the font size as needed */
+  margin-bottom: 20px; /* Add more spacing between the title and the job list */
+  color: #333; /* Change the text color if desired */
+  font-weight: bold; /* Make the title bold for emphasis */
+  text-transform: uppercase; /* Convert text to uppercase for style */
+  letter-spacing: 2px; /* Add letter-spacing for better readability */
+  /* Add more CSS properties as needed for your styling */
 }
 
 .category-buttons {

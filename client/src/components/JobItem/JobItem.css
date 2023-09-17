@@ -10,7 +10,7 @@ main {
   }
   
   .job-card {
-    background-color: coral;
+    background-color:  #fa991c;
 
 
 
@@ -26,6 +26,12 @@ main {
     position: relative;
     box-shadow: 0 10px 20px rgba(7, 7, 7, 0.2); 
     transition: transform 0.2s ease-in-out; 
+    font-size: 0.8rem; 
+    margin-bottom: 20px;
+    color: #333; 
+    font-weight: bold; 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
   }
   
   .job-card:hover {

@@ -58,14 +58,14 @@ const JobList = () => {
     }, [data, loading, dispatch]);
 
     return (
+      <div>
+      <h2 className="job-list__title">Current Job Listings</h2>
+      {state.jobs?.length ? (
         <div>
-            <h2>Jobs:</h2>
-            {state.jobs?.length ? (
-              <div>
-                  {filterJobs().map((job, index) => {
-                  return <JobItem {...job} key={index} />
-                  })}
-              </div>
+          {filterJobs().map((job, index) => (
+            <JobItem {...job} key={index} />
+          ))}
+        </div>
             ) : (
                 <div><p>No Jobs</p></div>
             )}
