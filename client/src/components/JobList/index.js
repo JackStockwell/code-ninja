@@ -62,7 +62,7 @@ const JobList = () => {
           })}
         </div>
       ) : (
-        <div>
+        <div className="no-jobs-message">
           <p>No Jobs</p>
         </div>
       )}

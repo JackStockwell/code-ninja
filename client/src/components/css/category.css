@@ -1,14 +1,16 @@
 .category-menu {
-background: rgba(255, 255, 255, 0.8);
-  /* border-radius: 10px; */
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.3); 
+  background: #f8f8f8;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
+  padding: 20px;
+  margin: 20px auto;
 }
 
 .category-menu h2 {
-  font-size: 1.8rem; /* Slightly larger font size */
-  margin-bottom: 15px; /* More spacing at the bottom */
-  color: #181616; /* Darker text color */
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #333;
 }
 
 .category-buttons {
@@ -18,19 +20,22 @@ background: rgba(255, 255, 255, 0.8);
 }
 
 .category-button {
-  background-color:#0a74ee;
-  color: #fffafa;
+  background-color: #007bff;
+  color: #fff;
   border: none;
-  border-radius: 5px;
-  padding: 12px 24px; 
-  margin: 8px; 
+  border-radius: 4px;
+  padding: 12px 20px;
+  margin: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  font-weight: bold; 
+  font-weight: bold;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .category-button:hover {
-  background-color:  #2ecc71
+  background-color: #0056b3;
 }
 
 .category-button.active {
