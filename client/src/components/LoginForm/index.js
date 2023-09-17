@@ -97,7 +97,7 @@ const LoginForm = () => {
               <button className='w-100' type="submit">Login</button>
               {/* Use Link instead of anchor tag */}
             </form>
-            <button className='button'><Link className='link' to="/register">Don't have an account? Register here.</Link></button>
+            <button className='button w-100'><Link className='link' to="/register">Don't have an account? Register here.</Link></button>
           </div>
         </div>
       );

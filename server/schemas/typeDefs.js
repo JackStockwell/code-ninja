@@ -123,7 +123,7 @@ const typeDefs = gql`
         createTag(name: String!): Tag
         saveJob(id: ID!): User
         createJob(input: jobInput!): Job
-        applyJob(input: ID): Job
+        applyJob(id: ID): Job
     }
 
 `;
