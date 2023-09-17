@@ -86,7 +86,6 @@ function JobItem({
                         <Link to='/login' className="button">You must be logged in to Apply!</Link>
                     </>
                 )}
-
             </div>
         </div>
     )
