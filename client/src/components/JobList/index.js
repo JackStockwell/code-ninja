@@ -1,10 +1,10 @@
 /* eslint-disable */
-import { useEffect, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useJobContext } from "../../utils/GlobalState";
-import { QUERY_JOBS } from "../../utils/queries";
-import { UPDATE_JOBS } from "../../utils/actions";
-import { useQuery } from "@apollo/client";
+import {useEffect, useState} from "react";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {useJobContext} from "../../utils/GlobalState";
+import {QUERY_JOBS} from "../../utils/queries";
+import {UPDATE_JOBS} from "../../utils/actions";
+import {useQuery} from "@apollo/client";
 import "./JobList.css";
 
 import JobItem from "../JobItem";
@@ -12,39 +12,36 @@ import JobItem from "../JobItem";
 const PAGE_SIZE = 3;
 
 const JobList = () => {
-    // State import
-    const [state, dispatch] = useJobContext();
+  // State import
+  const [state, dispatch] = useJobContext();
 
-    // Get the current category from state.
-    let { currentCategory } = state;
+  // Get the current category from state.
+  let {currentCategory} = state;
 
-    // If there is no currentCat, turn the value to null. Allowing for an unfiltered response.
-    if (!currentCategory.length) {
-      currentCategory = null
+  // If there is no currentCat, turn the value to null. Allowing for an unfiltered response.
+  if (!currentCategory.length) {
+    currentCategory = null;
+  }
+
+  //
+  const [page, setPage] = useState(0);
+
+  const {data, loading, error} = useQuery(QUERY_JOBS, {
+    variables: {
+      limit: 5,
+      offset: page * PAGE_SIZE,
+      category: currentCategory,
+    },
+  });
+
+  function filterJobs() {
+    if (!currentCategory) {
+      return state.jobs;
     }
-
-    // 
-    const [page, setPage] = useState(0);
-  
-    const { data,  loading, error } = useQuery(QUERY_JOBS,
-      {
-        variables: {
-          limit: 5,
-          offset: page * PAGE_SIZE,
-          category: currentCategory
-        },
-      }
-    );
-
-    function filterJobs() {
-      if(!currentCategory) {
-        return state.jobs
-      }
-
-      return state.jobs.filter(
-        (job) => job.category._id === currentCategory
-      )
-    }
+    
+    return state.jobs.filter(
+      (job) => job.category._id === currentCategory
+    )
 
     //Runs when data or currentCategory is updated.
     useEffect(() => {
@@ -86,8 +83,9 @@ const JobList = () => {
               </button>
             </div>
             {loading ? <span>Loading...</span> : null}
-        </div>
-    )
-}
+
+    </div>
+  );
+};
 
 export default JobList;

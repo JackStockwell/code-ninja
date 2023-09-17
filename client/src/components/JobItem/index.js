@@ -1,43 +1,52 @@
-import React from 'react';
-import { useMutation } from '@apollo/client';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Auth from '../../utils/auth';
-import { SAVE_JOB } from '../../utils/mutations';
+import React from "react";
+import {useMutation} from "@apollo/client";
+import Auth from "../../utils/auth";
+import {SAVE_JOB} from "../../utils/mutations";
 import "./JobItem.css";
-import { Link } from 'react-router-dom';
-function JobItem({ _id, title, company, description, location, salary, tags, category }) {
 
-    // Mutations
-    const [saveJob, { error }] = useMutation(SAVE_JOB)
+function JobItem({
+  _id,
+  title,
+  company,
+  description,
+  location,
+  salary,
+  tags,
+  category,
+}) {
+  // Mutations
+  const [saveJob, {error}] = useMutation(SAVE_JOB);
 
-    // Handles the onClick of the button, performs a different action depending on what was clicked.
-    const handleOnSave = async ({ target }) => {
-        // Gets the id from the target.
-        const id = target.dataset.id
-        // Checks to see if logged in, returns if not.
-        if (!Auth.loggedIn()) {
-            return
-        }
-        // API call to save the job.
-        try {
-            const { data } = await saveJob({
-                variables: { id: id }
-            })
-            console.log(data)
-        } catch (err) {
-            console.error(err)
-        }
+
+  // Handles the onClick of the button, performs a different action depending on what was clicked.
+  const handleOnSave = async ({target}) => {
+    // Gets the id from the target.
+    const id = target.dataset.id;
+    // Checks to see if logged in, returns if not.
+    if (!Auth.loggedIn()) {
+      return;
     }
-
-    const handleOnApply = () => {
-        
+    // API call to save the job.
+    try {
+      const {data} = await saveJob({
+        variables: {id: id},
+      });
+      console.log(data);
+    } catch (err) {
+      console.error(err);
     }
+  };
+
+  const handleOnApply = () => {
+    // Handle the apply action here.
+  };
 
     console.log(company)
 
     return (
         <main>
         <div className="job-item-container"> {/* Container for each job item */}
+            {" "}
             <div className="job-card">
                 <h3>{title}</h3>
                 {/* Company div, deconstructs the prop */}
@@ -62,19 +71,26 @@ function JobItem({ _id, title, company, description, location, salary, tags, cat
                 <p>{description}</p>
                 
                 {Auth.loggedIn() ? (
-                    <>
-                        <button data-id={_id} data-action="save" onClick={handleOnSave}>Save</button>
-                        <button data-id={_id} data-action="apply" onClick={handleOnApply}>Apply</button>
-                    </>
-                ) : (
-                    <>
-                        <span>You must be logged in to apply!</span>
-                    </>
-                )}
+                  <div className="buttons">
+                    {" "}
+                    {/* Button container */}
+                    <button data-id={_id} data-action="save" onClick={handleOnSave}>
+                      Save
+                    </button>
+                    <button data-id={_id} data-action="apply" onClick={handleOnApply}>
+                      Apply
+                    </button>
+
             </div>
+          ) : (
+            <>
+              <span>You must be logged in to apply!</span>
+            </>
+          )}
         </div>
-        </main>
-    )
+      </div>
+    </main>
+  );
 }
 
 export default JobItem;
