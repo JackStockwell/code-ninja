@@ -1,7 +1,7 @@
 .category-menu {
-  background: rgba(255, 255, 255, 0.8);
+  background: #f8f8f8;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
   padding: 20px;
   margin: 20px auto;
@@ -30,6 +30,8 @@
   transition: background-color 0.3s ease;
   font-weight: bold;
   font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .category-button:hover {
