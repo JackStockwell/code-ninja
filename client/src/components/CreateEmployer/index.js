@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {redirect, Link} from "react-router-dom";
+import HoverInfo from '../SignupForm/HoverInfo';
 
 // GraphQL imports
 import {useMutation} from "@apollo/client";
@@ -9,6 +10,7 @@ import {CREATE_EMPLOYER} from "../../utils/mutations";
 import {trimObjectValues} from "../../utils/helpers";
 import Auth from "../../utils/auth";
 import "../../pages/styles/login.css";
+
 
 const CreateEmployer = () => {
   // States for form data to be used and saved.
@@ -95,7 +97,10 @@ const CreateEmployer = () => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="password">Password:</label>
+          <label className="password-div" htmlFor="password">
+            Password:
+            <HoverInfo />
+          </label>
           <input
             type="password"
             name="password"

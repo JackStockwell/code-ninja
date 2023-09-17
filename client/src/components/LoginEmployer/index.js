@@ -26,6 +26,7 @@ const LoginEmployer = () => {
   // Submits the form to the server to be processed, includes error handling.
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+    e.stopPropagation();
 
     // Error handling.
     if (!userFormData.email) {
@@ -45,9 +46,6 @@ const LoginEmployer = () => {
 
       // Login with JWT token.
       Auth.login(data.loginEmployer.token);
-
-      // Redirect to the homepage using navigate
-      useNavigate("/");
 
       // Error catcher, logs error.
     } catch (err) {

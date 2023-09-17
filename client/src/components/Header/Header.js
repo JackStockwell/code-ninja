@@ -27,7 +27,7 @@ function Header() {
             <Link to={`/cmp/myprofile`}>Employer Profile</Link>
           </>
         )}
-        {!Auth.empLogged && Auth.loggedIn() && (
+        {!Auth.empLogged() && Auth.loggedIn() && (
           <>
             <Link to="/user/myprofile">Profile</Link>
             

@@ -18,8 +18,6 @@ const Profile = () => {
 
     const userData = data?.me || []
 
-    console.log(userData)
-
     return (
         <>
             {userData?.firstName}
@@ -28,6 +26,7 @@ const Profile = () => {
                     <p>Please Login in to see </p>
                 </>
             )}
+            <p>Test</p>
         </>
     )
 }

@@ -112,13 +112,13 @@ const resolvers = {
             const user = await User.findOne({email});
 
             if (!user) {
-                throw new AuthenticationError('Incorrect Email')
+                throw new AuthenticationError('Incorrect Credentials')
             }
 
             const correctPw = await user.isCorrectPassword(password);
 
             if (!correctPw) {
-                throw new AuthenticationError('Incorrect PW')
+                throw new AuthenticationError('Incorrect Credentials')
             }
 
             const token = signToken(user)
@@ -150,13 +150,13 @@ const resolvers = {
             const employer = await Employer.findOne({email});
 
             if (!employer) {
-                throw new AuthenticationError('Incorrect Email')
+                throw new AuthenticationError('Incorrect Credentials')
             }
 
             const correctPw = await employer.isCorrectPassword(password);
 
             if (!correctPw) {
-                throw new AuthenticationError('Incorrect PW')
+                throw new AuthenticationError('Incorrect Credentials')
             }
 
             const token = signToken(employer)

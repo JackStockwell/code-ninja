@@ -76,6 +76,7 @@ const JobCreate = () => {
     // Handles form submission.
     const handleFormSubmit = async (event) => {
         event.preventDefault()
+        event.stopPropagation();
 
         const form = event.currentTarget;
         
