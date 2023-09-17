@@ -25,12 +25,12 @@ export const LOGIN_USER = gql`
 `;
 
 export const CREATE_USER = gql`
-  mutation CreateEmployer($userData: empInput) {
-    createEmployer(userData: $userData) {
+  mutation Mutation($userData: userInput!) {
+    createUser(userData: $userData) {
       token
-      employer {
+      user {
         _id
-        companyName
+        firstName
       }
     }
   }

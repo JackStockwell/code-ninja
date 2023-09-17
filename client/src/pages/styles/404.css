@@ -39,6 +39,10 @@
   fill: var(--color);
 }
 
+.button:hover .link {
+  border-color: var(--color);
+}
+
 .button:active {
   border-color: var(--color);
   color: var(--color);
