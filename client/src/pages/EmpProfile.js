@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { GET_ME_EMP } from '../utils/queries';
 import { useQuery } from '@apollo/client';
 import Auth from '../utils/auth'
-import Modal from 'react-modal'
-import ReactModal from 'react-modal';
 import JobCreate from '../components/JobCreate';
 
 
@@ -32,8 +30,6 @@ const EmpProfile = () => {
     }
 
     const handleModalState = () => setJobModal((prev) => prev = !prev)
-    
-    Modal.setAppElement('#root')
 
     return (
         <>  

@@ -57,8 +57,6 @@ const CreateUser = () => {
 
         delete userInput.passwordConfirm
 
-        console.log(userInput)
-
         try {
             // Request to server to create user, returns auth and user as data.
             const { data } = await createUser({

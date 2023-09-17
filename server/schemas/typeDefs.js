@@ -83,6 +83,14 @@ const typeDefs = gql`
         postCode: String!
     }
 
+    input jobInput {
+        title: String!
+        salary: Int!
+        category: ID!
+        description: String!
+        tags: [ID]!
+    }
+
     type File {
         filename: String!
         mimetype: String!
@@ -110,6 +118,7 @@ const typeDefs = gql`
         singleUpload(file: Upload!): File
         createTag(name: String!): Tag
         saveJob(id: ID!): User
+        createJob(input: jobInput!): Job
     }
 
 `;
