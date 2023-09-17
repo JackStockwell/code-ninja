@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useQuery, useMutation } from '@apollo/client';
 import Auth from "../../utils/auth";
-import { useNavigate } from "react-router-dom";
+import { redirect, useNavigate } from "react-router-dom";
 
 // Editors
 import {
@@ -40,6 +40,7 @@ const JobCreate = () => {
         salary: null,
         category: null,
         description: null,
+        company: null,
         tags: [],
     };
     // User Form data. 
@@ -98,7 +99,9 @@ const JobCreate = () => {
         // Stringifies the data, sets the user data description to theee string format.
         const data = JSON.stringify(convertToRaw(contentState))
 
-        const salary = Number(userFormData.salary)
+        const salaryInt = Number(userFormData.salary)
+
+        console.log(salaryInt)
 
         if (!Auth.isTokenExpired) {
             setErrorData({error: "User Session timed out, redirecting to login..."})
@@ -108,14 +111,18 @@ const JobCreate = () => {
             }, 3000);
         }
 
-        setUserFormData({...userFormData, description: data, salary: salary })
+        const companyID = Auth.getProfile().data._id
+
+        console.log(companyID)
+
+        setUserFormData({...userFormData, description: data, salary: salaryInt, company: companyID })
 
         try {
             const { data } = await createJob({
                 variables: { input: {...userFormData} }
             })
 
-            console.log(data)
+            setShow(false)
         } catch (err) {
             console.error(err)
         }

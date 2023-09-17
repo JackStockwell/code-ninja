@@ -38,52 +38,52 @@ const JobList = () => {
     if (!currentCategory) {
       return state.jobs;
     }
+    
+    return state.jobs.filter(
+      (job) => job.category._id === currentCategory
+    )
 
-    return state.jobs.filter((job) => job.category._id === currentCategory);
-  }
+    //Runs when data or currentCategory is updated.
+    useEffect(() => {
+        if(data) {
+            dispatch({
+              type: UPDATE_JOBS,
+              jobs: data.jobs
+            })
+            console.log(data.jobs)
+        }
+    }, [data, loading, dispatch]);
 
-  //Runs when data or currentCategory is updated.
-  useEffect(() => {
-    if (data) {
-      dispatch({
-        type: UPDATE_JOBS,
-        jobs: data.jobs,
-      });
-      console.log(data.jobs);
-    }
-  }, [data, loading, dispatch]);
-
-  return (
-    <div>
-      {state.jobs?.length ? (
+    return (
         <div>
-          {filterJobs().map((job, index) => {
-            return <JobItem {...job} key={index} />;
-          })}
-        </div>
-      ) : (
-        <div className="no-jobs-message">
-          <p>No Jobs</p>
-        </div>
-      )}
-      <div className="button-container">
-        <button
-          disabled={!page}
-          onClick={() => setPage((prev) => prev - 1)}
-          className={`nav-button ${!page ? "disabled" : ""}`}
-        >
-          <FontAwesomeIcon icon="fa-solid fa-chevron-left" />
-        </button>
-        <button
-          disabled={state.jobs?.length < 5}
-          onClick={() => setPage((prev) => prev + 1)}
-          className={`nav-button ${state.jobs?.length < 5 ? "disabled" : ""}`}
-        >
-          <FontAwesomeIcon icon="fa-solid fa-chevron-right" />
-        </button>
-      </div>
+            <h2>Jobs:</h2>
+            {state.jobs?.length ? (
+              <div>
+                  {filterJobs().map((job, index) => {
+                  return <JobItem {...job} key={index} />
+                  })}
+              </div>
+            ) : (
+                <div><p>No Jobs</p></div>
+            )}
+            <div className="button-container">
+              <button
+                disabled={!page}
+                onClick={() => setPage((prev) => prev - 1)}
+                className={`nav-button ${!page ? "disabled" : ""}`}
+              >
+                <FontAwesomeIcon icon="fa-solid fa-chevron-left" />
+              </button>
+              <button
+                disabled={state.jobs?.length < 5}
+                onClick={() => setPage((prev) => prev + 1)}
+                className={`nav-button ${state.jobs?.length < 5 ? "disabled" : ""}`}
+              >
+                <FontAwesomeIcon icon="fa-solid fa-chevron-right" />
+              </button>
+            </div>
+            {loading ? <span>Loading...</span> : null}
 
-      {loading ? <span>Loading...</span> : null}
     </div>
   );
 };

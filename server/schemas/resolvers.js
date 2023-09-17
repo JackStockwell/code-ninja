@@ -46,6 +46,29 @@ const resolvers = {
             return;
 
         },
+        getCompany: async (parent, { id }) => {
+            try {
+                const data = await Employer.findOne(
+                    { _id: id }
+                )
+                    .populate([
+                        { path: 'location', model: 'Location' },
+                        { path: 'jobs', model: 'Job', populate: [
+                            { path: 'category', model: 'Category' },
+                            { path: 'tags', model: 'Tag' },
+                            { path: 'company', model: 'Employer' }, 
+                        ]},
+                    ]);
+
+                return data
+
+            } catch (err) {
+                throw new AuthenticationError(err)
+            }
+        },
+        getCompanies: async () => {
+            return await Employer.find({})
+        },
         // Dev query, queries all users.
         users: async () => {
             return await User
@@ -199,18 +222,21 @@ const resolvers = {
         },
         createJob: async (parent, { input }, context) => {
             
-            if (context.user) {
-                input.company = context.user._id
-
-                const newJob = await Job.create(input)
-
-                await Employer.findOneAndUpdate(
-                    { _id: context.user._id },
-                    { $addToSet: { jobs: newJob } }
-                )
-
-                return newJob
+            try {
+                if (context.user) {    
+                    const newJob = await Job.create(input)
+    
+                    await Employer.findOneAndUpdate(
+                        { _id: context.user._id },
+                        { $addToSet: { jobs: newJob } }
+                    )
+    
+                    return newJob
+                }
+            } catch (err) {
+                return new AuthenticationError(err)
             }
+
             
         }
     }

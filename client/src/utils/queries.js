@@ -81,3 +81,38 @@ export const GET_ME_EMP = gql`
         }
     }
 `;
+
+export const COMPANY_QUERY = gql`
+query GetCompany($getCompanyId: ID) {
+    getCompany(id: $getCompanyId) {
+      _id
+      companyName
+      jobs {
+        _id
+        title
+        description
+        salary
+        category {
+          _id
+          name
+        }
+        tags {
+          _id
+          name
+        }
+        company {
+          _id
+          companyName
+        }
+      }
+      about
+      location {
+        _id
+        firstLine
+        city
+        postCode
+      }
+      email
+    }
+  }
+`;

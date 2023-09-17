@@ -1,5 +1,5 @@
 import React from 'react'
-import { GET_ME } from '../utils/queries';
+import { GET_ME } from '../../utils/queries';
 import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
