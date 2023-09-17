@@ -87,6 +87,7 @@ const typeDefs = gql`
         title: String!
         salary: Int!
         category: ID!
+        company: ID!
         description: String!
         tags: [ID]!
     }
@@ -103,11 +104,13 @@ const typeDefs = gql`
     type Query {
         me: User
         getEmp: Employer
+        getCompany(id: ID): Employer
         users: [User]
         user(id: ID): User
         jobs(limit: Int, offset: Int, category: String): [Job]
         categories: [Category]
         tags: [Tag]
+        getCompanies: [Employer]
     }
 
     type Mutation {

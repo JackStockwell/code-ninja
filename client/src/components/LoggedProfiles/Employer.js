@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { GET_ME_EMP } from '../utils/queries';
+import { GET_ME_EMP } from '../../utils/queries';
 import { useQuery } from '@apollo/client';
-import Auth from '../utils/auth'
-import JobCreate from '../components/JobCreate';
+import Auth from '../../utils/auth'
+import JobCreate from '../JobCreate';
 import { Spinner } from 'react-bootstrap';
+import { Navigate } from 'react-router-dom';
 
 
 
@@ -35,10 +36,19 @@ const EmpProfile = () => {
     return (
         <>  
             <div>
-                {loggedUser && <p>LOGGED IN!</p>}
-                {userData.companyName}
+                {loggedUser ? (
+                    <>
+                        <h3>Hi {userData?.companyName}, welcome back.</h3>
+                        <JobCreate />
+                    
+                    </>
+                ) : (
+                    <>
+                        {!loading && !data && <Navigate to='/employer'/>}
+                    </>
+                )}
+                
                 <p>Test</p>
-                    <JobCreate />
             </div>
         </>
     )

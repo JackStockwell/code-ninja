@@ -4,10 +4,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Auth from '../../utils/auth';
 import { SAVE_JOB } from '../../utils/mutations';
 import "./JobItem.css";
+import { Link } from 'react-router-dom';
 function JobItem({ _id, title, company, description, location, salary, tags, category }) {
 
-    console.log(company)
-    
     // Mutations
     const [saveJob, { error }] = useMutation(SAVE_JOB)
 
@@ -34,6 +33,8 @@ function JobItem({ _id, title, company, description, location, salary, tags, cat
         
     }
 
+    console.log(company)
+
     return (
         <main>
         <div className="job-item-container"> {/* Container for each job item */}
@@ -48,6 +49,9 @@ function JobItem({ _id, title, company, description, location, salary, tags, cat
                     ) : (
                         <p>St Luke's, London</p>
                     )}
+                    <button>
+                        <Link to={`/cmp/${company.companyName}/${company._id}`}>Go to Company Profile</Link>
+                    </button>
                 </div>
                 <p>{salary}</p>
                 {tags &&
@@ -56,6 +60,7 @@ function JobItem({ _id, title, company, description, location, salary, tags, cat
                     })}
                 <p>{category.name}</p>
                 <p>{description}</p>
+                
                 {Auth.loggedIn() ? (
                     <>
                         <button data-id={_id} data-action="save" onClick={handleOnSave}>Save</button>

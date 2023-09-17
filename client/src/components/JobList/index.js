@@ -69,24 +69,22 @@ const JobList = () => {
             ) : (
                 <div><p>No Jobs</p></div>
             )}
-<div className="button-container">
-  <button
-    disabled={!page}
-    onClick={() => setPage((prev) => prev - 1)}
-    className={`nav-button ${!page ? "disabled" : ""}`}
-  >
-    <FontAwesomeIcon icon="fa-solid fa-chevron-left" />
-  </button>
-  <button
-    disabled={state.jobs?.length < 5}
-    onClick={() => setPage((prev) => prev + 1)}
-    className={`nav-button ${state.jobs?.length < 5 ? "disabled" : ""}`}
-  >
-    <FontAwesomeIcon icon="fa-solid fa-chevron-right" />
-  </button>
-</div>
-
-
+            <div className="button-container">
+              <button
+                disabled={!page}
+                onClick={() => setPage((prev) => prev - 1)}
+                className={`nav-button ${!page ? "disabled" : ""}`}
+              >
+                <FontAwesomeIcon icon="fa-solid fa-chevron-left" />
+              </button>
+              <button
+                disabled={state.jobs?.length < 5}
+                onClick={() => setPage((prev) => prev + 1)}
+                className={`nav-button ${state.jobs?.length < 5 ? "disabled" : ""}`}
+              >
+                <FontAwesomeIcon icon="fa-solid fa-chevron-right" />
+              </button>
+            </div>
             {loading ? <span>Loading...</span> : null}
         </div>
     )
