@@ -59,27 +59,40 @@ export const GET_ME = gql`
 `;
 
 export const GET_ME_EMP = gql`
-    query Query {
-        getEmp {
-            _id
-            email
-            companyName
-            location {
-                _id
-                firstLine
-                secondLine
-                city
-                county
-                postCode
-            }
-            about
-            jobs {
-                _id
-                title
-                description
-            }
-        }
+query GetEmp {
+  getEmp {
+    _id
+    email
+    companyName
+    location {
+      _id
+      firstLine
+      secondLine
+      city
+      county
+      postCode
     }
+    about
+    jobs {
+      _id
+      title
+      company {
+        companyName
+        _id
+      }
+      salary
+      description
+      category {
+        _id
+        name
+      }
+      tags {
+        _id
+        name
+      }
+    }
+  }
+}
 `;
 
 export const COMPANY_QUERY = gql`

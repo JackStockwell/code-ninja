@@ -33,7 +33,11 @@ const resolvers = {
                     )
                     .populate([
                         { path: 'location', model: 'Location' },
-                        { path: 'jobs', model: 'Job' },
+                        { path: 'jobs', model: 'Job', populate: [
+                            { path: 'category', model: 'Category' },
+                            { path: 'tags', model: 'Tag' },
+                            { path: 'company', model: 'Employer' }, 
+                        ]},
                     ]);
 
                     return empData;

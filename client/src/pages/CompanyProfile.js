@@ -35,7 +35,7 @@ const CompanyProfile = () => {
                         <p>{empData.email}</p>
                         <p>{empData.location || "location"}</p>
                     </div>
-                        
+
                     <div>
                         
                     </div>
