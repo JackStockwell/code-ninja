@@ -1,0 +1,59 @@
+
+.profile-container {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin: 20px auto; /* Center horizontally */
+    max-width: 90%; /* Wider content */
+    text-align: left;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center vertically */
+    border-bottom: 5px solid #ddd;
+    transform: perspective(500px) rotateX(1deg) scale(1); /* Initial state */
+  
+    /* Add hover effect for 3D transformation */
+    &:hover {
+      transform: perspective(500px) rotateX(1deg) scale(1); /* Rotate slightly and scale up on hover */
+      box-shadow: 0 8px 16px rgba(16, 16, 16, 0.3); /* Adjust the shadow on hover */
+    }
+}
+  
+  
+  .profile-content {
+    text-align: center; /* Center the content inside the profile container */
+  }
+  
+  
+  .profile-title {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .profile-data {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .profile-data span {
+    font-weight: bold;
+    color: #007bff; /* Customize the color as desired */
+  }
+  
+  .error-message {
+    font-size: 1.2rem;
+    text-align: center;
+    color: #ff0000;
+    margin-top: 20px;
+  }
+  
+  .test-text {
+    font-size: 1.2rem;
+    text-align: center;
+    color: #888;
+  }
+  

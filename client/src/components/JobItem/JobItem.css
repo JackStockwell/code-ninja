@@ -4,7 +4,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   padding: 20px;
   margin: 20px auto; /* Center horizontally */
-  max-width: 80%; /* Wider content */
+  max-width: 60%; /* Wider content */
   text-align: left;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   display: flex;
@@ -22,6 +22,10 @@
   color: #333333;
   font-size: 1.5rem;
   margin-bottom: 10px;
+  font-weight: bold; /* Add bold font weight */
+  font-family: Arial, sans-serif; /* Specify a font family */
+  line-height: 1.2; /* Adjust line height for better readability */
+  text-transform: capitalize; /* Transform text to capitalize */
 }
 
 .company-info {
