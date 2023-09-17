@@ -197,13 +197,22 @@ const resolvers = {
 
             return userData
         },
-        // createJob: async (parent, args, context) => {
-        //     // EMPLOYER LOGGED IN
-        //     // CREATE NEW JOB WITH DATA PARSED AS ARGS
-        //     // ID OF COMPANY PARSED INTO THIS DATA.
-        //     // ADD TO EMPLOYER'S JOB ARRAY
-        //     // RETURN
-        // }
+        createJob: async (parent, { input }, context) => {
+            
+            if (context.user) {
+                input.company = context.user._id
+
+                const newJob = await Job.create(input)
+
+                await Employer.findOneAndUpdate(
+                    { _id: context.user._id },
+                    { $addToSet: { jobs: newJob } }
+                )
+
+                return newJob
+            }
+            
+        }
     }
 }
 

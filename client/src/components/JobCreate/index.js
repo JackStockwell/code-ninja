@@ -1,6 +1,10 @@
+// IMPORTS
 import React, { useEffect, useRef, useState } from "react";
 import { useQuery, useMutation } from '@apollo/client';
+import Auth from "../../utils/auth";
+import { useNavigate } from "react-router-dom";
 
+// Editors
 import {
   Editor,
   EditorState,
@@ -8,50 +12,80 @@ import {
   convertToRaw,
   convertFromRaw,
 } from "draft-js";
-
 import Toolbar from "../TextEditor/Toolbar/Toolbar";
 import "../TextEditor/DraftEditor.css";
 
-// React Widgets
+// CSS
 import './jobcreate.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button, Dropdown, Modal, Row, Form, FloatingLabel, Col } from 'react-bootstrap';
-import { QUERY_CATEGORIES } from '../../utils/queries';
+import 'react-bootstrap-typeahead/css/Typeahead.css';
 
+// Boostrap
+import { Button, Dropdown, Modal, Row, Form, FloatingLabel, Col, Alert } from 'react-bootstrap';
+import { Typeahead } from 'react-bootstrap-typeahead'
 
-
+// Database
+import { QUERY_CATEGORIES, QUERY_TAGS } from '../../utils/queries';
+import { CREATE_JOB } from "../../utils/mutations";
 
 const JobCreate = () => {
-
+    // State
+    // Modal show state
+    const [show, setShow] = useState(false)
+    // MultiSeclections state. Saves the selections as an array
+    const [multiSelections, setMultiSelections] = useState([]);
+    // Form data object template
     const formData = {
         title: null,
         salary: null,
         category: null,
-        description: null
-    }
-
+        description: null,
+        tags: [],
+    };
+    // User Form data. 
     const [userFormData, setUserFormData] = useState(formData);
+    // Error State, displays an error.
     const [errorData, setErrorData] = useState({ error: null});
-    const [show, setShow] = useState(false)
+    // Form validation state
+    const [validation, setValidaton] = useState(false)
+    // Redirect Hook
+    const navigate = useNavigate()
 
-    const { loading, data } = useQuery(QUERY_CATEGORIES)
+    // Queries for data.
+    const { loading: catLoading, data: catD } = useQuery(QUERY_CATEGORIES)
+    const { loading: tagLoading, data: tagD } = useQuery(QUERY_TAGS)
+    const [ createJob, {error: createJobErr} ] = useMutation(CREATE_JOB)
 
-    const categoryData = data?.categories || [];
+    // Create new variables
+    const categoryData = catD?.categories || [];
+    const tagData = tagD?.tags || [];
 
+    useEffect(() => {
+        setUserFormData({...userFormData, tags: multiSelections.map((tag => tag._id))})
+    }, [multiSelections])
+
+    // Handles the input change in form.
     const handleInputChange = (event) => {
         // Deconstruct the target with what has changed as name and the value as well value.
         const { name, value } = event.target;
-
-        console.log(name, value)
 
         // Set the change in form data on the change in name and value.
         setUserFormData({ ...userFormData, [name]: value });
     }
 
     // Handles form submission.
-    const handleFormSubmit = (event) => {
+    const handleFormSubmit = async (event) => {
         event.preventDefault()
 
+        const form = event.currentTarget;
+        
+        if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+            return
+        }
+
+        setValidaton(true)
         setErrorData({error: null})
 
         // Gets the current content from the editor state.
@@ -62,12 +96,30 @@ const JobCreate = () => {
         }
         // Stringifies the data, sets the user data description to theee string format.
         const data = JSON.stringify(convertToRaw(contentState))
-        setUserFormData({...userFormData, description: data })
 
+        const salary = Number(userFormData.salary)
 
+        if (!Auth.isTokenExpired) {
+            setErrorData({error: "User Session timed out, redirecting to login..."})
 
+            setTimeout(() => {
+                return navigate('/employer')
+            }, 3000);
+        }
+
+        setUserFormData({...userFormData, description: data, salary: salary })
+
+        try {
+            const { data } = await createJob({
+                variables: { input: {...userFormData} }
+            })
+
+            console.log(data)
+        } catch (err) {
+            console.error(err)
+        }
     }
-
+    // Handles the modal opening and closing
     const handleOpen = () => setShow(prev => !prev)
 
     // EDITOR
@@ -156,7 +208,8 @@ const JobCreate = () => {
     };
 
     return (
-        <>
+        <> 
+
             <Button variant="primary" onClick={handleOpen}>Post new Job</Button>
 
             <Modal show={show} onHide={setShow} backdrop="static" centered>
@@ -164,30 +217,34 @@ const JobCreate = () => {
                     <Modal.Title>New Job</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form>
+                    <Form noValidate validated={validation}>
                         <Row className="g-2 mb-3">
-                            <Form.Group as={Col} controlId='formTitle'>
-                                <FloatingLabel controlId="formTitle" label="Job Title">
-                                    <Form.Control 
-                                        name="title" 
-                                        type="text"  
-                                        onChange={handleInputChange} 
-                                        value={userFormData.title || ''} 
-                                        required 
-                                    />
-                                </FloatingLabel>
-                            </Form.Group>
-                            <Form.Group as={Col} controlId='formSalar'>
-                                <FloatingLabel controlId="formSalar" label="Salary">
-                                    <Form.Control 
-                                        name="salary" 
-                                        type="number" 
-                                        onChange={handleInputChange} 
-                                        value={userFormData.salary || ''} 
-                                        required 
-                                    />
-                                </FloatingLabel>
-                            </Form.Group>
+                            <Col xs={12} md={6}>
+                                <Form.Group controlId='formTitle'>
+                                    <FloatingLabel controlId="formTitle" label="Job Title">
+                                        <Form.Control 
+                                            name="title" 
+                                            type="text"  
+                                            onChange={handleInputChange} 
+                                            value={userFormData.title || ''} 
+                                            required 
+                                        />
+                                    </FloatingLabel>
+                                </Form.Group>
+                            </Col>
+                            <Col xs={12} md={6}>
+                                <Form.Group as={Col} controlId='formSalar'>
+                                    <FloatingLabel controlId="formSalar" label="Salary">
+                                        <Form.Control 
+                                            name="salary" 
+                                            type="number"
+                                            onChange={handleInputChange} 
+                                            value={userFormData.salary || ''} 
+                                            required 
+                                        />
+                                    </FloatingLabel>
+                                </Form.Group>
+                            </Col>
                         </Row>
                         <Row className="g-2">
                             <Form.Group className="mb-3" as={Col}>
@@ -195,7 +252,7 @@ const JobCreate = () => {
                                     controlId="floatingSelectGrid"
                                     label="Category"
                                 >
-                                <Form.Select name="category" value={userFormData.category || ''} onChange={handleInputChange} aria-label="Floating label select example">
+                                <Form.Select name="category" value={userFormData.category || ''} onChange={handleInputChange} aria-label="Floating label select example" required>
                                     {categoryData.map((category) => {
                                         return <option key={category._id} value={category._id}>{category.name}</option>
                                     })}
@@ -219,8 +276,22 @@ const JobCreate = () => {
                                 }}
                                 />
                             </div>
-                            {errorData && <span style={{color: '#BA4334' }}>{errorData.error || ''}</span>}
+                            {errorData && <span style={{color: '#BA4334', textAlign: 'center', padding: '5px' }}>{errorData.error || ''}</span>}
                         </div>
+                        <Row className="g-2">
+                            <Form.Group className="mb-3">
+                                <Form.Label>Multiple Selections</Form.Label>
+                                <Typeahead
+                                    id="basic-typeahead-multiple"
+                                    labelKey="name"
+                                    multiple
+                                    onChange={setMultiSelections}
+                                    options={tagData}
+                                    placeholder="Tags"
+                                    selected={multiSelections}
+                                />
+                            </Form.Group>
+                        </Row>
                         <div className="d-grid gap-2">
                             <Button variant="primary" size="large" onClick={handleFormSubmit}>
                                 Create Job
