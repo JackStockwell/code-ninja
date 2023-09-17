@@ -58,6 +58,10 @@ const JobCreate = () => {
     const categoryData = catD?.categories || [];
     const tagData = tagD?.tags || [];
 
+    useEffect(() => {
+        setUserFormData({...userFormData, tags: multiSelections.map((tag => tag._id))})
+    }, [multiSelections])
+
     // Handles the input change in form.
     const handleInputChange = (event) => {
         // Deconstruct the target with what has changed as name and the value as well value.
@@ -91,16 +95,17 @@ const JobCreate = () => {
         // Stringifies the data, sets the user data description to theee string format.
         const data = JSON.stringify(convertToRaw(contentState))
 
-        const tagsArr = userFormData.tags.map((obj) => obj._id)
-
-        console.log(tagsArr)
-
-        setUserFormData({...userFormData, description: data, salary: Number(userFormData.salary), tags: tagsArr })
+        const salary = Number(userFormData.salary)
+        
+        console.log(salary)
+        setUserFormData({...userFormData, description: data, salary: salary })
 
         try {
             const { data } = await createJob({
                 variables: { input: {...userFormData} }
             })
+
+            console.log(data)
         } catch (err) {
             console.error(err)
         }
