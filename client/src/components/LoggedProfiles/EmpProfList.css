@@ -1,0 +1,59 @@
+/* SCROLL */
+.emp-job-list::-webkit-scrollbar {
+    width: 0.4rem;
+}
+
+.emp-job-list::-webkit-scrollbar-track {
+    background: #171616;
+}
+
+.emp-job-list::-webkit-scrollbar-thumb {
+    background: #717171;
+    border-radius: 1rem;
+}
+
+.emp-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    max-width: 80em;
+    margin: auto;
+}
+
+.emp-job-list {
+    display: flex;
+    gap: 0.5rem;
+    flex-flow: column;
+    padding: 1rem;
+}
+
+.emp-job {
+    padding: 0.5rem;
+    border: 1px solid black;
+    border-radius: 0.25rem;
+}
+
+.job-container {
+    display: grid;
+}
+
+
+.emp-job-viewer {
+    padding: 1rem;
+}
+
+
+@media (min-width: 60em) {
+
+    .emp-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+    }
+
+    .emp-job-list {
+        display: grid;
+        grid-template-columns: 1fr;
+        overflow-y: scroll;
+    }
+    
+    
+}
