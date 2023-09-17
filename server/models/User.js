@@ -29,7 +29,6 @@ const userSchema = new Schema(
         },
         resume: {
             type: String,
-            required: true
         },
         jobSaves: [{
             type: Schema.Types.ObjectId,

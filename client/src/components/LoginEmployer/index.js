@@ -57,40 +57,39 @@ const LoginEmployer = () => {
   };
 
   return (
-    <div className="login-container">
-      <div className="login">
-        <h2>Login</h2>
-        <form onSubmit={handleFormSubmit}>
-          <span>&nbsp;{errorData.error}&nbsp;</span>
-          <div className="form-group">
-            <label htmlFor="email">Email:</label>
-            <input
-              type="email"
-              name="email"
-              value={userFormData.email || ""}
-              placeholder="Email"
-              onChange={handleInputChange}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="password">Password:</label>
-            <input
-              type="password"
-              name="password"
-              value={userFormData.password || ""}
-              placeholder="Password"
-              onChange={handleInputChange}
-            />
-          </div>
-          <button type="submit">Login</button>
-          {/* Use Link instead of anchor tag */}
-        </form>
-        <button className="button">
-          <Link className="link" to="/register">
-            Don't have an account? Register here.
-          </Link>
-        </button>
-      </div>
+    <div className="login">
+      <h2>Login</h2>
+      <form onSubmit={handleFormSubmit}>
+        {error && <span>{error.graphQLErrors[0].message}</span>}
+        <span>&nbsp;{errorData.error}&nbsp;</span>
+        <div className="form-group">
+          <label htmlFor="email">Email:</label>
+          <input
+            type="email"
+            name="email"
+            value={userFormData.email || ""}
+            placeholder="Email"
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="password">Password:</label>
+          <input
+            type="password"
+            name="password"
+            value={userFormData.password || ""}
+            placeholder="Password"
+            onChange={handleInputChange}
+          />
+        </div>
+        <button type="submit">Login</button>
+        {/* Use Link instead of anchor tag */}
+      </form>
+      <button className="button">
+        <Link className="link" to="/register">
+          Don't have an account? Register here.
+        </Link>
+      </button>
     </div>
   );
 };

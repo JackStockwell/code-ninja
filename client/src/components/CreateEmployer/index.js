@@ -79,83 +79,81 @@ const CreateEmployer = () => {
   };
 
   return (
-    <div className="login-container">
-      <div className="login">
-        <h2>Register as a Company</h2>
-        <form onSubmit={handleFormSubmit}>
-          {/* {error && <span>{error.clientErrors}</span>} */}
-          <span>&nbsp;{errorData.error || ""}&nbsp;</span>
-          <div className="form-group">
-            <label htmlFor="email">Email:</label>
+    <div className="login">
+      <h2>Register as a Company</h2>
+      <form onSubmit={handleFormSubmit}>
+        {error && <span>{error.graphQLErrors[0].message}</span>}
+        <span>&nbsp;{errorData.error || ""}&nbsp;</span>
+        <div className="form-group">
+          <label htmlFor="email">Email:</label>
+          <input
+            type="email"
+            name="email"
+            value={userFormData.email || ""}
+            placeholder="Email"
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="password">Password:</label>
+          <input
+            type="password"
+            name="password"
+            value={userFormData.password || ""}
+            placeholder="Password"
+            onChange={handleInputChange}
+            title="Password. Your password must follow the required pattern"
+            pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,40}$"
+            onInvalid={() =>
+              setErrorData({
+                error:
+                  "Password must have at least 1 digit, 1 upper and lower case character and one of the following symbols !,@,#,$,%,^,&,*. Can be no fewer than 8 characters and no more than 40.",
+              })
+            }
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="password">Password:</label>
+          <input
+            type="password"
+            name="passwordConfirm"
+            value={userFormData.passwordConfirm || ""}
+            placeholder="Password Confirm"
+            onChange={handleInputChange}
+            title="Password. Your password must follow the required pattern"
+            pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,40}$"
+            onInvalid={() =>
+              setErrorData({
+                error:
+                  "Password must have at least 1 digit, 1 upper and lower case character and one of the following symbols !,@,#,$,%,^,&,*. Can be no fewer than 8 characters and no more than 40.",
+              })
+            }
+          />
+        </div>
+        <div className="form-group">
+          <div>
+            <label htmlFor="password">Company Name:</label>
             <input
-              type="email"
-              name="email"
-              value={userFormData.email || ""}
-              placeholder="Email"
+              type="text"
+              name="companyName"
+              value={userFormData.companyName || ""}
+              placeholder="Company Name"
+              pattern="^\S+$"
+              title="Name&#39;s cannot contain spaces"
               onChange={handleInputChange}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="password">Password:</label>
-            <input
-              type="password"
-              name="password"
-              value={userFormData.password || ""}
-              placeholder="Password"
-              onChange={handleInputChange}
-              title="Password. Your password must follow the required pattern"
-              pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,40}$"
               onInvalid={() =>
-                setErrorData({
-                  error:
-                    "Password must have at least 1 digit, 1 upper and lower case character and one of the following symbols !,@,#,$,%,^,&,*. Can be no fewer than 8 characters and no more than 40.",
-                })
+                setErrorData({error: "Name's cannot contain spaces"})
               }
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="password">Password:</label>
-            <input
-              type="password"
-              name="passwordConfirm"
-              value={userFormData.passwordConfirm || ""}
-              placeholder="Password Confirm"
-              onChange={handleInputChange}
-              title="Password. Your password must follow the required pattern"
-              pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,40}$"
-              onInvalid={() =>
-                setErrorData({
-                  error:
-                    "Password must have at least 1 digit, 1 upper and lower case character and one of the following symbols !,@,#,$,%,^,&,*. Can be no fewer than 8 characters and no more than 40.",
-                })
-              }
-            />
-          </div>
-          <div className="form-group">
-            <div>
-              <label htmlFor="password">Company Name:</label>
-              <input
-                type="text"
-                name="companyName"
-                value={userFormData.companyName || ""}
-                placeholder="Company Name"
-                pattern="^\S+$"
-                title="Name&#39;s cannot contain spaces"
-                onChange={handleInputChange}
-                onInvalid={() =>
-                  setErrorData({error: "Name's cannot contain spaces"})
-                }
-              />
-            </div>
-          </div>
-          <button type="submit">Register</button>
-        </form>
-        <button className="button">
-          <Link className="link" to="/login">
-            Already have an account? Login here.
-          </Link>
-        </button>
-      </div>
+        </div>
+        <button type="submit">Register</button>
+      </form>
+      <button className="button">
+        <Link className="link" to="/login">
+          Already have an account? Login here.
+        </Link>
+      </button>
     </div>
   );
 };

@@ -4,11 +4,12 @@ import LoginEmployer from '../components/LoginEmployer';
 
 
 const EmployerLanding = () => {
+
     return (
         <>
-            <div>
-                <CreateEmployer />
+            <div className='login-container grid-2'>
                 <LoginEmployer />
+                <CreateEmployer />
             </div>
         </>
     )

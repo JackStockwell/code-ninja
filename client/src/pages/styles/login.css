@@ -1,4 +1,8 @@
 /* Rainbow background */
+:root {
+  --color: #FA991C;
+}
+
 .login-container {
   background: linear-gradient(
     135deg,
@@ -13,10 +17,13 @@
   background-size: 300% 300%;
   animation: gradient 5s linear infinite;
   display: flex;
+  flex-flow: column;
   justify-content: center;
   align-items: center; /* Center the content vertically */
   min-height: 100vh;
+  padding: 2rem;
   overflow-y: auto; /* Add vertical scroll when content overflows */
+  gap: 5rem;
 }
 
 @keyframes gradient {
@@ -39,10 +46,8 @@
   background: rgba(255, 255, 255, 0.8);
   padding: 20px;
   border-radius: 15px;
-  transform: rotate(-3deg);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   max-width: 400px; /* Adjust the maximum width as needed */
-  margin: 0 auto; /* Center the form horizontally */
 }
 
 /* Style the form elements */
@@ -105,15 +110,10 @@ button[type="submit"]:hover {
 
 .link {
   text-decoration: none;
-  color: #3366ff;
   font-weight: bold;
   font-size: 1.2rem;
   border-bottom: 2px solid transparent;
   transition: border-color 0.3s ease;
-}
-
-.link:hover {
-  border-color: #3366ff;
 }
 
 @media (max-width: 768px) {
@@ -136,3 +136,11 @@ button[type="submit"]:hover {
     font-size: 1rem; /* Adjust font size for smaller screens */
   }
 }
+
+@media (min-width: 60em) {
+  .login-container {
+    flex-flow: row;
+    align-items: start;
+  }
+}
+
