@@ -49,14 +49,12 @@ function JobItem({ _id, title, company, description, location, salary, tags, cat
                         <p>St Luke's, London</p>
                     )}
                 </div>
-                <p>{location}</p>
-                <p>{salary},000k</p>
+                <p>{salary}</p>
                 {tags &&
                     tags.map((tag) => {
                         return <p key={tag._id} id={tag._id}>{tag.name}</p>;
                     })}
-                {category &&
-                    category.map((cat) => <p key={cat._id} id={cat._id}>{cat.name}</p>)}
+                <p>{category.name}</p>
                 <p>{description}</p>
                 {Auth.loggedIn() ? (
                     <>
