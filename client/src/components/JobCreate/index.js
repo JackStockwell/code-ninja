@@ -1,5 +1,8 @@
+// IMPORTS
 import React, { useEffect, useRef, useState } from "react";
 import { useQuery, useMutation } from '@apollo/client';
+import Auth from "../../utils/auth";
+import { useNavigate } from "react-router-dom";
 
 // Editors
 import {
@@ -18,15 +21,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-bootstrap-typeahead/css/Typeahead.css';
 
 // Boostrap
-import { Button, Dropdown, Modal, Row, Form, FloatingLabel, Col } from 'react-bootstrap';
+import { Button, Dropdown, Modal, Row, Form, FloatingLabel, Col, Alert } from 'react-bootstrap';
 import { Typeahead } from 'react-bootstrap-typeahead'
 
 // Database
 import { QUERY_CATEGORIES, QUERY_TAGS } from '../../utils/queries';
 import { CREATE_JOB } from "../../utils/mutations";
-
-
-
 
 const JobCreate = () => {
     // State
@@ -48,6 +48,8 @@ const JobCreate = () => {
     const [errorData, setErrorData] = useState({ error: null});
     // Form validation state
     const [validation, setValidaton] = useState(false)
+    // Redirect Hook
+    const navigate = useNavigate()
 
     // Queries for data.
     const { loading: catLoading, data: catD } = useQuery(QUERY_CATEGORIES)
@@ -96,8 +98,15 @@ const JobCreate = () => {
         const data = JSON.stringify(convertToRaw(contentState))
 
         const salary = Number(userFormData.salary)
-        
-        console.log(salary)
+
+        if (!Auth.isTokenExpired) {
+            setErrorData({error: "User Session timed out, redirecting to login..."})
+
+            setTimeout(() => {
+                return navigate('/employer')
+            }, 3000);
+        }
+
         setUserFormData({...userFormData, description: data, salary: salary })
 
         try {
@@ -199,7 +208,8 @@ const JobCreate = () => {
     };
 
     return (
-        <>
+        <> 
+
             <Button variant="primary" onClick={handleOpen}>Post new Job</Button>
 
             <Modal show={show} onHide={setShow} backdrop="static" centered>
@@ -209,28 +219,32 @@ const JobCreate = () => {
                 <Modal.Body>
                     <Form noValidate validated={validation}>
                         <Row className="g-2 mb-3">
-                            <Form.Group as={Col} controlId='formTitle'>
-                                <FloatingLabel controlId="formTitle" label="Job Title">
-                                    <Form.Control 
-                                        name="title" 
-                                        type="text"  
-                                        onChange={handleInputChange} 
-                                        value={userFormData.title || ''} 
-                                        required 
-                                    />
-                                </FloatingLabel>
-                            </Form.Group>
-                            <Form.Group as={Col} controlId='formSalar'>
-                                <FloatingLabel controlId="formSalar" label="Salary">
-                                    <Form.Control 
-                                        name="salary" 
-                                        type="number"
-                                        onChange={handleInputChange} 
-                                        value={userFormData.salary || ''} 
-                                        required 
-                                    />
-                                </FloatingLabel>
-                            </Form.Group>
+                            <Col xs={12} md={6}>
+                                <Form.Group controlId='formTitle'>
+                                    <FloatingLabel controlId="formTitle" label="Job Title">
+                                        <Form.Control 
+                                            name="title" 
+                                            type="text"  
+                                            onChange={handleInputChange} 
+                                            value={userFormData.title || ''} 
+                                            required 
+                                        />
+                                    </FloatingLabel>
+                                </Form.Group>
+                            </Col>
+                            <Col xs={12} md={6}>
+                                <Form.Group as={Col} controlId='formSalar'>
+                                    <FloatingLabel controlId="formSalar" label="Salary">
+                                        <Form.Control 
+                                            name="salary" 
+                                            type="number"
+                                            onChange={handleInputChange} 
+                                            value={userFormData.salary || ''} 
+                                            required 
+                                        />
+                                    </FloatingLabel>
+                                </Form.Group>
+                            </Col>
                         </Row>
                         <Row className="g-2">
                             <Form.Group className="mb-3" as={Col}>
@@ -262,7 +276,7 @@ const JobCreate = () => {
                                 }}
                                 />
                             </div>
-                            {errorData && <span style={{color: '#BA4334' }}>{errorData.error || ''}</span>}
+                            {errorData && <span style={{color: '#BA4334', textAlign: 'center', padding: '5px' }}>{errorData.error || ''}</span>}
                         </div>
                         <Row className="g-2">
                             <Form.Group className="mb-3">
