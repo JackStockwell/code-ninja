@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useMutation } from '@apollo/client';
 import Auth from '../../utils/auth';
 import { LOGIN_USER } from '../../utils/mutations';
-import { useNavigate, Link } from 'react-router-dom'; // Import useNavigate
+import { redirect, Link } from 'react-router-dom'; // Import useNavigate
 import '../SignupForm/RegistrationForm.css';
 import '../../pages/styles/login.css'
 
@@ -26,41 +26,47 @@ const LoginForm = () => {
 
     // Submits the form to the server to be processed, includes error handling.
     const handleFormSubmit = async (e) => {
-        e.preventDefault();
+      e.preventDefault();
+      e.stopPropagation();
 
-        // Error handling.
-        if (!userFormData.email) {
-            setErrorData({ ...errorData, error: 'You must enter an email!' })
-        }
+      // Error handling.
+      if (!userFormData.email) {
+          setErrorData({ ...errorData, error: 'You must enter an email!' })
+          return
+      }
 
-        if (!userFormData.password) {
-            setErrorData({ ...errorData, error: 'You must enter a password!' })
-        }
+      if (!userFormData.password) {
+          setErrorData({ ...errorData, error: 'You must enter a password!' })
+          return
+      }
 
-        // API request, awaits data.
-        try {
-            // Returns token and the user.
-            const { data } = await loginUser({
-                variables: { ...userFormData }
-            })
+      // API request, awaits data.
+      try {
+          // Returns token and the user.
+          const { data } = await loginUser({
+              variables: { ...userFormData }
+          })
+          // Reset form data.
+          setUserFormData({
+            email: '', 
+            password: '' 
+          })
+          // Login with JWT token.
+          const user = Auth.login(data.loginUser.token);
+          // Reset form data.
+          setUserFormData({
+            email: '', 
+            password: '' 
+          })
 
-            // Login with JWT token.
-            Auth.login(data.loginUser.token);
-
-            // Redirect to the homepage using navigate
-            useNavigate('/myprofile');
-
-        // Error catcher, logs error.
-        } catch (err) {
-            console.error(err);
-            setErrorData({ error: err.message });
-        }
-
-        setUserFormData({
-          email: '', 
-          password: '' 
-        })
+      // Error catcher, logs error.
+      } catch (err) {
+          console.error(err);
+          setErrorData({ error: err.message });
+          return
+      }
     }
+
 
     return (
         <div className="login-container">
@@ -68,7 +74,6 @@ const LoginForm = () => {
             <h2>Login</h2>
             <form onSubmit={handleFormSubmit}>
               {error && <span>{error.graphQLErrors[0].message}</span>}
-              <span>&nbsp;{errorData.error}&nbsp;</span>
               <div className="form-group">
                 <label htmlFor="email">Email:</label>
                 <input

@@ -3,6 +3,7 @@ import { GET_ME_EMP } from '../utils/queries';
 import { useQuery } from '@apollo/client';
 import Auth from '../utils/auth'
 import JobCreate from '../components/JobCreate';
+import { Spinner } from 'react-bootstrap';
 
 
 
@@ -26,7 +27,7 @@ const EmpProfile = () => {
     }, [loading, data])
 
     if (loading) {
-        return <h4 style={{textAlign: 'center'}}>Loading...</h4>
+        return <h4 style={{textAlign: 'center'}}><Spinner /></h4>
     }
 
     const handleModalState = () => setJobModal((prev) => prev = !prev)

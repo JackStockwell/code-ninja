@@ -8,7 +8,7 @@ import {JobProvider} from "./utils/GlobalState";
 
 // Components and Page imports
 import Home from "./pages/Home";
-import LoginPage from "./pages/Login";
+import LoginForm from "./components/LoginForm";
 import SignUp from "./pages/SignUp";
 import Dev from "./pages/Dev";
 import Footer from "./components/Footer";
@@ -80,11 +80,11 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/user/myprofile" element={<UserProfile />} />
+            <Route path="user/myprofile" element={<UserProfile />} />
             <Route path="/cmp/myprofile" element={<EmpProfile />} />
             <Route path="/dev" element={<Dev />} />
             <Route path="/employer" element={<EmployerLanding />} />
-            <Route path="/login" element={<LoginPage />} />
+            <Route path="/login" element={<LoginForm />} />
             <Route path="/register" element={<SignUp />} />
             <Route path="/search" element={<JobSearch />} />
             <Route path="*" element={<Lost />} />

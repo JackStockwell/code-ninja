@@ -92,20 +92,20 @@ const CreateUser = () => {
                 </div>
                 
                 <div className="form-group">
-                    <label htmlFor="password">Password:</label>
-                    <div>
-                        <input
-                            type="password"
-                            name="password"
-                            value={userFormData.password || ''}
-                            placeholder='Password'
-                            onChange={handleInputChange}
-                            title="Password. Your password must follow the required pattern"
-                            pattern='^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,40}$'
-                            onInvalid={() => setErrorData({error: 'Password must have at least 1 digit, 1 upper and lower case character and one of the following symbols !,@,#,$,%,^,&,*. Can be no fewer than 8 characters and no more than 40.' })}
-                        />
+                    <label className='password-div' htmlFor="password">
+                        Password:
                         <HoverInfo />
-                    </div>
+                    </label>
+                    <input
+                        type="password"
+                        name="password"
+                        value={userFormData.password || ''}
+                        placeholder='Password'
+                        onChange={handleInputChange}
+                        title="Password. Your password must follow the required pattern"
+                        pattern='^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,40}$'
+                        onInvalid={() => setErrorData({error: 'Password must have at least 1 digit, 1 upper and lower case character and one of the following symbols !,@,#,$,%,^,&,*. Can be no fewer than 8 characters and no more than 40.' })}
+                    />
                 </div>
                 <div className="form-group">
                     <label htmlFor="password">Password:</label>
