@@ -19,6 +19,7 @@ import EmpProfile from "./pages/EmpProfile";
 import EmployerLanding from "./pages/EmployerLanding";
 import Lost from "./pages/404";
 import BlogPost1 from "./pages/BlogPost1";
+import BlogPost2 from "./pages/BlogPost2";
 
 import {library} from "@fortawesome/fontawesome-svg-core";
 import {
@@ -84,6 +85,7 @@ function App() {
             <Route path="/search" element={<JobSearch />} />
             <Route path="*" element={<Lost />} />
             <Route path="/blog/post-1" element={<BlogPost1 />} />
+            <Route path="/blog/post-2" element={<BlogPost2 />} />
           </Routes>
           <Footer />
         </JobProvider>
