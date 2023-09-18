@@ -40,10 +40,6 @@ export const SAVE_JOB = gql`
   mutation Mutation($id: ID!) {
     saveJob(id: $id) {
       _id
-      email
-      password
-      firstName
-      lastName
       jobSaves {
         _id
       }

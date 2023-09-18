@@ -47,7 +47,8 @@ const resolvers = {
                         { path: 'jobs', model: 'Job', populate: [
                             { path: 'category', model: 'Category' },
                             { path: 'tags', model: 'Tag' },
-                            { path: 'company', model: 'Employer' }, 
+                            { path: 'company', model: 'Employer' },
+                            { path: 'applicants', model: 'User' },
                         ]},
                     ]);
 
@@ -235,7 +236,7 @@ const resolvers = {
             }
 
             try {
-                await User.findOneAndUpdate(
+                const user = await User.findOneAndUpdate(
                     { _id: context.user._id },
                     { $addToSet: { jobApp: id } },
                     { new: true, runValidators: true }
@@ -243,7 +244,7 @@ const resolvers = {
 
                 const jobData = await Job.findOneAndUpdate(
                     { _id: id },
-                    { $addToSet: { applicants: id } },
+                    { $addToSet: { applicants: user._id } },
                     { new: true, runValidators: true }
                 ).populate([
                     { path: 'category', model: 'Category' },
