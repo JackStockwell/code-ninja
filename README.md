@@ -33,7 +33,7 @@ In the fast-paced and ever-evolving world of technology, knowledge and community
  I can easily apply to jobs by using the Apply Now! button which directs me to submit my application directly through the website 
 
  As a user I can use this applicayion on both a desktop and mobile phone devices
- ``
+``
  
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
