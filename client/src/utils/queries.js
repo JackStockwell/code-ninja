@@ -43,19 +43,33 @@ export const QUERY_JOBS = gql`
 `;
 
 export const GET_ME = gql`
-    query Me {
-        me {
-            _id
-            firstName
-            lastName
-            jobSaves {
-                _id
-            }
-            jobApp {
-                _id
-            }
-        }
+query Me {
+  me {
+    _id
+    email
+    firstName
+    lastName
+    resume
+    jobSaves {
+      _id
+      company {
+        companyName
+        _id
+      }
+      salary
+      title
+      description
+      category {
+        name
+        _id
+      }
+      tags {
+        _id
+        name
+      }
     }
+  }
+}
 `;
 
 export const GET_ME_EMP = gql`

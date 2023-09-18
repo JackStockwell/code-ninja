@@ -4,11 +4,12 @@
 }
 
 .emp-job-list::-webkit-scrollbar-track {
-    background: #171616;
+    background: #FA991C;
+    border-radius: 1rem;
 }
 
 .emp-job-list::-webkit-scrollbar-thumb {
-    background: #717171;
+    background: #007bff;
     border-radius: 1rem;
 }
 
@@ -36,7 +37,6 @@
     display: grid;
 }
 
-
 .emp-job-viewer {
     padding: 1rem;
 }
@@ -55,8 +55,8 @@
 
     .emp-job-list {
         display: grid;
-        grid-template-columns: 1fr;
         overflow-y: scroll;
+        max-height: 30em;
     }
     
     

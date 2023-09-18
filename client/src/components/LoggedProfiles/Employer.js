@@ -35,6 +35,8 @@ const EmpProfile = () => {
         return <h4 style={{textAlign: 'center'}}><Spinner /></h4>
     }
 
+    console.log(userData)
+
     return (
         <>  
             <div className=''>
@@ -48,7 +50,7 @@ const EmpProfile = () => {
                         <div>
                             <JobCreate />
                         </div>
-                        <JobListProfile {...userData} />
+                        <JobListProfile data={userData.jobs} />
                     </div>
                 ) : (
                     <>

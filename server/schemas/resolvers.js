@@ -20,8 +20,16 @@ const resolvers = {
                     { _id: context.user._id }
                 )
                 .populate([
-                    { path: 'jobSaves', model: 'Job' },
-                    { path: 'jobApp', model: 'Job' }
+                    { path: 'jobSaves', model: 'Job', populate: [
+                        { path: 'category', model: 'Category' },
+                        { path: 'tags', model: 'Tag' },
+                        { path: 'company', model: 'Employer' }, 
+                    ]},
+                    { path: 'jobApp', model: 'Job', populate: [
+                        { path: 'category', model: 'Category' },
+                        { path: 'tags', model: 'Tag' },
+                        { path: 'company', model: 'Employer' }, 
+                    ]}
                 ]);
                 return userData;
             };
