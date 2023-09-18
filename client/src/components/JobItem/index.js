@@ -68,7 +68,7 @@ function JobItem({
         <div className="job-card">
             <div className="job-header">
                 <div className="job-title">
-                    <h3>{title}</h3>
+                    <h3 style={{height: 'fit-content'}}>{title}</h3>
                     <h4><Link className="job-link" to={`/cmp/${company.companyName}/${company._id}`}>{company.companyName}</Link></h4>
                     <h5>                        
                         {company.location ? (

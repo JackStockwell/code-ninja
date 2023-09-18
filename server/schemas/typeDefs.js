@@ -106,6 +106,7 @@ const typeDefs = gql`
         me: User
         getEmp: Employer
         getCompany(id: ID): Employer
+        getJob(id: ID): Job
         users: [User]
         user(id: ID): User
         jobs(limit: Int, offset: Int, category: String): [Job]
