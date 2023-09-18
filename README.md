@@ -9,8 +9,25 @@ Git-Jobs is a specialized recruitment platform tailored exclusively for software
 ``
  As a software developer looking for new job opportunities, I want to use the git-jobs website to easily find relevant job listings, connect with potential employers, and manage my job applications efficiently.
  ``
+ md
+ ``
 
  ## Acceptance Criteria
+
+ ``
+ As a user, I can sign up using my email 
+ After registration, I can create a detailed profile with my professional experience, skills and preferences.
+ I can upload my resume and customise my profile 
+ As a user, I can see a search bar to enter keywords or titles
+ I can use filters to narrow down the job search results based on location and job type
+ As a user I can view a list of job listings matching my search criteria, with key information like job title, company name and location
+ When I click on a job listing it takes me to a detailed job description page
+ As a user, I can see job descriptions that provide comprehensive information about the role, responsibilities, qualifations and salary 
+ I can easily apply to jobs by using the Apply Now! button which directs me to submit my application directly through the website 
+ As a user I can use this applicayion on both a desktop and mobile phone devices 
+``
+ md 
+ ``
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
