@@ -21,9 +21,6 @@ In the fast-paced and ever-evolving world of technology, knowledge and community
 
  I can upload my resume and customise my profile 
 
- As a user, I can see a search bar to enter keywords or titles
- I can use filters to narrow down the job search results based on location and job type
-
  As a user I can view a list of job listings matching my search criteria, with key information like job title, company name and location
 
  When I click on a job listing it takes me to a detailed job description page
