@@ -83,10 +83,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 
 ## Authors
-* JackStockwell
-* DiogoS77
-* daleyjones
-* 33hollie33
+* @JackStockwell
+* @DiogoS77
+* @daleyjones
+* @33hollie33
 
 ## Screenshot of the website
 
