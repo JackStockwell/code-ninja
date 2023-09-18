@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Auth from "../../utils/auth";
 import "./JobItem.css";
 import {Link} from "react-router-dom";
@@ -20,7 +20,8 @@ function JobItem({
   salary,
   tags,
   category,
-  currentCategory
+  currentCategory,
+  overflow
 }) {
 
   // Global state and reducer import
@@ -116,7 +117,7 @@ function JobItem({
                     <p>{salary}</p>
                 </div>
             </div>
-            <div className="job-description">
+            <div style={{margin: '1rem 0'}} className={overflow ? ('job-description'):('')}>
                 <EditorRender>
                     {description}
                 </EditorRender>

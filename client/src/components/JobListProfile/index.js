@@ -19,7 +19,7 @@ const JobListProfile = ({data}) => {
         if(handleMinWidth) {
             setSelectedJob(job)
         } else {
-            navigate(`/view/${job._id}`)
+            navigate(`/job/${job._id}`)
         }
     }
 
