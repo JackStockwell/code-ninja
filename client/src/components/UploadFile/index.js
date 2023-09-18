@@ -11,6 +11,7 @@ const UploadFile = () => {
     let fileState = {
         selectedFile: null,
         fileUploadSuccessful: false,
+        link: null
     }
 
     const [fileData, setFileData] = useState(fileState)
@@ -22,17 +23,20 @@ const UploadFile = () => {
         e.preventDefault();
         
         const file = e.target.files[0]
-
-        console.log(file)
         
         setFileData({
-            ...fileData,
             selectedFile: file,
+            fileUploadSuccessful: false,
         })
 
     };
 
     const onFileUpload = async () => {
+
+      if(!fileData.selectedFile) {
+        alert('You must select a file to upload!')
+        return
+      }
 
       const file = fileData.selectedFile
 
@@ -40,18 +44,41 @@ const UploadFile = () => {
           const { data } = await singleUpload(
               { variables: { file }}
           );
-          console.log(data);
+
+          console.log(data)
+          
+          setFileData({
+            selectedFile: null,
+            fileUploadSuccessful: true,
+            link: data.singleUpload.url
+          })
+
         } catch (error) {
           console.error(error);
+          setFileData({
+            selectedFile: null,
+            fileUploadSuccessful: false
+        })
         }
       }
 
 
     return (
-      <div>
+      <>
+        <div>
           <input required type='file' onChange={onFileChange} />
-          <button onClick={onFileUpload}>Submit</button>
-      </div>
+          <button className='button' onClick={onFileUpload}>Submit</button>
+        </div>
+        <div style={{textAlign: 'center'}}>
+          {fileData.fileUploadSuccessful && (
+            <div style={{display: 'flex', }}>
+              <span>File upload succesful</span>
+              <a className='button' target='_blank' href={`${fileData?.link}`}>View Here</a>
+            </div>
+          )}
+        </div>
+      </>
+
     )
 
 }

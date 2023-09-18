@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import '../LoggedProfiles/EmpProfList.css'
 import '../LoggedProfiles/Employer.css'
 
-const Applicant = ({data}) => {
+const JobApplyList = ({data}) => {
 
     const navigate = useNavigate()
 
@@ -16,15 +16,16 @@ const Applicant = ({data}) => {
 
     const handleMinWidth = useMediaPredicate("(min-width: 70em)")
 
-    const handleOnClick = (job) => {
+    const handleOnClick = (applicant) => {
         if(handleMinWidth) {
-            setSelectedJob(job)
+            console.log(applicant)
+            setSelectedJob(applicant)
         } else {
-            navigate(`/view/${job._id}`)
+            navigate(`/view/${applicant._id}`)
         }
     }
 
-    console.log(selectedJob)
+    console.log(data)
 
     return (
         <>
@@ -51,10 +52,12 @@ const Applicant = ({data}) => {
                         })}
                     </div>
                     <div>
-                        {selectedJob ? (
-                            <Applicant />
+                        {selectedJob?.length ? (
+                            <>  
+                                <JobApplicants data={selectedJob}/>
+                            </>
                         ):(
-                            <p></p>
+                            <p>TEST</p>
                         )}
                     </div>
                 <div>
@@ -65,4 +68,4 @@ const Applicant = ({data}) => {
     )
 }
 
-export default JobApplicants
+export default JobApplyList

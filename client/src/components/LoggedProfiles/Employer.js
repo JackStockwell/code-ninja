@@ -9,7 +9,7 @@ import { Navigate } from 'react-router-dom';
 import './Employer.css'
 import './EmpProfList.css'
 import JobListProfile from '../JobListProfile/index';
-import JobApplyList from '../JobListProfile/JobApplyList';
+import JobApplyList from '../JobListProfile/JobApplyList'
 
 
 
