@@ -78,15 +78,12 @@ query GetEmp {
     _id
     email
     companyName
+    about
     location {
-      _id
       firstLine
       secondLine
-      city
-      county
-      postCode
+      _id
     }
-    about
     jobs {
       _id
       title
@@ -94,8 +91,8 @@ query GetEmp {
         companyName
         _id
       }
-      salary
       description
+      salary
       category {
         _id
         name
@@ -103,6 +100,13 @@ query GetEmp {
       tags {
         _id
         name
+      }
+      applicants {
+        _id
+        firstName
+        lastName
+        email
+        resume
       }
     }
   }

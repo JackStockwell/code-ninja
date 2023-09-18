@@ -72,7 +72,9 @@ const JobCreate = () => {
 
         // Set the change in form data on the change in name and value.
         setUserFormData({ ...userFormData, [name]: value });
+
     }
+    
 
     // Handles form submission.
     const handleFormSubmit = async (event) => {
@@ -263,7 +265,7 @@ const JobCreate = () => {
                                     label="Category"
                                 >
                                 <Form.Select name="category" value={userFormData.category || ''} onChange={handleInputChange} aria-label="Floating label select example" required>
-                                    <option disabled={true}>Please select a category...</option>
+                                    <option value="" disabled={true}>Please select a category...</option>
                                     {categoryData.map((category) => {
                                         return <option key={category._id} value={category._id}>{category.name}</option>
                                     })}

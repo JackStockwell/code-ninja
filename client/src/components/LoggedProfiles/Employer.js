@@ -31,6 +31,10 @@ const EmpProfile = () => {
 
     }, [loading, data])
 
+    useEffect(() => {
+        
+    }, [data])
+
     if (loading) {
         return <h4 style={{textAlign: 'center'}}><Spinner /></h4>
     }
@@ -50,7 +54,12 @@ const EmpProfile = () => {
                         <div>
                             <JobCreate />
                         </div>
-                        <JobListProfile data={userData.jobs} />
+                        <div>
+                            <JobListProfile data={userData.jobs} />
+                        </div>
+                        <div>
+                            
+                        </div>
                     </div>
                 ) : (
                     <>
