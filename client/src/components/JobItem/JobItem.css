@@ -25,7 +25,7 @@
   text-align: left;
   transition: transform 0.075s ease-in-out, box-shadow 0.3s ease-in-out;
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   border-bottom: 1px solid #ddd;
   border: 1px solid var(--tag-color);
   cursor: pointer;

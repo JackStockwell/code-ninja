@@ -22,7 +22,7 @@
 
 .emp-job-list {
     display: flex;
-    gap: 0.5rem;
+    gap: 1rem;
     flex-flow: column;
     padding: 1rem;
 }
@@ -47,7 +47,7 @@
 
 .job-card-widget {
     background: #fa9a1c94;
-    white-space: nowrap;
+
     overflow: hidden;
     height: 20em;
 }
@@ -56,13 +56,13 @@
     display: block;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 6;
+    -webkit-line-clamp: 5;
     overflow: hidden;
     text-overflow: ellipsis;
     height: calc(80%);
 }
 
-@media (min-width: 60em) {
+@media (min-width: 70em) {
 
     .emp-wrapper {
         display: grid;
@@ -72,13 +72,13 @@
     .emp-job-list {
         display: grid;
         overflow-y: scroll;
-        max-height: 50em;
+        max-height: 60em;
     }
 
     [data-text] {
         display: grid;
         overflow-y: scroll;
-        max-height: 30em;
+        max-height: 35em;
         -webkit-box-orient: inherit;
         -webkit-line-clamp: inherit;
     }

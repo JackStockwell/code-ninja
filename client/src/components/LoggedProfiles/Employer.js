@@ -8,7 +8,8 @@ import { Navigate } from 'react-router-dom';
 
 import './Employer.css'
 import './EmpProfList.css'
-import JobListProfile from '../JobListProfile';
+import JobListProfile from '../JobListProfile/index';
+import JobApplyList from '../JobListProfile/JobApplyList';
 
 
 
@@ -32,7 +33,7 @@ const EmpProfile = () => {
     }, [loading, data])
 
     useEffect(() => {
-        
+
     }, [data])
 
     if (loading) {
@@ -54,12 +55,18 @@ const EmpProfile = () => {
                         <div>
                             <JobCreate />
                         </div>
-                        <div>
-                            <JobListProfile data={userData.jobs} />
-                        </div>
-                        <div>
-                            
-                        </div>
+                        {userData.jobs?.length && (
+                            <>
+                                <div>
+                                    <h3>Jobs</h3>
+                                    <JobListProfile data={userData.jobs} />
+                                </div>
+                                <div>
+                                    <h3>Applications</h3>
+                                    <JobApplyList data={userData.jobs} />
+                                </div>
+                            </>
+                        )}
                     </div>
                 ) : (
                     <>
