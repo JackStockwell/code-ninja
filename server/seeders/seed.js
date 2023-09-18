@@ -81,7 +81,14 @@ connection.once('open', async () => {
         jobsArr.push(newJob)
     }
 
-    await Job.insertMany(jobsArr)
+    async function seedEmpJobs () {
+
+        const jobData = await Job.insertMany(jobsArr)
+
+        for await (const job of jobData.map())
+
+    }
+
 
     console.log('Seeding Complete 🌱')
     process.exit(0)

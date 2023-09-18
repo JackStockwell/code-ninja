@@ -3,11 +3,9 @@ import Auth from "../../utils/auth";
 import "./JobItem.css";
 import {Link} from "react-router-dom";
 
-import { useMutation, useQuery } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { SAVE_JOB, APPLY_JOB } from "../../utils/mutations";
-import { GET_ME } from "../../utils/queries";
-import { useJobContext } from "../../utils/GlobalState";
-import { UPDATE_JOB_APPS, UPDATE_JOB_SAVES } from "../../utils/actions";
+import { useMediaPredicate } from 'react-media-hook';
 
 
 import EditorRender from '../TextEditor/Editor'
@@ -30,6 +28,8 @@ function JobItem({
   // DB mutations and query
   const [saveJob, { error: saveError }] = useMutation(SAVE_JOB);
   const [applyJob, { error: applyError}] = useMutation(APPLY_JOB)
+
+  const handleMinWidth = useMediaPredicate("(min-width: 60em)")
 
   const handleOnSave = async ({target}) => {
     const id = target.dataset.id;
@@ -120,7 +120,8 @@ function JobItem({
                 <EditorRender>
                     {description}
                 </EditorRender>
-            </div>            
+            </div>
+            {!handleMinWidth && <span style={{alignSelf: 'center'}}>Click to view more.</span>}       
         </div>
     )
 }

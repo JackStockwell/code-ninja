@@ -42,8 +42,7 @@ const resolvers = {
                 try {
                     const empData = await Employer.findOne(
                         { _id: context.user._id }
-                    )
-                    .populate([
+                    ).populate([
                         { path: 'location', model: 'Location' },
                         { path: 'jobs', model: 'Job', populate: [
                             { path: 'category', model: 'Category' },
@@ -66,15 +65,14 @@ const resolvers = {
             try {
                 const data = await Employer.findOne(
                     { _id: id }
-                )
-                    .populate([
-                        { path: 'location', model: 'Location' },
-                        { path: 'jobs', model: 'Job', populate: [
-                            { path: 'category', model: 'Category' },
-                            { path: 'tags', model: 'Tag' },
-                            { path: 'company', model: 'Employer' }, 
-                        ]},
-                    ]);
+                ).populate([
+                    { path: 'location', model: 'Location' },
+                    { path: 'jobs', model: 'Job', populate: [
+                        { path: 'category', model: 'Category' },
+                        { path: 'tags', model: 'Tag' },
+                        { path: 'company', model: 'Employer' }, 
+                    ]},
+                ]);
 
                 return data
 

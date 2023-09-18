@@ -10,6 +10,7 @@ import Employer from '../components/LoggedProfiles/Employer'
 import { COMPANY_QUERY } from '../utils/queries'
 import { useQuery } from '@apollo/client'
 
+import JobListProfile from '../components/JobListProfile'
 
 
 const CompanyProfile = () => {
@@ -36,8 +37,15 @@ const CompanyProfile = () => {
                         <p>{empData.location || "location"}</p>
                     </div>
 
-                    <div>
-                        
+                    <div style={{textAlign: 'center'}}>
+                        {empData.jobs?.length ? (
+                            <>
+                                <h3>Active Jobs</h3>
+                                <JobListProfile value={empData?.jobs} />
+                            </>
+                        ) : (
+                            <h3>No active jobs</h3>
+                        )}
                     </div>
                 </>
             )}
