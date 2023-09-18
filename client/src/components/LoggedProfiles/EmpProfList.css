@@ -45,6 +45,22 @@
     font-size: 14px;
 }
 
+.job-card-widget {
+    background: #fa9a1c94;
+    white-space: nowrap;
+    overflow: hidden;
+    height: 20em;
+}
+
+.job-card-widget [data-text] {
+    display: block;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: calc(80%);
+}
 
 @media (min-width: 60em) {
 
@@ -56,8 +72,31 @@
     .emp-job-list {
         display: grid;
         overflow-y: scroll;
-        max-height: 30em;
+        max-height: 50em;
     }
+
+    [data-text] {
+        display: grid;
+        overflow-y: scroll;
+        max-height: 30em;
+        -webkit-box-orient: inherit;
+        -webkit-line-clamp: inherit;
+    }
+
+    [data-text]::-webkit-scrollbar {
+        width: 0.4rem;
+    }
+    
+    [data-text]::-webkit-scrollbar-track {
+        background: transparent;
+        border-radius: 1rem;
+    }
+    
+    [data-text]::-webkit-scrollbar-thumb {
+        background: #007bff;
+        border-radius: 1rem;
+    }
+    
     
     
 }

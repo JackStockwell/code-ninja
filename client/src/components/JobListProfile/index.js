@@ -23,8 +23,6 @@ const JobListProfile = ({data}) => {
         }
     }
 
-    console.log(data)
-
     return (
         <>
             <div className='emp-wrapper'>
@@ -44,6 +42,7 @@ const JobListProfile = ({data}) => {
                                         {job.description}
                                     </EditorRender>
                                 </div>
+                                <span style={{alignSelf: 'center'}}>Click to view more.</span>
                             </div>
                         )
                     })}

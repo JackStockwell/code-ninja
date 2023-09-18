@@ -8,6 +8,7 @@ const jobSchema = new Schema({
         },
         company: {
             type: Schema.Types.ObjectId,
+            ref: 'Employer',
             required: true
         },
         salary: {

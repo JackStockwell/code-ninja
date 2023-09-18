@@ -81,7 +81,14 @@ connection.once('open', async () => {
         jobsArr.push(newJob)
     }
 
-    await Job.insertMany(jobsArr)
+    const jobData = await Job.insertMany(jobsArr)
+
+    for await (const job of jobData){
+        await Employer.findOneAndUpdate(
+            { _id: job.company._id },
+            { $addToSet: { jobs: job._id }}
+        )
+    }
 
     console.log('Seeding Complete 🌱')
     process.exit(0)
