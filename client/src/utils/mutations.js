@@ -54,6 +54,15 @@ export const SAVE_JOB = gql`
   }
 `;
 
+export const APPLY_JOB = gql`
+mutation ApplyJob($id: ID!) {
+  applyJob(id: $id) {
+    _id
+    title
+  }
+}
+`;
+
 export const CREATE_EMPLOYER = gql`
   mutation CreateEmployer($userData: empInput) {
     createEmployer(userData: $userData) {
