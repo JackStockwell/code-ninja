@@ -26,27 +26,10 @@ function JobItem({
 }) {
 
   // Global state and reducer import
-  const [state, dispatch] = useJobContext();
-  const { jobApps, jobSaves } = state;
 
   // DB mutations and query
   const [saveJob, { error: saveError }] = useMutation(SAVE_JOB);
   const [applyJob, { error: applyError}] = useMutation(APPLY_JOB)
-  const { loading: meLoading, data: meData } = useQuery(GET_ME);
-
-  useEffect(() => {
-    if(meData) {
-      dispatch({
-        type: UPDATE_JOB_APPS,
-        jobs: meData.me.jobApp
-      })
-      dispatch({
-        type: UPDATE_JOB_SAVES,
-        jobs: meData.me.jobSaves
-      })
-    }
-  }, [meData, meLoading, dispatch])
-
 
   const handleOnSave = async ({target}) => {
     const id = target.dataset.id;

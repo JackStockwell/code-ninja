@@ -4,8 +4,10 @@ import { useMediaPredicate } from 'react-media-hook';
 import EditorRender from '../TextEditor/Editor'
 import JobItem from '../JobItem';
 import { useNavigate } from 'react-router-dom';
+import '../LoggedProfiles/EmpProfList.css'
+import '../LoggedProfiles/Employer.css'
 
-const JobListProfile = (userData) => {
+const JobListProfile = ({data}) => {
 
     const navigate = useNavigate()
 
@@ -21,15 +23,17 @@ const JobListProfile = (userData) => {
         }
     }
 
+    console.log(data)
+
     return (
         <>
             <div className='emp-wrapper'>
                 <div className='emp-job-list'>
-                    {userData?.jobs.map((job) => {
+                    {data?.map((job) => {
                         return (
                             <div 
                             key={job._id} 
-                            className='job-card' 
+                            className='job-card job-card-widget' 
                             data-value={job._id}
                             onClick={() => handleOnClick(job)}>
                                 <h4>{job.title}</h4>

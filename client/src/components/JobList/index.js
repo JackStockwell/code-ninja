@@ -35,7 +35,7 @@ const JobList = () => {
     if (!currentCategory) {
       return state.jobs;
     }
-    console.log(state.jobs)
+
     return state.jobs.filter(
       (job) => job.category._id === currentCategory
     )
