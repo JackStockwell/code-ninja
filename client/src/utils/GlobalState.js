@@ -9,6 +9,8 @@ const JobProvider = ({ value = [], ...props }) => {
       jobs: null,
       categories: [],
       currentCategory: '',
+      jobApps: [],
+      jobSaves: []
     });
 
     return <Provider value={[state, dispatch]} {...props} />

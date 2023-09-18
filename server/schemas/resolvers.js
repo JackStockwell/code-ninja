@@ -19,6 +19,10 @@ const resolvers = {
                 const userData = await User.findOne(
                     { _id: context.user._id }
                 )
+                .populate([
+                    { path: 'jobSaves', model: 'Job' },
+                    { path: 'jobApp', model: 'Job' }
+                ]);
                 return userData;
             };
 
@@ -89,6 +93,7 @@ const resolvers = {
                     { path: 'jobSaves', model: 'Job' },
                     { path: 'jobApp', model: 'Job' }
                 ]);
+                
         },
         jobs: async (parent, { limit, offset, category }) => {
 

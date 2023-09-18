@@ -18,11 +18,11 @@ const JobList = () => {
   // Get the current category from state.
   const {currentCategory} = state;
 
-
-
-  //
+  // Sets the page to 0, increments change the rendered data.
   const [page, setPage] = useState(0);
 
+  // Data query, parses a hard set limit of 6 per page render and the offset is the current page * size.
+  // Category can be inserted if selected
   const {data, loading, error} = useQuery(QUERY_JOBS, {
     variables: {
       limit: 6,
@@ -41,15 +41,15 @@ const JobList = () => {
     )
   }
 
-    //Runs when data or currentCategory is updated.
-    useEffect(() => {
-        if(data) {
-            dispatch({
-              type: UPDATE_JOBS,
-              jobs: data.jobs
-            })
-        }
-    }, [data, loading, dispatch]);
+  //Runs when data or currentCategory is updated.
+  useEffect(() => {
+      if(data) {
+          dispatch({
+            type: UPDATE_JOBS,
+            jobs: data.jobs
+          })
+      }
+  }, [data, loading, dispatch]);
 
   //Runs when data or currentCategory is updated.
   useEffect(() => {
