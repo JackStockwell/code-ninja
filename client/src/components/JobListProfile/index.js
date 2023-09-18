@@ -13,7 +13,7 @@ const JobListProfile = ({data}) => {
 
     const [selectedJob, setSelectedJob] = useState({})
 
-    const handleMinWidth = useMediaPredicate("(min-width: 60em)")
+    const handleMinWidth = useMediaPredicate("(min-width: 70em)")
 
     const handleOnClick = (job) => {
         if(handleMinWidth) {

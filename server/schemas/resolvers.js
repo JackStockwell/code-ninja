@@ -42,7 +42,8 @@ const resolvers = {
                 try {
                     const empData = await Employer.findOne(
                         { _id: context.user._id }
-                    ).populate([
+                    )
+                    .populate([
                         { path: 'location', model: 'Location' },
                         { path: 'jobs', model: 'Job', populate: [
                             { path: 'category', model: 'Category' },
@@ -124,6 +125,17 @@ const resolvers = {
             }
 
 
+        },
+        getJob: async (parent, { id }) => {
+            return await Job.findOne(
+                { _id: id }
+            )
+            .populate([
+                { path: 'category', model: 'Category' },
+                { path: 'tags', model: 'Tag' },
+                { path: 'company', model: 'Employer' },
+                { path: 'applicants', model: 'User' },
+            ]);
         },
         categories: async () => {
             return await Category.find({})
@@ -246,7 +258,8 @@ const resolvers = {
                     { _id: id },
                     { $addToSet: { applicants: user._id } },
                     { new: true, runValidators: true }
-                ).populate([
+                ).
+                populate([
                     { path: 'category', model: 'Category' },
                     { path: 'tags', model: 'Tag' },
                     { path: 'company', model: 'Employer' },

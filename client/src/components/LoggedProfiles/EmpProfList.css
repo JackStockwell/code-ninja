@@ -40,7 +40,7 @@
 
 .emp-job-list {
     display: flex;
-    gap: 0.5rem;
+    gap: 1rem;
     flex-flow: column;
     padding: 1rem;
 }
@@ -69,8 +69,13 @@ height: 100vh;
 }
 
 .job-card-widget {
+<<<<<<< HEAD
     background: #f1eded94;
     white-space: nowrap;
+=======
+    background: #fa9a1c94;
+
+>>>>>>> 288af6b598e0667d02acf85fb42040f9e666e135
     overflow: hidden;
     height: 50vh;
     width:100%;
@@ -81,7 +86,7 @@ height: 100vh;
     display: block;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 6;
+    -webkit-line-clamp: 5;
     overflow: hidden;
     margin-right:40px;
     text-overflow: ellipsis;
@@ -89,7 +94,7 @@ height: 100vh;
   
 }
 
-@media (min-width: 60em) {
+@media (min-width: 70em) {
 
     .emp-wrapper {
         display: grid;
@@ -98,12 +103,17 @@ height: 100vh;
     }
     .emp-job-list {
         display: grid;
+<<<<<<< HEAD
         overflow-y: auto; /* Use 'auto' to show the scrollbar only when needed */
         max-height: 50em;
         padding: 1rem 2rem 1rem 1rem; /* Add padding to the right side (adjust as needed) */
      
         border-radius: 8px; /* Rounded corners for the container */
         background-color: #f7f7f7; /* A light background color */
+=======
+        overflow-y: scroll;
+        max-height: 60em;
+>>>>>>> 288af6b598e0667d02acf85fb42040f9e666e135
     }
     
     
@@ -129,7 +139,7 @@ height: 100vh;
     [data-text] {
         display: grid;
         overflow-y: scroll;
-        max-height: 30em;
+        max-height: 35em;
         -webkit-box-orient: inherit;
         -webkit-line-clamp: inherit;
     }
