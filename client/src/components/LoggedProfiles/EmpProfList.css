@@ -41,6 +41,10 @@
     padding: 1rem;
 }
 
+.button .link {
+    font-size: 14px;
+}
+
 
 @media (min-width: 60em) {
 

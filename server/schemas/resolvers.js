@@ -104,6 +104,7 @@ const resolvers = {
                     { path: 'category', model: 'Category' },
                     { path: 'tags', model: 'Tag' },
                     { path: 'company', model: 'Employer' },
+                    { path: 'applicants', model: 'User' },
                 ]);
             
             if (offset, limit) {
@@ -160,14 +161,6 @@ const resolvers = {
             if (!employer) {
                 throw new AuthenticationError('Oops! Something went wrong, perhaps you already exist?')
             }
-
-            // const empData = await Employer.findOneAndUpdate(
-            //     { _id: emp._id },
-            //     { $addToSet: { location: locationData } }
-            // )
-
-            // Creates a sign in token, allowing the user to navigate and give auth to the rest
-            // of the API.
             const token = signToken(employer)
             
             // Returns the token and
@@ -231,19 +224,25 @@ const resolvers = {
             }
 
             try {
-                await Job.findOneAndUpdate(
-                    { _id: id },
-                    { $addToSet: { applicants: id } },
-                    { new: true, runValidators: true }
-                )
-    
-                const userData = await User.findOneAndUpdate(
+                await User.findOneAndUpdate(
                     { _id: context.user._id },
-                    { $addToSet: { jobApply: id } },
+                    { $addToSet: { jobApp: id } },
                     { new: true, runValidators: true }
                 )
 
-                return userData
+                const jobData = await Job.findOneAndUpdate(
+                    { _id: id },
+                    { $addToSet: { applicants: id } },
+                    { new: true, runValidators: true }
+                ).populate([
+                    { path: 'category', model: 'Category' },
+                    { path: 'tags', model: 'Tag' },
+                    { path: 'company', model: 'Employer' },
+                    { path: 'applicants', model: 'User' },
+                ])
+
+                return jobData
+                
             } catch(err) {
                 throw new AuthenticationError(err)
             }
