@@ -5,7 +5,7 @@
 Git-Jobs is a specialised recruitment platform tailored exclusively for software developers. This platform empowers users to effectively browse, bookmark, and submit job applications.
 
 ## Motivation for development
-In the fast-paced and ever-evolving world of technology, knowledge and community are paramount. Our motivation behind creating this specialised website for tech industry professionals is driven by the belief that continuous learning, collaboration, and networking are the cornerstones of success in this field. We aspire to provide a central hub where tech enthusiasts, developers, engineers, and professionals from diverse tech domains can access cutting-edge resources, stay updated on industry trends, engage in meaningful discussions, and forge valuable connections. By fostering a vibrant online ecosystem, we aim to empower tech workers to excel in their careers, push the boundaries of innovation, and contribute to the collective growth of the global tech community
+In the fast-paced and ever-evolving world of technology, knowledge and community are paramount. Our motivation behind creating this specialised website for tech industry professionals is driven by the belief that continuous learning, collaboration, and networking are the cornerstones of success in this field. We aspire to provide a central hub where tech enthusiasts, developers, engineers, and professionals from diverse tech domains can access cutting-edge resources, stay updated on industry trends, engage in meaningful discussions, and forge valuable connections. By fostering a vibrant online ecosystem, we aim to empower tech workers to excel in their careers, push the boundaries of innovation, and contribute to the collective growth of the global tech community.
 
 
 ## User Story
@@ -17,7 +17,7 @@ In the fast-paced and ever-evolving world of technology, knowledge and community
  ## Acceptance Criteria
 
  ``
-  As a user, I can sign up using my email 
+ As a user, I can sign up using my email 
 
  After registration, I can create a detailed profile with my professional experience, skills and preferences.
 
