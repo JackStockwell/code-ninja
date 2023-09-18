@@ -1,7 +1,25 @@
-/* SCROLL */
+
+
+.job-card {
+    background-color:white;
+    border-radius: 10px;
+
+    padding: 20px;
+    margin: 10px; 
+    margin-right: 40px;
+  
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #FA991C; /* Blue border at the bottom */
+  }
+  
+
 .emp-job-list::-webkit-scrollbar {
     width: 0.4rem;
 }
+
+
 
 .emp-job-list::-webkit-scrollbar-track {
     background: #FA991C;
@@ -14,9 +32,9 @@
 }
 
 .emp-wrapper {
-    display: grid;
+    display: flex;
     grid-template-columns: 1fr;
-    max-width: 80em;
+    max-width: 90em;
     margin: auto;
 }
 
@@ -29,27 +47,34 @@
 
 .emp-job {
     padding: 0.5rem;
-    border: 1px solid black;
+    border: 1px solid rgb(255, 255, 255);
     border-radius: 0.25rem;
 }
 
 .job-container {
     display: grid;
 }
+/* .emp-job-viewer {
 
-.emp-job-viewer {
-    padding: 1rem;
-}
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width:100%;
+margin:40px;
+height: 100vh;
+}  */
 
 .button .link {
     font-size: 14px;
 }
 
 .job-card-widget {
-    background: #fa9a1c94;
+    background: #f1eded94;
     white-space: nowrap;
     overflow: hidden;
-    height: 20em;
+    height: 50vh;
+    width:100%;
+    margin-right:100px;
 }
 
 .job-card-widget [data-text] {
@@ -58,8 +83,10 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 6;
     overflow: hidden;
+    margin-right:40px;
     text-overflow: ellipsis;
     height: calc(80%);
+  
 }
 
 @media (min-width: 60em) {
@@ -67,13 +94,37 @@
     .emp-wrapper {
         display: grid;
         grid-template-columns: 1fr 2fr;
+        width:150%;
     }
-
     .emp-job-list {
         display: grid;
-        overflow-y: scroll;
+        overflow-y: auto; /* Use 'auto' to show the scrollbar only when needed */
         max-height: 50em;
+        padding: 1rem 2rem 1rem 1rem; /* Add padding to the right side (adjust as needed) */
+     
+        border-radius: 8px; /* Rounded corners for the container */
+        background-color: #f7f7f7; /* A light background color */
     }
+    
+    
+    .emp-job-list::-webkit-scrollbar {
+        width: 8px; /* Adjust the scrollbar width as needed */
+    }
+    
+    .emp-job-list::-webkit-scrollbar-track {
+        background: #d3dcf3; /* Track background color */
+        border-radius: 8px; /* Rounded corners for the track */
+    }
+    
+    .emp-job-list::-webkit-scrollbar-thumb {
+        background:#FA991C; /* Scrollbar thumb color */
+        border-radius: 8px; /* Rounded corners for the thumb */
+    }
+    
+    .emp-job-list::-webkit-scrollbar-thumb:hover {
+        background: #555; /* Hover effect for the scrollbar thumb */
+    }
+    
 
     [data-text] {
         display: grid;
@@ -93,7 +144,7 @@
     }
     
     [data-text]::-webkit-scrollbar-thumb {
-        background: #007bff;
+        background: #FA991C;
         border-radius: 1rem;
     }
     

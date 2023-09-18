@@ -6,8 +6,8 @@ import JobCreate from '../JobCreate';
 import { Spinner } from 'react-bootstrap';
 import { Navigate } from 'react-router-dom';
 
-import './Employer.css'
 import './EmpProfList.css'
+
 import JobListProfile from '../JobListProfile';
 
 
@@ -43,30 +43,34 @@ const EmpProfile = () => {
 
     return (
         <>  
-            <div className=''>
-                {loggedUser ? (
-                    <div>
-                        <div className='emp-info'>
-                            <h3>Hi {userData.companyName}, welcome back.</h3>
-                            <p>{userData.about}</p>
-                            <p>{userData.location}</p>
-                        </div>
-                        <div>
-                            <JobCreate />
-                        </div>
-                        <div>
-                            <JobListProfile data={userData.jobs} />
-                        </div>
-                        <div>
-                            
-                        </div>
-                    </div>
-                ) : (
-                    <>
-                        {!loading && !userData.companyName && <Navigate to='/employer'/>}
-                    </>
-                )}
-            </div>
+       <div className=''>
+  {loggedUser ? (
+    <div>
+      <div className='emp-info'>
+        <h3>Hi {userData.companyName}, welcome back.</h3>
+        <p>{userData.about}</p>
+        <p>{userData.location}</p>
+      </div>
+      
+      {/* Job Create Card */}
+      <div className="post-job">
+        <JobCreate />
+      </div>
+      
+      {/* Job List Profile Card */}
+      <div className="job-card">
+        <JobListProfile data={userData.jobs} />
+      </div>
+      
+      {/* Add more job cards here if needed */}
+    </div>
+  ) : (
+    <>
+      {!loading && !userData.companyName && <Navigate to='/employer' />}
+    </>
+  )}
+</div>
+
         </>
     )
 }
