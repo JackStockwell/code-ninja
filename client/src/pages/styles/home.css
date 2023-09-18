@@ -11,12 +11,38 @@ li {
 /* Define basic styles for the page */
 .home {
   font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #fa991c, #ff5722);
+  background: linear-gradient(
+    135deg,
+    #ff8c00,
+    #ffae42,
+    #ffd700,
+    #ffa500,
+    #ff6347,
+    #ff4500,
+    #ff69b4
+  );
+  background-size: 300% 300%;
+  animation: gradient 5s linear infinite;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   overflow: hidden;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 100%;
+  }
+  10% {
+    background-position: 100% 0%;
+  }
+  90% {
+    background-position: 100% 0%;
+  }
+  100% {
+    background-position: 0% 100%;
+  }
 }
 
 .main {
