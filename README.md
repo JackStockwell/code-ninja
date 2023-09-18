@@ -1,7 +1,6 @@
 ## Git-Jobs!
 
 ## Description
-
 Git-Jobs is a specialised recruitment platform tailored exclusively for software developers. This platform empowers users to effectively browse, bookmark, and submit job applications.
 
 ## Motivation for development
@@ -15,7 +14,6 @@ In the fast-paced and ever-evolving world of technology, knowledge and community
  
 
  ## Acceptance Criteria
-
  ``
  As a user, I can sign up using my email 
 
@@ -41,7 +39,6 @@ In the fast-paced and ever-evolving world of technology, knowledge and community
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
-
 In the project directory, you can run:
 
 ### `npm start`
