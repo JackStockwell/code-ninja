@@ -41,7 +41,7 @@ const CompanyProfile = () => {
                         {empData.jobs?.length ? (
                             <>
                                 <h3>Active Jobs</h3>
-                                <JobListProfile value={empData?.jobs} />
+                                <JobListProfile data={empData?.jobs} />
                             </>
                         ) : (
                             <h3>No active jobs</h3>

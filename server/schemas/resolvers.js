@@ -209,12 +209,22 @@ const resolvers = {
         },
 
         // Uploads a file sent from the front end to the S3 webserver.
-        singleUpload: async (parent, args) => {
+        singleUpload: async (parent, args, context) => {
             const upload = s3Uploader.singleFileUploadResovler.bind(s3Uploader);
 
             try {
-              const newUpload = await upload(parent, args);
-              return newUpload;
+                const newUpload = await upload(parent, args);
+
+                const url = newUpload.url
+
+                await User.findOneAndUpdate(
+                    { _id: context.user._id },
+                    { resume: url },
+                    { upsert: true}
+                )
+                
+                return newUpload;
+
             } catch (error) {
               console.log(error);
               throw new AuthenticationError(error);

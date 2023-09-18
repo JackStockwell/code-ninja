@@ -6,7 +6,7 @@ import JobCreate from "../JobCreate";
 import {Spinner} from "react-bootstrap";
 import {Navigate} from "react-router-dom";
 
-import "./Employer.css";
+import "./emp.css";
 import "./EmpProfList.css";
 import JobListProfile from "../JobListProfile/index";
 import JobApplyList from "../JobListProfile/JobApplyList";

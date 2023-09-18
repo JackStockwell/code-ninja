@@ -5,7 +5,7 @@ import EditorRender from '../TextEditor/Editor'
 import JobItem from '../JobItem';
 import { useNavigate } from 'react-router-dom';
 import '../LoggedProfiles/EmpProfList.css'
-import '../LoggedProfiles/Employer.css'
+import '../LoggedProfiles/emp.css'
 
 const JobListProfile = ({data}) => {
 
@@ -19,9 +19,11 @@ const JobListProfile = ({data}) => {
         if(handleMinWidth) {
             setSelectedJob(job)
         } else {
-            navigate(`/view/${job._id}`)
+            navigate(`/job/${job._id}`)
         }
     }
+
+    console.log(data)
 
     return (
         <>
