@@ -6,7 +6,7 @@ import JobApplicants from '../JobItem/Applicant'
 
 import { useNavigate } from 'react-router-dom';
 import '../LoggedProfiles/EmpProfList.css'
-import '../LoggedProfiles/Employer.css'
+import '../LoggedProfiles/emp.css'
 
 const JobApplyList = ({data}) => {
 
