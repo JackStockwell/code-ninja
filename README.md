@@ -9,6 +9,8 @@ Git-Jobs is a specialized recruitment platform tailored exclusively for software
 ``
  As a software developer looking for new job opportunities, I want to use the git-jobs website to easily find relevant job listings, connect with potential employers, and manage my job applications efficiently.
  
+ md
+ 
  ``
 
  ## Acceptance Criteria
@@ -32,6 +34,8 @@ Git-Jobs is a specialized recruitment platform tailored exclusively for software
  I can easily apply to jobs by using the Apply Now! button which directs me to submit my application directly through the website 
 
  As a user I can use this applicayion on both a desktop and mobile phone devices 
+
+ md
 ``
  
  
