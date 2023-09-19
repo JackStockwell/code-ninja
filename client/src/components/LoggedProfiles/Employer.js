@@ -21,7 +21,7 @@ import {Spinner} from "react-bootstrap";
 import {Navigate} from "react-router-dom";
 >>>>>>> 288af6b598e0667d02acf85fb42040f9e666e135
 
-import "./Employer.css";
+import "./emp.css";
 import "./EmpProfList.css";
 import JobListProfile from "../JobListProfile/index";
 import JobApplyList from "../JobListProfile/JobApplyList";

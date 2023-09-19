@@ -10,7 +10,6 @@ import {JobProvider} from "./utils/GlobalState";
 import Home from "./pages/Home";
 import LoginForm from "./components/LoginForm";
 import SignUp from "./pages/SignUp";
-import Dev from "./pages/Dev";
 import Footer from "./components/Footer";
 import JobSearch from "./pages/JobSearch";
 import Header from "./components/Header/Header";
@@ -38,6 +37,7 @@ import {
   faCircleInfo,
 } from "@fortawesome/free-solid-svg-icons";
 import {faGithub, faLinkedin} from "@fortawesome/free-brands-svg-icons";
+import JobPage from "./pages/JobPage";
 
 library.add(
   faHouse,
@@ -84,16 +84,16 @@ function App() {
             <Route path="/user/myprofile" element={<UserProfile />} />
             <Route path="/cmp/myprofile" element={<EmployerProfile />} />
             <Route path="/cmp/:company/:id" element={<CompanyProfile />} />
-            <Route path="/dev" element={<Dev />} />
             <Route path="/employer" element={<EmployerLanding />} />
             <Route path="/login" element={<LoginForm />} />
             <Route path="/register" element={<SignUp />} />
             <Route path="/search" element={<JobSearch />} />
-            <Route path="*" element={<Lost />} />
+            <Route path="/job/:id" element={<JobPage />} />
             <Route path="/blog/post-1" element={<BlogPost1 />} />
             <Route path="/blog/post-2" element={<BlogPost2 />} />
             <Route path="/blog/post-3" element={<BlogPost3 />} />
             <Route path="/blog/post-4" element={<BlogPost4 />} />
+            <Route path="*" element={<Lost />} />
           </Routes>
           <Footer />
         </JobProvider>

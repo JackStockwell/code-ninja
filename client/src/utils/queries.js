@@ -147,3 +147,34 @@ query GetCompany($getCompanyId: ID) {
     }
   }
 `;
+
+export const GET_ONE_JOB = gql`
+query User($getJobId: ID) {
+  getJob(id: $getJobId) {
+    _id
+    title
+    company {
+      companyName
+      location {
+        firstLine
+        city
+        county
+        postCode
+        secondLine
+        _id
+      }
+      about
+    }
+    salary
+    description
+    category {
+      _id
+      name
+    }
+    tags {
+      name
+      _id
+    }
+  }
+}
+`;

@@ -1,0 +1,11 @@
+.applicant-wrapper {
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 0 2rem;
+}
+
+.user-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
