@@ -1,17 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Header.css";
-import Auth from "../../utils/auth";
-import logo1 from "../../images/logo.png"; // Renamed to logo1
+import Auth from "../../utils/auth"; // Renamed to logo1
 import logo2 from "../../images/logo2.png"; // Renamed to logo2
 
 function Header() {
-  console.log(Auth.getProfile());
+
+  
+  const navigate = useNavigate()
+
   return (
     <header className="header">
       <div>
-      <img src={logo1} alt="Logo 1" style={{ width: "100px", height: "auto" }} />
-        <img src={logo2} alt="Logo 2" style={{ width: "100px", height: "auto" }} />
+        <img onClick={() => navigate('/')} src={logo2} alt="Logo 2" style={{ cursor: 'pointer', width: "200px", height: "auto", padding: '0 1rem' }} />
       </div>
 <nav></nav>
       <nav>

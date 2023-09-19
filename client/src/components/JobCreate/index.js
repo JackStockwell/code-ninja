@@ -65,6 +65,9 @@ const JobCreate = () => {
         setUserFormData({...userFormData, tags: multiSelections.map((tag => tag._id))})
     }, [multiSelections])
 
+    useEffect(() => {
+    }, [show])
+
     // Handles the input change in form.
     const handleInputChange = (event) => {
         // Deconstruct the target with what has changed as name and the value as well value.
@@ -127,10 +130,10 @@ const JobCreate = () => {
             console.log(data)
 
             setShow(false)
-        } catch (err) {
-            console.error(err)
+            } catch (err) {
+                console.error(err)
+            }
         }
-    }
     // Handles the modal opening and closing
     const handleOpen = () => setShow(prev => !prev)
 
@@ -224,7 +227,7 @@ const JobCreate = () => {
 
             <Button variant="primary" onClick={handleOpen}>Post new Job</Button>
 
-            <Modal show={show} onHide={setShow} backdrop="static" centered>
+            <Modal show={show} onHide={setShow} onExit={() => window.location.reload()} backdrop="static" centered>
                 <Modal.Header closeButton>
                     <Modal.Title>New Job</Modal.Title>
                 </Modal.Header>

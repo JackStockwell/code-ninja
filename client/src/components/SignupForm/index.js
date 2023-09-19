@@ -108,7 +108,7 @@ const CreateUser = () => {
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="password">Password:</label>
+                    <label htmlFor="password">Password Confirm:</label>
                     <input
                         type="password"
                         name="passwordConfirm"

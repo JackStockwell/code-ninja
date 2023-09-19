@@ -5,17 +5,17 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   padding: 20px;
   margin: 20px auto;
-  max-width: 50%;
+  max-width: 70em;
   text-align: left;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   display: flex;
   flex-direction: column;
   align-items: center;
   border-bottom: 5px solid #c0d9f3; /* Change the border color */
-  transform: perspective(500px) rotateX(0deg) scale(1); /* Reset rotation and scale */
+  transform: perspective(100px) rotateX(0deg) scale(1); /* Reset rotation and scale */
 
   &:hover {
-    transform: perspective(500px) rotateX(2deg) scale(1.03); /* Rotate slightly and scale up on hover */
+    transform: perspective(100px) rotateX(0.15deg) scale(1.01); /* Rotate slightly and scale up on hover */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Adjust the shadow on hover */
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   }
@@ -67,7 +67,8 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   padding: 20px;
   margin: 20px auto;
-  max-width: 50%;
+  width: 90vw;
+  max-width: 80em;
   text-align: left;
   display: flex;
   flex-direction: column;
@@ -78,7 +79,7 @@
 }
 
 .emp-profile-container:hover {
-  transform: perspective(500px) rotateX(2deg) scale(1.03);
+  transform: perspective(500px) rotateX(0deg) scale(1.01);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
@@ -121,4 +122,20 @@
 
 .emp-navigate-link:hover {
   text-decoration: underline;
+}
+
+.emp-info {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+  border-bottom: 2px solid #007bff;
+}
+
+.emp-title {
+  display: flex;
+  flex-flow: column;
+}
+
+.emp-wrap {
+  width: 100%;
 }

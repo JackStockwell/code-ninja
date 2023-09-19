@@ -1,5 +1,4 @@
 /* Reset some default browser styles */
-
 body,
 ul,
 li {
@@ -28,6 +27,7 @@ li {
   align-items: center;
   min-height: 100vh;
   overflow: hidden;
+  padding: 1rem;
 }
 
 @keyframes gradient {
@@ -92,8 +92,11 @@ li {
 
 /* Blog post link styles */
 ul {
-  list-style: none;
-  padding: 0;
+  list-style: none !important;
+  padding: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-left: 0 !important;
 }
 
 ul li {

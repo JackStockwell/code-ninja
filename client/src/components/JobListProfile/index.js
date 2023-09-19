@@ -23,8 +23,6 @@ const JobListProfile = ({data}) => {
         }
     }
 
-    console.log(data)
-
     return (
         <>
             <div className='emp-wrapper'>
