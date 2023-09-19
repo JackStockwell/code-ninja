@@ -1,48 +1,51 @@
 /* Style for the container */
-.container {
+.company-profile-container {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
   min-height: 90vh;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Style for the company name */
-h1 {
+.company-profile-container h1 {
   font-size: 36px;
   color: #333;
   margin-bottom: 10px;
 }
 
 /* Style for the about section */
-p.about {
+.company-profile-container p.about {
   font-size: 18px;
   color: #555;
   margin-bottom: 20px;
 }
 
 /* Style for the email and location */
-p.email,
-p.location {
+.company-profile-container p.email,
+.company-profile-container p.location {
   font-size: 16px;
   color: #777;
   margin-bottom: 10px;
 }
 
 /* Style for the active jobs section */
-h3 {
+.company-profile-container h3 {
   font-size: 24px;
   color: #333;
   margin-bottom: 10px;
 }
 
 /* Style for the job list */
-.job-list {
+.company-profile-container .job-list {
   list-style: none;
   padding: 0;
 }
 
 /* Style for each job item */
-.job-item {
+.company-profile-container .job-item {
   background-color: #f5f5f5;
   border: 1px solid #ddd;
   padding: 10px;
@@ -50,6 +53,6 @@ h3 {
 }
 
 /* Center content */
-.center {
+.company-profile-container .center {
   text-align: center;
 }

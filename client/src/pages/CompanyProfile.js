@@ -25,7 +25,7 @@ const CompanyProfile = () => {
   console.log(empData);
 
   return (
-    <div className="container">
+    <div className="company-profile-container">
       {loading && <h4>Loading...</h4>}
       {empData && (
         <>
@@ -39,8 +39,8 @@ const CompanyProfile = () => {
           <div className="center">
             {empData.jobs?.length ? (
               <>
-                <h3>Active Jobs</h3>
-                <ul className="job-list">
+                <h3 className="company-profile-title">Active Jobs</h3>
+                <ul className="company-profile-job-list">
                   <JobListProfile data={empData?.jobs} />
                 </ul>
               </>
