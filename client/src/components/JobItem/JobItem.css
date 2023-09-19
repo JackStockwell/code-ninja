@@ -21,7 +21,7 @@
   background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  padding: 20px;
+  padding: 1rem;
   text-align: left;
   transition: transform 0.075s ease-in-out, box-shadow 0.3s ease-in-out;
   display: flex;
@@ -161,4 +161,7 @@
     grid-template-columns: 1fr 1fr;
     max-width: 70em;
   }
+
+  
+
 }

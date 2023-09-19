@@ -24,7 +24,7 @@
     display: flex;
     gap: 1rem;
     flex-flow: column;
-    padding: 0 1rem;
+    padding: 1rem;
 }
 
 .emp-job {
@@ -47,7 +47,7 @@
 
 .job-card-widget {
     background: #fa9a1c94;
-
+    flex-flow: column;
     overflow: hidden;
     height: 20em;
 }

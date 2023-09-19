@@ -2,6 +2,7 @@ import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faStar} from "@fortawesome/free-solid-svg-icons"; // Import the icon you want to use
 import "./styles/home.css";
+import logo from "../images/logo2.png"
 
 const jobBlogPosts = [
   {

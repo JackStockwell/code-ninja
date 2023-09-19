@@ -4,8 +4,6 @@ import './Applicant.css'
 
 const JobApplicants = ({data}) => {
 
-    console.log(data)
-
     const applicantData = data || []
 
     const useOpenLink = (url) => {

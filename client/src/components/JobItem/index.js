@@ -1,7 +1,7 @@
 import React from "react";
 import Auth from "../../utils/auth";
 import "./JobItem.css";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 import { useMutation } from "@apollo/client";
 import { SAVE_JOB, APPLY_JOB } from "../../utils/mutations";
@@ -29,6 +29,8 @@ function JobItem({
   // DB mutations and query
   const [saveJob, { error: saveError }] = useMutation(SAVE_JOB);
   const [applyJob, { error: applyError}] = useMutation(APPLY_JOB)
+
+  const navigate = useNavigate()
 
   const handleMinWidth = useMediaPredicate("(min-width: 60em)")
 
@@ -65,8 +67,17 @@ function JobItem({
     }
   };
 
+  const handleOnClick = (id) => {
+    if(handleMinWidth) {
+        null
+    } else {
+
+        navigate(`/job/${id}`)
+    }
+}
+
     return (
-        <div className="job-card">
+        <div className="job-card" onClick={() => handleOnClick(_id)}>
             <div className="job-header">
                 <div className="job-title">
                     <h3 style={{height: 'fit-content'}}>{title}</h3>
@@ -104,8 +115,8 @@ function JobItem({
                     <h6>Tags:</h6>
                     <div className="job-tag-div">
                         {tags &&
-                            tags.map((tag) => {
-                                return <p key={tag._id} id={tag._id}>{tag.name}</p>;
+                            tags.map((tag, index) => {
+                                return <p key={index + tag._id} id={tag._id}>{tag.name}</p>;
                         })}
                     </div>
                 </div>
@@ -117,7 +128,7 @@ function JobItem({
                     <p>{salary}</p>
                 </div>
             </div>
-            <div style={{margin: '1rem 0'}} className={overflow ? ('job-description'):('')}>
+            <div style={{margin: '1rem 0' }} className={overflow ? ('job-description'):('')}>
                 <EditorRender>
                     {description}
                 </EditorRender>

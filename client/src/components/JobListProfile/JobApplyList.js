@@ -18,7 +18,6 @@ const JobApplyList = ({data}) => {
 
     const handleOnClick = (applicant) => {
         if(handleMinWidth) {
-            console.log(applicant)
             setSelectedJob(applicant)
         } else {
             navigate(`/view/${applicant._id}`)
@@ -57,7 +56,7 @@ const JobApplyList = ({data}) => {
                                 <JobApplicants data={selectedJob}/>
                             </>
                         ):(
-                            <p>TEST</p>
+                            <p style={{textAlign: 'center', fontSize: '2em'}}>No applicants</p>
                         )}
                     </div>
                 <div>

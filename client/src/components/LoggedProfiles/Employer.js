@@ -43,22 +43,29 @@ const EmpProfile = () => {
   return (
     <div className="emp-profile-container">
       {loggedUser ? (
-        <div>
-          <div className="emp-info">{/* Your existing JSX */}</div>
-          <div>
-            <JobCreate />
+        <div className="emp-wrap">
+          <div className="emp-info">
+            <div className="emp-title">
+              <h3>Welcome back, {userData.companyName}</h3>
+              <p>London</p>
+            </div>
+            <div>
+              <JobCreate />
+            </div>
           </div>
-          {userData.jobs?.length && (
+          {userData?.jobs.length ? (
             <>
-              <div>
+              <div style={{textAlign: 'center', margin: '2rem 0'}}>
                 <h3>Jobs</h3>
                 <JobListProfile data={userData.jobs} />
               </div>
-              <div>
+              <div style={{textAlign: 'center', margin: '2rem 0'}}>
                 <h3>Applications</h3>
                 <JobApplyList data={userData.jobs} />
               </div>
             </>
+          ):(
+            <h4 style={{textAlign: 'center', padding: '2rem'}}>No Active Jobs yet. Create one?</h4>
           )}
         </div>
       ) : (
