@@ -1,10 +1,5 @@
-import React, {useEffect, useState} from "react";
-import EmpProfile from "../components/LoggedProfiles/Employer";
+import React from "react";
 import {useParams} from "react-router-dom";
-
-// Utils and Comps
-import Auth from "../utils/auth";
-import Employer from "../components/LoggedProfiles/Employer";
 
 // Database Imports
 import {COMPANY_QUERY} from "../utils/queries";
