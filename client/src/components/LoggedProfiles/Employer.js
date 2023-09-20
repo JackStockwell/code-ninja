@@ -38,8 +38,6 @@ const EmpProfile = () => {
     );
   }
 
-  console.log(userData);
-
   return (
     <div className="emp-profile-container">
       {loggedUser ? (

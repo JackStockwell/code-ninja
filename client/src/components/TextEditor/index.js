@@ -114,8 +114,6 @@ const DraftEditor = () => {
                 customStyleMap={styleMap}
                 blockStyleFn={myBlockStyleFn}
                 onChange={(editorState) => {
-                    const contentState = editorState.getCurrentContent();
-                    console.log(convertToRaw(contentState));
                     setEditorState(editorState);
                 }}
                 />
