@@ -1,5 +1,7 @@
 ## Git-Jobs!
 
+![Recording of the website being navigated](./SCREENSHOT.gif)
+
 ## Description
 Git-Jobs is a specialised recruitment platform tailored exclusively for software developers. This platform empowers users to effectively browse, bookmark, and submit job applications.
 
