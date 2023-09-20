@@ -65,9 +65,6 @@ const JobCreate = () => {
         setUserFormData({...userFormData, tags: multiSelections.map((tag => tag._id))})
     }, [multiSelections])
 
-    useEffect(() => {
-    }, [show])
-
     // Handles the input change in form.
     const handleInputChange = (event) => {
         // Deconstruct the target with what has changed as name and the value as well value.
@@ -126,8 +123,6 @@ const JobCreate = () => {
                     company: companyID
                 }}
             })
-
-            console.log(data)
 
             setShow(false)
             } catch (err) {

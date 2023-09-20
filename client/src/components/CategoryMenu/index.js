@@ -46,14 +46,6 @@ const CategoryMenu = () => {
     });
   };
 
-  const handClearFilter = () => {
-    dispatch({
-      type: UPDATE_CURRENT_CATEGORY,
-      currentCategory: id,
-    })
-  }
-
-  
   return (
 <div className="category-container">
   <div className="category-menu">

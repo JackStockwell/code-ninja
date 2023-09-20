@@ -70,7 +70,7 @@ const CreateEmployer = () => {
         variables: {userData: userInput},
       });
 
-      console.log(data);
+
 
       Auth.login(data.createEmployer.token);
 

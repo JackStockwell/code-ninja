@@ -15,8 +15,6 @@ const Profile = () => {
     return <h4 className="error-message">Loading...</h4>;
   }
 
-  console.log(meData)
-
   const userData = meData?.me || {};
 
   return (

@@ -44,8 +44,6 @@ const UploadFile = () => {
           const { data } = await singleUpload(
               { variables: { file }}
           );
-
-          console.log(data)
           
           setFileData({
             selectedFile: null,

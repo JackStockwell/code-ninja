@@ -43,7 +43,6 @@ function JobItem({
       const {data} = await saveJob({
         variables: {id: id},
       });
-      console.log(data);
     } catch (err) {
       console.error(err);
     }
@@ -61,7 +60,6 @@ function JobItem({
       const {data} = await applyJob({
         variables: {id: applyJobId},
       });
-      console.log(data);
     } catch (err) {
       console.error(err);
     }
