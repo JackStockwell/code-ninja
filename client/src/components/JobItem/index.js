@@ -7,7 +7,6 @@ import { useMutation } from "@apollo/client";
 import { SAVE_JOB, APPLY_JOB } from "../../utils/mutations";
 import { useMediaPredicate } from 'react-media-hook';
 
-
 import EditorRender from '../TextEditor/Editor'
 
 
@@ -16,11 +15,9 @@ function JobItem({
   title,
   company,
   description,
-  location,
   salary,
   tags,
   category,
-  currentCategory,
   overflow
 }) {
 
