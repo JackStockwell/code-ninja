@@ -57,3 +57,7 @@ This will launch the app in development mode. Open [http://localhost:3000](http:
 ## Deployment
 
 The application is deployed on Heroku: [Git-Jobs](https://gitjobs-19ba7014a86a.herokuapp.com/)
+
+GitHub Repository: [GitHub](https://github.com/JackStockwell/git-jobs)
+
+PowerPoint Presentation: [Presentation](https://bham-my.sharepoint.com/:p:/r/personal/dxd215_student_bham_ac_uk/_layouts/15/guestaccess.aspx?share=EQFlyacymeNCj27pExy5MO8BHa5X82Cg1_2X6A5IZvjCDg&e=sxeOba)
