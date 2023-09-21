@@ -64,8 +64,8 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 ## Credits
 
-[Bootstrap Docs](https://react-bootstrap.netlify.app/)
-[Draft JS docs](https://draftjs.org/)
+[Bootstrap Docs](https://react-bootstrap.netlify.app/) - Bootstrap Docs
+[Draft JS docs](https://draftjs.org/) - Draft JS
 [AWS Tutorial](https://www.youtube.com/watch?v=eQAIojcArRY&t=10s) - Used in conjuction with AWS assistance itself.
 [React media hook](https://www.npmjs.com/package/react-media-hook) - Allows access to min-width properties.
 
