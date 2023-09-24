@@ -7,7 +7,7 @@ class AuthService {
         return decode(this.getToken());
       }
     } catch (err) {
-      console.log(err)
+      console.error(err)
     }
 
   }
