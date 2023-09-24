@@ -17,8 +17,6 @@ const CompanyProfile = () => {
 
   const empData = data?.getCompany || [];
 
-  console.log(empData);
-
   return (
     <div className="company-profile-container">
       {loading && <h4>Loading...</h4>}
