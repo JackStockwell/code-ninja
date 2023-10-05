@@ -33,12 +33,10 @@ const userSchema = new Schema(
         jobSaves: [{
             type: Schema.Types.ObjectId,
             ref: 'Job',
-            unique: true
         }],
         jobApp: [{
             type: Schema.Types.ObjectId,
             ref: 'Job',
-            unique: true
         }],
     },
     // set this to use virtual below
